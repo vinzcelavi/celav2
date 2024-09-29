@@ -13,7 +13,7 @@ import illustratorLogo from '../assets/ai.svg';
 import photoshopLogo from '../assets/ps.svg';
 
 const IntroductionReveal = () => {
-  const text = "Bonjour, je suis développeur Front-End et Product Designer depuis plus de 10 ans.";
+  const text = "Bonjour, je suis développeur Front-End et Product Designer 💅🏻 depuis plus de 10 ans.";
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const appIconsFrontEnd = [

@@ -4,7 +4,7 @@
 
 :root {
   margin: 0 auto;
-  padding: 4rem;
+  padding: 2rem;
 
   font-family: Mada, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -19,10 +19,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-.job {
-  transition-delay: 10s;
 }
 
 /* 

@@ -1,34 +1,39 @@
 import { Suspense, lazy } from 'react';
 import IntroductionReveal from './components/IntroductionReveal';
-// import PopCornAnimation from './components/PopCornAnimation';
-
+import MenuItem from './components/MenuItem';
+import MagneticFramer from './components/MagneticFramer';
 // Works also with SSR as expected
 const CopyEmail = lazy(() => import('./components/CopyEmail'));
-
 
 function App() {
   return (
     <main className="relative w-full">
-      <div className="flex justify-between">
-        <div>
-          <h1 className="text-base">Vincent Bianciotto</h1>
-          <span className="text-base text-primary">Montpellier, France</span>
+      <header className="flex justify-between items-start h-20">
+        <div className="flex flex-col items-baseline gap-1">
+          <h1 className="text-base h-5 font-semibold">Vincent Bianciotto</h1>
+          <span className="text-base text-primary">Front-End Designer</span>
         </div>
-        <ul className="flex gap-2">
-          <li className="flex items-end"><a className="flex h-4 text-sm font-bold tracking-wide uppercase" href="https://www.linkedin.com/in/vincent-bianciotto/">li</a></li>
-          <li className="flex items-end"><a className="flex h-4 text-sm font-bold tracking-wide uppercase" href="https://www.instagram.com/vinzcelavi/">ig</a></li>
-          <li className="flex items-end"><a className="flex h-4 text-sm font-bold tracking-wide uppercase" href="https://twitter.com/vinzcelavi">tw</a></li>
+        <ul className="flex gap-4">
+          <MenuItem href="https://www.linkedin.com/in/vincent-bianciotto/">
+            Li
+          </MenuItem>
+          <MenuItem href="https://www.instagram.com/vinzcelavi/">
+            Ig
+          </MenuItem>
+          <MenuItem href="https://twitter.com/vinzcelavi">
+            X
+          </MenuItem>
           <li className="flex items-end">
-            <Suspense fallback={<p>Loading card component...</p>}>
-              <CopyEmail label="Email" email="vincent@celavi.fr" />
+            <Suspense fallback={<span>...</span>}>
+              <MagneticFramer>
+                <CopyEmail label="Email" email="vincent@celavi.fr" />
+              </MagneticFramer>
             </Suspense>
           </li>
         </ul>
-      </div>
+      </header>
       <div className="flex justify-center">
         <IntroductionReveal />
-
-        {/* <PopCornAnimation /> */}
       </div>
     </main>
   )

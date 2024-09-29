@@ -18,7 +18,7 @@ export default {
       },
       colors: {
         'primary': '#f1c40f',
-        'secondary': '#d946ef',
+        'secondary': '#d946ef', // d946ef de64b7
         'black': '#161616'
       },
       animation: {
