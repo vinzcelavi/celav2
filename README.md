@@ -3,7 +3,7 @@
 # celav-fr
 My personal portfolio
 
-<img width="1562" alt="celav2-min" src="https://github.com/user-attachments/assets/be7da187-e955-4e1d-ab53-8d16f2eaad9b">
+![celav2](https://github.com/user-attachments/assets/66d57aa2-1cd4-403d-9a72-271b00816f9d)
 
 ## Tech Stack
 
