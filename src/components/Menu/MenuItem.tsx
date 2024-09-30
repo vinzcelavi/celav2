@@ -1,5 +1,6 @@
 import React from 'react';
-import MagneticFramer from './MagneticFramer';
+import MagneticFramer from '../MagneticFramer';
+
 function MenuItem({ children, href }: { children: React.ReactNode, href: string }) {
   return (
     <li className="flex items-end">

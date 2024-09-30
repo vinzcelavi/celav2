@@ -4,11 +4,11 @@ import PopCornAnimation from './PopCornAnimation';
 import { appIconsFrontEnd, appIconsDesigner } from '../data/appIcons';
 
 const IntroductionReveal = () => {
-  const text = "Bonjour, je suis développeur Front-End et Product Designer depuis plus de 10 ans.";
+  const text = "Hello, I've been a Front-End Developer and Product Designer for over ten years.";
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <>
+    <div className="flex justify-center">
       <h2 className="font-extrabold !leading-[1.25] ~md/lg:~text-5xl/8xl text-white">
         {text.split(' ').map((word, index) => {
           const isKeyword = ['front-end', 'designer'].includes(word.toLowerCase());
@@ -28,7 +28,7 @@ const IntroductionReveal = () => {
               }
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <span className="relative z-10 select-none">{word}{"\u00A0"}</span>
+              <span className="relative z-10">{word}{"\u00A0"}</span>
               {isFrontEnd ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsFrontEnd} /></span> : null}
               {isDesigner ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsDesigner} /></span> : null}
               {isKeyword && (
@@ -47,7 +47,7 @@ const IntroductionReveal = () => {
           )
         })}
       </h2>
-    </>
+    </div>
   );
 };
 

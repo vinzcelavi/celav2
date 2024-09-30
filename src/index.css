@@ -4,7 +4,6 @@
 
 :root {
   margin: 0 auto;
-  padding: 2rem;
 
   font-family: Mada, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,13 +11,18 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #161616;
+  background-color: #020617;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+p {
+  @apply text-lg;
+  @apply mb-4;
 }
 
 /* 

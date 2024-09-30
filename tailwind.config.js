@@ -19,7 +19,7 @@ export default {
       colors: {
         'primary': '#f1c40f',
         'secondary': '#d946ef', // d946ef de64b7
-        'black': '#161616'
+        'black': '#020617'
       },
       animation: {
         'word-reveal': 'word-reveal 0.75s ease forwards',

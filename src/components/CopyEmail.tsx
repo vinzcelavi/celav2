@@ -11,12 +11,11 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, email }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Réinitialiser l'état après 2 secondes
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <span className="inline-flex translate-y-0.5 cursor-pointer items-center"> 
-      {/* hover:text-[#232323]/80 */}
       <button onClick={copyToClipboard} className="text-sm font-bold tracking-wide uppercase inline-flex translate-y-0.5 cursor-pointer items-center">
         <span className="relative flex h-4 w-4 items-center justify-center">
           <svg
