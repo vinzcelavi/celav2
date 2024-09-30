@@ -1,6 +1,6 @@
 # :warning: Remove no-index, no-follow before production
 
-# celav-fr
+# celav2-fr
 My personal portfolio
 
 ![celav2](https://github.com/user-attachments/assets/66d57aa2-1cd4-403d-9a72-271b00816f9d)

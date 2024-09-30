@@ -1,45 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
-
-interface Position {
-  x: number;
-  y: number;
-}
-
-interface Offset {
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-}
-
-function getRelativeCoordinates(event: MouseEvent, referenceElement: HTMLElement): Position {
-  const position: Position = {
-    x: event.pageX,
-    y: event.pageY
-  };
-
-  const offset: Offset = {
-    left: referenceElement.offsetLeft,
-    top: referenceElement.offsetTop,
-    width: referenceElement.clientWidth,
-    height: referenceElement.clientHeight
-  };
-
-  let reference: HTMLElement | null = referenceElement.offsetParent as HTMLElement;
-
-  while (reference) {
-    offset.left += reference.offsetLeft;
-    offset.top += reference.offsetTop;
-    reference = reference.offsetParent as HTMLElement;
-  }
-
-  return {
-    x: position.x - offset.left,
-    y: position.y - offset.top,
-  };
-}
+import { MouseType } from '../types';
+import getMouseCoordinates from '../utils/getMouseCoordinates';
 
 const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.ReactNode }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,7 +13,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
   const iconIndex = wrap(0, appIcons.length, currentIndex);
 
-  const [mousePosition, setMousePosition] = useState<Position>({
+  const [mousePosition, setMousePosition] = useState<MouseType>({
     x: 0,
     y: 0,
   });
@@ -60,7 +23,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
   // Function that changes the icon according to mouse position x
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (boxRef.current) {
-      setMousePosition(getRelativeCoordinates(e.nativeEvent, boxRef.current));
+      setMousePosition(getMouseCoordinates(e.nativeEvent, boxRef.current));
     }
   }, []);;
 

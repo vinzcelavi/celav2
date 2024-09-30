@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
 import PopCornAnimation from './PopCornAnimation';
 import { appIconsFrontEnd, appIconsDesigner } from '../data/appIcons';
@@ -18,8 +19,8 @@ const IntroductionReveal = () => {
           return (
             <span
               key={`${word}-${index}`}
-              onMouseOver={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseOver={() => !isMobile && setHoveredIndex(index)}
+              onMouseLeave={() => !isMobile && setHoveredIndex(null)}
               className={
                 cn(
                   'relative z-0 inline-block whitespace-nowrap will-change-transform animate-word-reveal [animation-fill-mode:backwards]',
@@ -29,8 +30,8 @@ const IntroductionReveal = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <span className="relative z-10">{word}{"\u00A0"}</span>
-              {isFrontEnd ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsFrontEnd} /></span> : null}
-              {isDesigner ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsDesigner} /></span> : null}
+              {isFrontEnd && !isMobile ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsFrontEnd} /></span> : null}
+              {isDesigner && !isMobile ? <span className="absolute z-20 inset-0"><PopCornAnimation appIcons={appIconsDesigner} /></span> : null}
               {isKeyword && (
                 <span
                   className={
