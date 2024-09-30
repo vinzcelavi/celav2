@@ -1,3 +1,5 @@
+# :warning: Remove no-index, no-follow before production
+
 # celav-fr
 My personal portfolio
 
