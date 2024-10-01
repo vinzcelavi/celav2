@@ -25,7 +25,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
     if (boxRef.current) {
       setMousePosition(getMouseCoordinates(e.nativeEvent, boxRef.current));
     }
-  }, []);;
+  }, [setMousePosition]);;
 
   return (
     <motion.div
