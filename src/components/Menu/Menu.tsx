@@ -4,25 +4,28 @@ import MagneticFramer from '../MagneticFramer';
 // Works also with SSR as expected
 import CopyEmail from '../CopyEmail';
 
-function Menu() {
+function Menu({ isShorten, hasEmail }: { isShorten?: boolean, hasEmail?: boolean }) {
   return (
-    <ul className="hidden gap-4 md:flex">
+    <ul className="flex items-center gap-4">
       <MenuItem href="https://www.linkedin.com/in/vincent-bianciotto/">
-        Li
+        {isShorten ? 'Li' : 'Linkedin'}
       </MenuItem>
       <MenuItem href="https://www.instagram.com/vinzcelavi/">
-        Ig
+        {isShorten ? 'Ig' : 'Instagram'}
       </MenuItem>
       <MenuItem href="https://www.github.com/vinzcelavi/">
-        Gh
+        {isShorten ? 'Gh' : 'Github'}
       </MenuItem>
-      <li className="flex items-end">
-        <Suspense fallback={<span>...</span>}>
-          <MagneticFramer>
-            <CopyEmail label="Email" email="vincent@celavi.fr" />
-          </MagneticFramer>
-        </Suspense>
-      </li>
+
+      {hasEmail && (
+        <li className="flex items-end">
+          <Suspense fallback={<span>...</span>}>
+            <MagneticFramer>
+              <CopyEmail label="Email" />
+            </MagneticFramer>
+          </Suspense>
+        </li>
+      )}
     </ul>
   )
 }

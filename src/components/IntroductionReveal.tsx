@@ -9,7 +9,7 @@ const IntroductionReveal = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex justify-center pr-10">
+    <div className="flex justify-center">
       <h2 className="font-extrabold text-5xl text-intro leading-[1.25] text-white">
         {text.split(' ').map((word, index) => {
           const isKeyword = ['front-end', 'designer'].includes(word.toLowerCase());

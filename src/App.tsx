@@ -8,9 +8,11 @@ import projects from './data/projects';
 function App() {
   return (
     <div className="relative w-full m-auto max-w-[140rem]">
-      <header className="flex justify-between items-start pb-6">
+      <header className="flex justify-between items-center pb-6">
         <WhoAmI />
-        <Menu />
+        <div className="hidden md:flex">
+          <Menu isShorten hasEmail />
+        </div>
       </header>
 
       <IntroductionReveal />

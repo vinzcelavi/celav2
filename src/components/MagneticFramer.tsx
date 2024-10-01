@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 
 function MagneticFramer({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,15 +19,15 @@ function MagneticFramer({ children }: { children: React.ReactNode }) {
   const reset = () => {
     setPosition({ x: 0, y: 0 })
   }
-
   const { x, y } = position;
+
   return (
     <motion.span
       ref={ref}
-      onMouseMove={handleMouse}
+      onMouseMove={!isMobile ? handleMouse : undefined}
       onMouseLeave={reset}
       animate={{ x, y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.3 }}
       className="relative"
     >
       {children}

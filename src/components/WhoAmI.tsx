@@ -68,7 +68,7 @@ const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
       </motion.div>
       <div className="flex flex-col items-baseline pl-4">
         <h1 className="text-lg font-semibold leading-tight">Vincent Bianciotto</h1>
-        <span className="text-base text-primary">Front-End Designer</span>
+        <span className="text-base text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Front-End Designer</span>
       </div>
 
       {!isMobile && (
@@ -79,7 +79,7 @@ const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
             x: mousePosition.x + 20,
             y: mousePosition.y + 30
           }} 
-          className="absolute top-0 left-0 text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          className="absolute top-0 left-0 text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] group-active:opacity-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         >
           Hold and press
         </motion.span>

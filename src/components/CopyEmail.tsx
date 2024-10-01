@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
+import { cn } from '../utils/cn';
+
+function decodeHtmlEntities(encodedString: string): string {
+  return encodedString.replace(/&#(\d+);/g, (_match, dec) => String.fromCharCode(dec));
+}
 
 interface EmailComponentProps {
   label: string;
-  email: string;
+  huge?: boolean;
 }
 
-const EmailComponent: React.FC<EmailComponentProps> = ({ label, email }) => {
+const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
   const [copied, setCopied] = useState(false);
+  const email = '&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;';
+  // ☝🏻 vincent@celavi.fr encoded as HTML entities
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(email);
+    console.log('email', decodeHtmlEntities(email));
+    navigator.clipboard.writeText(decodeHtmlEntities(email));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <span className="inline-flex translate-y-0.5 cursor-pointer items-center"> 
-      <button onClick={copyToClipboard} className="text-sm font-bold tracking-wide uppercase inline-flex translate-y-0.5 cursor-pointer items-center">
-        <span className="relative flex h-4 w-4 items-center justify-center">
+    <span className="flex items-center cursor-pointer">
+      <button onClick={copyToClipboard} className="text-sm font-bold tracking-wide uppercase inline-flex items-center cursor-pointer">
+        <span className={cn('relative flex items-center justify-center', huge ? 'h-12 w-12 translate-y-0.5' : 'h-4 w-4')}>
           <svg
-            width="16"
-            height="16"
+            width={huge ? 42 : 16}
+            height={huge ? 42 : 16}
             viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +42,8 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, email }) => {
             ></path>
           </svg>
           <svg
-            width="16"
-            height="16"
+            width={huge ? 42 : 16}
+            height={huge ? 42 : 16}
             viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +58,7 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, email }) => {
             ></path>
           </svg>
         </span>
-        <span className="transition-color ml-1 duration-150 text-inherit">{label}</span>
+        <span className={cn('transition-color ml-1 duration-150 text-inherit', huge ? 'text-3xl md:text-4xl lowercase' : 'text-sm')}>{label}</span>
       </button>
     </span>
   );
