@@ -9,13 +9,13 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        // This line defines a custom font size named 'intro' using the CSS clamp() function
+        // This line defines a custom font size named 'text-intro' using the CSS clamp() function
         // clamp(min, preferred, max)
         // min: 3rem (48px) - The minimum font size
         // preferred: -6rem + 18.75vw - A responsive size that scales with the viewport width
         // max: 6rem (96px) - The maximum font size
-        // This creates a responsive font size that scales smoothly between 3rem and 6rem
-        'intro': 'clamp(3rem, -6rem + 18.75vw, 6rem)',
+        // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/#calculating-preferred-value-parameters-based-on-specific-starting-and-ending-points
+        'intro': 'clamp(3rem, 5vw + 0.875rem, 6rem)',
       },
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
