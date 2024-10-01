@@ -1,5 +1,6 @@
 import IntroductionReveal from './components/IntroductionReveal';
 import Menu from './components/Menu/Menu';
+import Footer from './components/Footer';
 import WhoAmI from './components/WhoAmI';
 import ProjectSection from './components/ProjectSection';
 import projects from './data/projects';
@@ -19,6 +20,8 @@ function App() {
           <ProjectSection key={index} {...project} />
         ))}
       </main>
+
+      <Footer />
     </div>
   )
 }
