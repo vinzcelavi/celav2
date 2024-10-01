@@ -1,24 +1,28 @@
-import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: {
     files: [
       "./index.html",
       "./src/**/*.{js,ts,jsx,tsx}"
-    ],
-    extract
+    ]
   },
   theme: {
-    screens,
-    fontSize,
     extend: {
+      fontSize: {
+        // This line defines a custom font size named 'intro' using the CSS clamp() function
+        // clamp(min, preferred, max)
+        // min: 3rem (48px) - The minimum font size
+        // preferred: -6rem + 18.75vw - A responsive size that scales with the viewport width
+        // max: 6rem (96px) - The maximum font size
+        // This creates a responsive font size that scales smoothly between 3rem and 6rem
+        'intro': 'clamp(3rem, -6rem + 18.75vw, 6rem)',
+      },
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       },
       colors: {
         'primary': '#f1c40f',
-        'secondary': '#d946ef', // d946ef de64b7
+        'secondary': '#d946ef',
         'black': '#020617'
       },
       animation: {
@@ -45,8 +49,5 @@ export default {
       },
     },
   },
-  plugins: [
-    fluid
-  ],
 }
 

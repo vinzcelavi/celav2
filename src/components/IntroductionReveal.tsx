@@ -9,8 +9,8 @@ const IntroductionReveal = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex justify-center">
-      <h2 className="font-extrabold !leading-[1.25] ~md/lg:~text-5xl/8xl text-white">
+    <div className="flex justify-center pr-10">
+      <h2 className="font-extrabold text-5xl text-intro leading-[1.25] text-white">
         {text.split(' ').map((word, index) => {
           const isKeyword = ['front-end', 'designer'].includes(word.toLowerCase());
           const isFrontEnd = word.toLowerCase() === 'front-end';
@@ -25,6 +25,7 @@ const IntroductionReveal = () => {
                 cn(
                   'relative z-0 inline-block whitespace-nowrap will-change-transform animate-word-reveal [animation-fill-mode:backwards]',
                   isKeyword && 'text-black z-10',
+                  hoveredIndex === index && 'z-30'
                 )
               }
               style={{ animationDelay: `${index * 0.1}s` }}

@@ -1,9 +1,17 @@
 # :warning: Remove no-index, no-follow before production
 
 # celav2-fr
-My personal portfolio
+
+🚜👷🚧🏗️ [My personal portfolio](https://main--celav2.netlify.app/)
 
 ![celav2](https://github.com/user-attachments/assets/66d57aa2-1cd4-403d-9a72-271b00816f9d)
+
+## Run locally
+
+```
+pnpm install
+pnpm run dev
+```
 
 ## Tech Stack
 
@@ -19,6 +27,10 @@ $ cd celav2-fr
 $ pnpm install
 $ pnpm dev
 ```
+
+## Deploy
+
+Automatically deploy on [Netlify](https://app.netlify.com/sites/celav2/overview)
 
 ## License
 
