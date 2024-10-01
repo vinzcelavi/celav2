@@ -76,10 +76,10 @@ const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
           ref={tooltipRef}
           animate={{
             zIndex: 10,
-            x: mousePosition.x - (containerRef.current?.offsetWidth ?? 0) + (tooltipRef.current?.offsetWidth ?? 114) / 2,
-            y: mousePosition.y - (containerRef.current?.offsetHeight ?? 0) + 90
+            x: mousePosition.x + 20,
+            y: mousePosition.y + 30
           }} 
-          className="text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          className="absolute top-0 left-0 text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         >
           Hold and press
         </motion.span>
