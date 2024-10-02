@@ -8,25 +8,26 @@ import getMouseCoordinates from '../utils/getMouseCoordinates';
 const avatarMotion = {
   initial: {
     width: 72,
-  },
-  hover: {
-    width: 144,
+    height: 72,
   },
   tap: {
     width: 144,
+    height: 144,
   },
   exit: {
     width: 72,
+    height: 72,
   }
 };
 
 function Avatar({ src, alt }: { src: string, alt: string }) {
   return (
-    <img
-      src={src}
-      alt={alt}
+    <div
+      style={{ backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
       className="flex w-full h-full rounded-full outline outline-1 outline-offset-2 outline-white/10 group-hover:outline-white/70 transition-all duration-300"
-    />
+    >
+      <span className="sr-only">{alt}</span>
+    </div>
   );
 }
 
