@@ -16,7 +16,6 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
   // ☝🏻 vincent@celavi.fr encoded as HTML entities
 
   const copyToClipboard = () => {
-    console.log('email', decodeHtmlEntities(email));
     navigator.clipboard.writeText(decodeHtmlEntities(email));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
