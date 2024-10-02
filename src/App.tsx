@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import IntroductionReveal from './components/IntroductionReveal';
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer';
@@ -17,11 +18,13 @@ function App() {
 
       <IntroductionReveal />
 
-      <main className="flex flex-col gap-2 pt-32 pb-16 md:py-52 m-auto max-w-[140rem]">
-        {projects.map((project, index) => (
-          <ProjectSection key={index} {...project} />
-        ))}
-      </main>
+      <Suspense fallback={<span>loading...</span>}>
+        <main className="flex flex-col gap-2 m-auto max-w-[140rem]">
+          {projects.map((project, index) => (
+            <ProjectSection key={index} {...project} />
+          ))}
+        </main>
+      </Suspense>
 
       <Footer />
     </div>
