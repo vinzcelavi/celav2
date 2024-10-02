@@ -21,11 +21,17 @@
 }
 
 p {
-  @apply text-lg;
-  @apply md:text-xl;
+  @apply text-base;
+  @apply md:text-lg;
+  @apply leading-normal;
   @apply mb-4;
 }
 
 ::selection {
   @apply bg-primary/20;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
 }

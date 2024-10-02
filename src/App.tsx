@@ -17,7 +17,7 @@ function App() {
 
       <IntroductionReveal />
 
-      <main className="flex flex-col gap-2 py-16 md:py-32 m-auto max-w-[140rem]">
+      <main className="flex flex-col gap-2 pt-32 pb-16 md:py-52 m-auto max-w-[140rem]">
         {projects.map((project, index) => (
           <ProjectSection key={index} {...project} />
         ))}
