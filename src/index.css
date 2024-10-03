@@ -2,22 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  margin: 0 auto;
+@layer base {
+  :root {
+    --primary: #f1c40f;
+    --secondary: #d946ef;
+    --black: #020617;
+    --white: #f8fafc;
+    margin: 0 auto;
 
-  font-family: Mada, system-ui, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: Mada, system-ui, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: dark;
+    color-scheme: dark;
+    @apply text-white;
+    @apply bg-slate-950;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+a {
   @apply text-white;
-  @apply bg-slate-950;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  @apply hover:text-primary;
+  @apply transition-all duration-150;
 }
 
 p {
@@ -28,7 +40,7 @@ p {
 }
 
 ::selection {
-  @apply bg-primary/20;
+  background: rgba(241, 196, 15, 0.2);
 }
 
 svg {

@@ -12,7 +12,7 @@ function App() {
       <header className="flex justify-between items-center pb-6">
         <WhoAmI />
         <div className="hidden md:flex">
-          <Menu isShorten hasEmail />
+          <Menu isShorten isMagnetic hasEmail />
         </div>
       </header>
 

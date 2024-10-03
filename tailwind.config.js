@@ -21,10 +21,10 @@ export default {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       },
       colors: {
-        'primary': '#f1c40f',
-        'secondary': '#d946ef',
-        'black': '#020617',
-        'white': '#f8fafc',
+        'primary': 'var(--primary)',
+        'secondary': 'var(--secondary)',
+        'black-color': 'var(--black-color)',
+        'white-color': 'var(--white-color)',
       },
       animation: {
         'word-reveal': 'word-reveal 0.75s ease forwards',
