@@ -36,6 +36,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
         transition: { duration: 0.2 },
       }}
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
+      onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
       onClick={() => setCurrentIndex(currentIndex + 1)}
       className="absolute inset-0 flex items-center justify-center cursor-pointer"
     >
@@ -56,13 +57,13 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
                 scale: 0,
                 rotate: -45,
               }}
-              animate={{ 
-                zIndex: 1, 
+              animate={{
+                zIndex: 1,
                 scale: 1,
-                rotate: 0
+                rotate: 0,
               }}
-              exit={{ 
-                zIndex: 0, 
+              exit={{
+                zIndex: 0,
                 scale: 0,
                 rotate: -145,
               }}
