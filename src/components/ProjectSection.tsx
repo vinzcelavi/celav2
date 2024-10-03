@@ -22,7 +22,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
           <div className="flex flex-wrap gap-4 md:flex-nowrap">
             {technos.map((techno: string) => (
-              <AppIcon key={techno} name={techno} className="w-12 rounded-xl border-2 border-white/15" />
+              <AppIcon key={techno} name={techno} className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15" />
             ))}
           </div>
         </div>
