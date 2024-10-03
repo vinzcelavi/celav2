@@ -50,14 +50,14 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="grid gap-2 grid-cols-1 md:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
           {medias.map((media, index) => (
             <div
               key={media.alt}
               className={cn(
-                'w-full rounded-md overflow-hidden col-span-2',
-                index === 0 && 'md:col-span-3 2xl:col-span-2',
-                index === 1 && 'xl:col-span-2'
+                'w-full rounded-md overflow-hidden col-span-1',
+                index === 0 && 'md:col-span-2 2xl:col-span-2',
+                index === 1 && 'md:col-span-1 2xl:col-span-2'
               )}
             >
               {'video' in media ? (
