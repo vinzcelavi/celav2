@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
+import Footer from './components/Footer';
 import IntroductionReveal from './components/IntroductionReveal';
 import Menu from './components/Menu/Menu';
-import Footer from './components/Footer';
-import WhoAmI from './components/WhoAmI';
 import ProjectSection from './components/ProjectSection';
+import WhoAmI from './components/WhoAmI';
 import projects from './data/projects';
 
 function App() {
@@ -20,15 +20,15 @@ function App() {
 
       <Suspense fallback={<span>loading...</span>}>
         <main className="flex flex-col gap-2">
-          {projects.map((project, index) => (
-            <ProjectSection key={index} {...project} />
+          {projects.map((project) => (
+            <ProjectSection key={project.title} {...project} />
           ))}
         </main>
       </Suspense>
 
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,18 +1,22 @@
-import { Key } from 'react';
-import Paragraph from './Paragraph';
-import AppIcon from './AppIcon';
 import { cn } from '../utils/cn';
+import AppIcon from './AppIcon';
+import Paragraph from './Paragraph';
+
 interface ProjectSectionProps {
   active: boolean;
   title: string;
   subTitle: string;
-  paragraphs: { bold?: boolean; white?: boolean; bigger?: boolean; text: string }[];
+  paragraphs: {
+    bold?: boolean;
+    white?: boolean;
+    bigger?: boolean;
+    text: string;
+  }[];
   technos: string[];
   medias: Array<{ alt: string } & ({ img: string } | { video: string })>;
 }
 
 function ProjectSection({ title, subTitle, paragraphs, technos, medias }: ProjectSectionProps) {
-
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-2 gap-2 mb-20">
@@ -22,26 +26,40 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
           <div className="flex flex-wrap gap-4 md:flex-nowrap">
             {technos.map((techno: string) => (
-              <AppIcon key={techno} name={techno} className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15" />
+              <AppIcon
+                key={techno}
+                name={techno}
+                className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15"
+              />
             ))}
           </div>
         </div>
         <div className="max-w-[40rem]">
-          {paragraphs.map((paragraph: { bold?: boolean; white?: boolean; bigger?: boolean; text: string }, index: Key | null | undefined) => (
-            <Paragraph key={index} bold={paragraph.bold} white={paragraph.white} bigger={paragraph.bigger}>
-              {paragraph.text}
-            </Paragraph>
-          ))}
+          {paragraphs.map(
+            (paragraph: {
+              bold?: boolean;
+              white?: boolean;
+              bigger?: boolean;
+              text: string;
+            }) => (
+              <Paragraph key={paragraph.text} bold={paragraph.bold} white={paragraph.white} bigger={paragraph.bigger}>
+                {paragraph.text}
+              </Paragraph>
+            )
+          )}
         </div>
       </div>
       <div className="flex flex-col gap-2">
         <div className="grid gap-2 grid-cols-1 md:grid-cols-3 2xl:grid-cols-4">
           {medias.map((media, index) => (
-            <div key={index} className={cn(
-              'w-full rounded-md overflow-hidden col-span-2',
-              index === 0 && 'md:col-span-3 2xl:col-span-2',
-              index === 1 && 'xl:col-span-2',
-            )}>
+            <div
+              key={media.alt}
+              className={cn(
+                'w-full rounded-md overflow-hidden col-span-2',
+                index === 0 && 'md:col-span-3 2xl:col-span-2',
+                index === 1 && 'xl:col-span-2'
+              )}
+            >
               {'video' in media ? (
                 <video src={media.video} className="w-full" autoPlay loop muted />
               ) : (
@@ -52,7 +70,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default ProjectSection;

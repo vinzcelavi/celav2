@@ -1,5 +1,4 @@
-
-import { MouseType, OffsetType } from '../types';
+import type { MouseType, OffsetType } from '../types';
 
 function getMouseCoordinates(event: MouseEvent, referenceElement: HTMLElement): MouseType {
   const position: MouseType = {
@@ -24,7 +23,7 @@ function getMouseCoordinates(event: MouseEvent, referenceElement: HTMLElement): 
 
   return {
     x: position.x - offset.left,
-    y: position.y - offset.top,
+    y: position.y - offset.top
   };
 }
 

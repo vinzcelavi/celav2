@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { cn } from '../utils/cn';
 
 function decodeHtmlEntities(encodedString: string): string {
@@ -23,7 +24,11 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
 
   return (
     <span className="flex items-center cursor-pointer">
-      <button onClick={copyToClipboard} className="text-sm font-bold tracking-wide uppercase inline-flex items-center cursor-pointer">
+      <button
+        type="button"
+        onClick={copyToClipboard}
+        className="text-sm font-bold tracking-wide uppercase inline-flex items-center cursor-pointer"
+      >
         <span className={cn('relative hidden md:flex items-center justify-center', huge ? 'h-10 w-10' : 'h-4 w-4')}>
           <svg
             width="24"
@@ -32,6 +37,7 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
             fill="currentColor"
             preserveAspectRatio="none"
             className={`absolute duration-150 ${copied ? 'transition-all scale-50 opacity-0' : 'transition-color opacity-100'}`}
+            aria-hidden="true"
           >
             <path
               d="M4 2C2.895 2 2 2.895 2 4V17C2 17.552 2.448 18 3 18C3.552 18 4 17.552 4 17V4H17C17.552 4 18 3.552 18 3C18 2.448 17.552 2 17 2H4ZM8 6C6.895 6 6 6.895 6 8V20C6 21.105 6.895 22 8 22H20C21.105 22 22 21.105 22 20V8C22 6.895 21.105 6 20 6H8ZM8 8H20V20H8V8Z"
@@ -45,12 +51,15 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
             width="24"
             height="24"
             preserveAspectRatio="none"
-            className={`absolute duration-150 ${!copied ? `transition-all scale-50 opacity-0` : `transition-color opacity-100`}`}
+            className={`absolute duration-150 ${!copied ? 'transition-all scale-50 opacity-0' : 'transition-color opacity-100'}`}
+            aria-hidden="true"
           >
             <path d="M 20.292969 5.2929688 L 9 16.585938 L 4.7070312 12.292969 L 3.2929688 13.707031 L 9 19.414062 L 21.707031 6.7070312 L 20.292969 5.2929688 z" />
           </svg>
         </span>
-        <span className={cn('transition-color ml-1 duration-150', huge ? 'text-3xl md:text-4xl lowercase' : 'text-sm')}>{label}</span>
+        <span className={cn('transition-color ml-1 duration-150', huge ? 'text-3xl md:text-4xl lowercase' : 'text-sm')}>
+          {label}
+        </span>
       </button>
     </span>
   );

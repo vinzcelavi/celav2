@@ -26,7 +26,7 @@ const technos = {
   storybook: <Storybook />,
   storybookFull: <StorybookFull />,
   styledComponents: <StyledComponents />,
-  tailwindCSS: <TailwindCSS />,
+  tailwindCSS: <TailwindCSS />
 };
 
 function AppIcon({ name, className = '' }: AppIconProps) {
@@ -35,11 +35,7 @@ function AppIcon({ name, className = '' }: AppIconProps) {
     return null;
   }
 
-  return (
-    <div className={className}>
-      {technos[name as keyof typeof technos]}
-    </div>
-  );
+  return <div className={className}>{technos[name as keyof typeof technos]}</div>;
 }
 
 export default AppIcon;

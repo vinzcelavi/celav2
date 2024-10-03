@@ -1,10 +1,11 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { wrap } from 'popmotion';
-import { MouseType } from '../types';
+import type React from 'react';
+import { useCallback, useRef, useState } from 'react';
+import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
 
-const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.ReactNode }[] }) => {
+const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.ReactNode }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -15,7 +16,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
 
   const [mousePosition, setMousePosition] = useState<MouseType>({
     x: 0,
-    y: 0,
+    y: 0
   });
   const containerRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -25,7 +26,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
     if (boxRef.current) {
       setMousePosition(getMouseCoordinates(e.nativeEvent, boxRef.current));
     }
-  }, [setMousePosition]);;
+  }, []);
 
   return (
     <motion.div
@@ -33,7 +34,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
       initial={{ opacity: 0 }}
       whileHover={{
         opacity: 1,
-        transition: { duration: 0.2 },
+        transition: { duration: 0.2 }
       }}
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
@@ -55,24 +56,24 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string, icon: React.
               initial={{
                 zIndex: 0,
                 scale: 0,
-                rotate: -45,
+                rotate: -45
               }}
               animate={{
                 zIndex: 1,
                 scale: 1,
-                rotate: 0,
+                rotate: 0
               }}
               exit={{
                 zIndex: 0,
                 scale: 0,
-                rotate: -145,
+                rotate: -145
               }}
               transition={{
                 duration: 0.2,
                 type: 'spring',
                 stiffness: 200,
                 damping: 15,
-                ease: 'easeInOut',
+                ease: 'easeInOut'
               }}
             >
               {appIcons[iconIndex].icon}
