@@ -35,14 +35,20 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-          {medias.map((media, index) => {
-            if ('video' in media) {
-              return <video key={index} src={media.video} className="w-full rounded-md" autoPlay loop muted />
-            } else {
-              return <img key={index} src={media.img} className={cn('w-full rounded-md', index === 0 && 'col-span-1 md:col-span-3')} alt={media.alt} />
-            }
-          })}
+        <div className="grid gap-2 grid-cols-1 md:grid-cols-3 2xl:grid-cols-4">
+          {medias.map((media, index) => (
+            <div key={index} className={cn(
+              'w-full rounded-md overflow-hidden col-span-2',
+              index === 0 && 'md:col-span-3 2xl:col-span-2',
+              index === 1 && 'xl:col-span-2',
+            )}>
+              {'video' in media ? (
+                <video src={media.video} className="w-full" autoPlay loop muted />
+              ) : (
+                <img src={media.img} alt={media.alt} className="w-full" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

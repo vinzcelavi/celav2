@@ -16,7 +16,7 @@ const projects = [
     title: 'Axeptio',
     subTitle: 'Website',
     paragraphs: [
-      { bold: true, white: true, bigger: true, text: 'I wanted to design Axeptio\'s website with a strong emphasis on creating an intuitive and user-friendly experience. My goal was to present Axeptio\'s solutions in a way that users could easily grasp, with a smooth and effortless navigation.' },
+      { bold: true, white: true, bigger: true, text: 'I designed Axeptio\'s website with a strong emphasis on creating an intuitive and user-friendly experience. My goal was to present Axeptio\'s solutions in a way that users could easily grasp, with a smooth and effortless navigation.' },
       { bold: false, white: false, bigger: false, text: 'From a design perspective, I aimed for clarity and simplicity. I crafted a clean, modern look that reflects Axeptio\'s values of trust and transparency—key elements for a consent management system.' },
       { bold: false, white: false, bigger: false, text: 'On the development side, I focused on performance and cross-browser compatibility, making sure the website runs smoothly on both desktop and mobile devices.' },
     ],

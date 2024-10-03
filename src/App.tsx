@@ -19,7 +19,7 @@ function App() {
       <IntroductionReveal />
 
       <Suspense fallback={<span>loading...</span>}>
-        <main className="flex flex-col gap-2 m-auto max-w-[140rem]">
+        <main className="flex flex-col gap-2">
           {projects.map((project, index) => (
             <ProjectSection key={index} {...project} />
           ))}
