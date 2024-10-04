@@ -7,7 +7,7 @@ function MenuLink({ children, href, hasHover }: { children: React.ReactNode; hre
     <a
       href={href}
       className={cn(
-        'flex text-sm font-bold tracking-wide uppercase transition-all duration-150',
+        'flex text-sm font-bold tracking-wide uppercase transition-all duration-300',
         hasHover && 'hover:text-primary'
       )}
     >

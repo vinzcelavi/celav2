@@ -1,16 +1,20 @@
-import { Suspense } from 'react';
-import CopyEmail from './CopyEmail';
-import MagneticFramer from './MagneticFramer';
 import Menu from './Menu/Menu';
+import Paragraph from './Paragraph';
 
 function Footer() {
   return (
-    <footer className="flex flex-col md:items-center justify-center py-16">
-      <Suspense fallback={<span>...</span>}>
-        <MagneticFramer>
-          <CopyEmail label="vincent@celavi.fr" huge />
-        </MagneticFramer>
-      </Suspense>
+    <footer className="flex flex-col m-auto md:items-center justify-center text-center py-16 max-w-[30rem]">
+      <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h2>
+      <Paragraph bigger>
+        Want to chat? Just shoot me an email at{' '}
+        <a
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;"
+          className="text-white/80 hover:text-white transition-all duration-300"
+        >
+          vincent@celavi.fr
+        </a>{' '}
+        with a direct question and I'll respond as soon as I can.
+      </Paragraph>
 
       <div className="py-6">
         <Menu />
@@ -20,7 +24,7 @@ function Footer() {
         Celavi © 2024 Vincent Bianciotto. <br className="block md:hidden" />
         <a
           href="https://github.com/vinzcelavi/celav2/"
-          className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-150"
+          className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-300"
         >
           <span className="flex w-4 h-4 translate-y-0.5">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

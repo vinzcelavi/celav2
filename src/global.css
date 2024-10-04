@@ -28,8 +28,6 @@
 
 a {
   @apply text-white;
-  @apply hover:text-primary;
-  @apply transition-all duration-150;
 }
 
 p {
