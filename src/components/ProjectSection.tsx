@@ -29,6 +29,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
               <AppIcon
                 key={techno}
                 name={techno}
+                aria-label={techno}
                 className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15"
               />
             ))}
