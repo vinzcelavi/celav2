@@ -8,7 +8,7 @@ import tasteBeingAble from '../assets/images/taste-being-able.jpeg';
 import tasteCreators from '../assets/images/taste-creators.jpeg';
 import tasteHero from '../assets/images/taste-hero.jpeg';
 import tasteJoinBeta from '../assets/images/taste-join-beta.jpeg';
-import confettiWidget from '../assets/videos/confetti-widget.mp4';
+import screencastWidget from '../assets/videos/screencast-widget.mp4';
 
 const projects = [
   {
@@ -42,7 +42,7 @@ const projects = [
     medias: [
       { id: 1, img: axeptioWebsiteHp, alt: 'axeptio' },
       { id: 2, img: axeptio, alt: 'axeptio' },
-      { id: 3, video: confettiWidget, alt: 'confetti widget' }
+      { id: 3, video: screencastWidget, alt: 'screencast widget' }
     ]
   },
   {
