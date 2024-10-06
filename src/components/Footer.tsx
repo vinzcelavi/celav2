@@ -6,14 +6,14 @@ function Footer() {
     <footer className="flex flex-col m-auto md:items-center justify-center text-center py-16 max-w-[30rem]">
       <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h2>
       <Paragraph bigger>
-        Want to chat? Just shoot me an email at{' '}
+        For any specific request, or just for fun, you can contact me at{' '}
         <a
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;"
           className="text-white/80 hover:text-white transition-all duration-300"
         >
           vincent@celavi.fr
         </a>{' '}
-        with a direct question and I'll respond as soon as I can.
+        or shoot me a dm and I'll be happy to get back to you.
       </Paragraph>
 
       <div className="py-6">
