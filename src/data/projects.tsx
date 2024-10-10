@@ -35,24 +35,24 @@ const projects = [
       },
       {
         id: 2,
-        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-widget-desktop.png`,
-        alt: 'axeptio widget'
+        video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/axeptio-menu.mp4`,
+        alt: 'axeptio menu'
       },
       {
         id: 3,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-mobile.png`,
         alt: 'axeptio homepage mobile'
       },
-      { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/screencast-widget.mp4`, alt: 'screencast widget' },
       {
-        id: 5,
-        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-pricing-desktop.png`,
-        alt: 'axeptio pricing desktop'
+        id: 4,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-widget-desktop.png`,
+        alt: 'axeptio widget'
       },
+      { id: 5, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/screencast-widget.mp4`, alt: 'screencast widget' },
       {
         id: 6,
-        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-compare-plans-desktop.png`,
-        alt: 'axeptio compare plans desktop'
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-pricing-desktop.png`,
+        alt: 'axeptio pricing desktop'
       },
       {
         id: 7,
