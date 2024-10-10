@@ -1,15 +1,3 @@
-import axeptioWebsiteHp from '../assets/images/axeptio-website-hp.png';
-import axeptio from '../assets/images/axeptio-website.png';
-import button from '../assets/images/button-min.png';
-import dropdownMenu from '../assets/images/dropdown-menu-min.png';
-import gusto from '../assets/images/gusto-min.png';
-import input from '../assets/images/input-min.png';
-import tasteBeingAble from '../assets/images/taste-being-able.jpeg';
-import tasteCreators from '../assets/images/taste-creators.jpeg';
-import tasteHero from '../assets/images/taste-hero.jpeg';
-import tasteJoinBeta from '../assets/images/taste-join-beta.jpeg';
-import screencastWidget from '../assets/videos/screencast-widget.mp4';
-
 const projects = [
   {
     active: true,
@@ -40,9 +28,42 @@ const projects = [
     ],
     technos: ['figma', 'nextjs', 'typescript', 'styledComponents'],
     medias: [
-      { id: 1, img: axeptioWebsiteHp, alt: 'axeptio' },
-      { id: 2, img: axeptio, alt: 'axeptio' },
-      { id: 3, video: screencastWidget, alt: 'screencast widget' }
+      {
+        id: 1,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-desktop.png`,
+        alt: 'axeptio homepage desktop'
+      },
+      {
+        id: 2,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-widget-desktop.png`,
+        alt: 'axeptio widget'
+      },
+      {
+        id: 3,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-mobile.png`,
+        alt: 'axeptio homepage mobile'
+      },
+      { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/screencast-widget.mp4`, alt: 'screencast widget' },
+      {
+        id: 5,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-pricing-desktop.png`,
+        alt: 'axeptio pricing desktop'
+      },
+      {
+        id: 6,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-compare-plans-desktop.png`,
+        alt: 'axeptio compare plans desktop'
+      },
+      {
+        id: 7,
+        video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/executive-team-slider.mp4`,
+        alt: 'executive team slider'
+      },
+      {
+        id: 8,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-contact-desktop.png`,
+        alt: 'axeptio contact desktop'
+      }
     ]
   },
   {
@@ -74,10 +95,27 @@ const projects = [
     ],
     technos: ['figma', 'react', 'typescript', 'storybookFull', 'styledComponents'],
     medias: [
-      { id: 1, img: button, alt: 'button' },
-      { id: 2, img: input, alt: 'input' },
-      { id: 3, img: gusto, alt: 'gusto' },
-      { id: 4, img: dropdownMenu, alt: 'dropdown menu' }
+      { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-thumbnail.png`, alt: 'gusto thumbnail' },
+      {
+        id: 2,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-typography.png`,
+        alt: 'gusto typography'
+      },
+      {
+        id: 3,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-primary-button.png`,
+        alt: 'gusto primary button'
+      },
+      {
+        id: 4,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-button.png`,
+        alt: 'gusto button'
+      },
+      {
+        id: 5,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-checkbox-radio.png`,
+        alt: 'gusto checkbox radio'
+      }
     ]
   },
   {
@@ -109,10 +147,14 @@ const projects = [
     ],
     technos: ['figma', 'typescript', 'react', 'styledComponents'],
     medias: [
-      { id: 1, img: tasteHero, alt: 'taste hero' },
-      { id: 2, img: tasteJoinBeta, alt: 'taste join beta' },
-      { id: 3, img: tasteCreators, alt: 'taste creators' },
-      { id: 4, img: tasteBeingAble, alt: 'taste being able' }
+      { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-hero.png`, alt: 'taste hero' },
+      {
+        id: 2,
+        video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/taste-hero-animation.mp4`,
+        alt: 'taste hero animation'
+      },
+      { id: 3, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-join-beta.png`, alt: 'taste join beta' },
+      { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/open-on-desktop.mp4`, alt: 'open on desktop' }
     ]
   }
 ];

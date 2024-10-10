@@ -8,6 +8,9 @@ export default {
   },
   theme: {
     extend: {
+      aspectRatio: {
+        'project-preview': '7 / 5',
+      },
       fontSize: {
         // This line defines a custom font size named 'text-intro' using the CSS clamp() function
         // clamp(min, preferred, max)
