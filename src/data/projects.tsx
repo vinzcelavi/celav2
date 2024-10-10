@@ -154,7 +154,12 @@ const projects = [
         alt: 'taste hero animation'
       },
       { id: 3, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-join-beta.png`, alt: 'taste join beta' },
-      { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/open-on-desktop.mp4`, alt: 'open on desktop' }
+      { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/open-on-desktop.mp4`, alt: 'open on desktop' },
+      {
+        id: 5,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-creators-of-axeptio.png`,
+        alt: 'taste creators of axeptio'
+      }
     ]
   }
 ];
