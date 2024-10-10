@@ -62,7 +62,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
               )}
             >
               {'video' in media ? (
-                <video src={media.video} className="w-full" autoPlay loop muted playsInline />
+                <video src={media.video} className="w-full" autoPlay loop muted />
               ) : (
                 <img src={media.img} alt={media.alt} className="w-full" />
               )}
