@@ -18,7 +18,7 @@ export default {
         // preferred: -6rem + 18.75vw - A responsive size that scales with the viewport width
         // max: 6rem (96px) - The maximum font size
         // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/#calculating-preferred-value-parameters-based-on-specific-starting-and-ending-points
-        'intro': 'clamp(3rem, 5vw + 0.875rem, 6rem)',
+        'intro': 'clamp(2.5rem, 5vw + 0.875rem, 6rem)',
       },
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
