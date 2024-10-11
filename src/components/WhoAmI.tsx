@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
+import splitbee from '@splitbee/web';
 
 const avatarMotion = {
   initial: {
@@ -58,6 +59,7 @@ function WhoAmI() {
       whileTap="tap"
       exit="exit"
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
+      onClick={() => console.log('click')} // splitbee.track('Click on Avatar')
       className="flex items-center select-none group hover:cursor-zoom-in"
     >
       <motion.div

@@ -7,13 +7,28 @@ import MenuItem from './MenuItem';
 function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagnetic?: boolean; hasEmail?: boolean }) {
   return (
     <ul className="flex items-center justify-center gap-4">
-      <MenuItem href="https://www.linkedin.com/in/vincent-bianciotto/" isMagnetic={isMagnetic} hasHover={!isShorten}>
+      <MenuItem
+        data-splitbee-event="Click on Linkedin"
+        href="https://www.linkedin.com/in/vincent-bianciotto/"
+        isMagnetic={isMagnetic}
+        hasHover={!isShorten}
+      >
         {isShorten ? 'Li' : 'Linkedin'}
       </MenuItem>
-      <MenuItem href="https://www.instagram.com/vinzcelavi/" isMagnetic={isMagnetic} hasHover={!isShorten}>
+      <MenuItem
+        data-splitbee-event="Click on Instagram"
+        href="https://www.instagram.com/vinzcelavi/"
+        isMagnetic={isMagnetic}
+        hasHover={!isShorten}
+      >
         {isShorten ? 'Ig' : 'Instagram'}
       </MenuItem>
-      <MenuItem href="https://www.github.com/vinzcelavi/" isMagnetic={isMagnetic} hasHover={!isShorten}>
+      <MenuItem
+        data-splitbee-event="Click on Github"
+        href="https://www.github.com/vinzcelavi/"
+        isMagnetic={isMagnetic}
+        hasHover={!isShorten}
+      >
         {isShorten ? 'Gh' : 'Github'}
       </MenuItem>
 

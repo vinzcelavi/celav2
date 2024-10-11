@@ -4,6 +4,7 @@ import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
+import splitbee from '@splitbee/web';
 
 const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.ReactNode }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,7 +39,10 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.
       }}
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
-      onClick={() => setCurrentIndex(currentIndex + 1)}
+      onClick={() => {
+        setCurrentIndex(currentIndex + 1);
+        splitbee.track(`PopCornAnim App Icon clicked: ${appIcons[iconIndex].name}`);
+      }}
       className="absolute inset-0 flex items-center justify-center cursor-pointer"
     >
       <motion.div

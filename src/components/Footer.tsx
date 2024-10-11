@@ -8,7 +8,7 @@ function Footer() {
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
         <a
-          data-splitbee-event="Mailto footer"
+          data-splitbee-event="Click on 'Mailto'"
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;"
           className="text-white/80 hover:text-white transition-all duration-300"
         >
@@ -24,6 +24,7 @@ function Footer() {
       <p className="text-base text-gray-500">
         Celavi © 2024 Vincent Bianciotto. <br className="block md:hidden" />
         <a
+          data-splitbee-event="Click on 'Source code'"
           href="https://github.com/vinzcelavi/celav2/"
           className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-300"
         >
