@@ -70,7 +70,7 @@ function WhoAmI() {
           ease: 'easeInOut'
         }}
       >
-        <Avatar src={avatar} alt="avatar" />
+        <Avatar alt="Vincent Bianciotto" />
       </motion.div>
       <div className="flex flex-col items-baseline pl-4">
         <h1 className="text-lg font-semibold leading-tight">Vincent Bianciotto</h1>
