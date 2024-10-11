@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { cn } from '../utils/cn';
 import AppIcon from './AppIcon';
 import LazyImage from './LazyImage';
+import Video from './Video';
 import Paragraph from './Paragraph';
 
 interface ProjectSectionProps {
@@ -64,7 +65,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
               )}
             >
               {'video' in media ? (
-                <video src={media.video} className="w-full" autoPlay loop muted />
+                <Video src={media.video} />
               ) : (
                 <Suspense fallback={<div>Loading image...</div>}>
                   <LazyImage src={media.img} alt={media.alt} />
