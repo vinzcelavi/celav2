@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import avatar from '../assets/avatar.png';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
 
@@ -21,11 +20,11 @@ const avatarMotion = {
   }
 };
 
-function Avatar({ src, alt }: { src: string; alt: string }) {
+function Avatar({ alt }: { alt: string }) {
   return (
     <div
       style={{
-        backgroundImage: `url(${src})`,
+        backgroundImage: `url(${import.meta.env.VITE_AWS_BUCKET_URL}/images/avatar.avif})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
