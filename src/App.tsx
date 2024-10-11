@@ -10,6 +10,7 @@ import projects from './data/projects';
 function App() {
   useEffect(() => {
     splitbee.init({
+      token: 'YKTNWY0Y42M6',
       scriptUrl: '/bee.js',
       apiUrl: '/_hive'
     });

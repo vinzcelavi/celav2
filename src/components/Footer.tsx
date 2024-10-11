@@ -8,6 +8,7 @@ function Footer() {
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
         <a
+          data-splitbee-event="Mailto footer"
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;"
           className="text-white/80 hover:text-white transition-all duration-300"
         >
