@@ -68,7 +68,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
                 <Video src={media.video} />
               ) : (
                 <Suspense fallback={<div>Loading image...</div>}>
-                  <LazyImage src={media.img} alt={media.alt} />
+                  <LazyImage src={media.img} alt={media.alt} width={1050} height={750} />
                 </Suspense>
               )}
             </div>

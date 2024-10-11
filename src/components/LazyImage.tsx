@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 interface LazyImageProps {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -21,7 +23,16 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
 
   return (
     <figure className={`lazy-image ${imageLoaded ? 'loaded' : 'blurred'}`}>
-      <img ref={imgRef} src={src} alt={alt} onLoad={handleImageLoad} loading="lazy" className="image" />
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        onLoad={handleImageLoad}
+        loading="lazy"
+        className="image"
+      />
     </figure>
   );
 };
