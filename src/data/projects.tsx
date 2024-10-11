@@ -61,6 +61,11 @@ const projects = [
       },
       {
         id: 8,
+        video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/axeptio-widget-carousel.mp4`,
+        alt: 'axeptio widget carousel'
+      },
+      {
+        id: 9,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-contact-desktop.avif`,
         alt: 'axeptio contact desktop'
       }
