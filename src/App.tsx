@@ -1,4 +1,5 @@
-import { Suspense } from 'react';
+import { useEffect, Suspense } from 'react';
+import splitbee from '@splitbee/web';
 import Footer from './components/Footer';
 import IntroductionReveal from './components/IntroductionReveal';
 import Menu from './components/Menu/Menu';
@@ -7,6 +8,13 @@ import WhoAmI from './components/WhoAmI';
 import projects from './data/projects';
 
 function App() {
+  useEffect(() => {
+    splitbee.init({
+      scriptUrl: '/bee.js',
+      apiUrl: '/_hive'
+    });
+  }, []);
+
   return (
     <div className="relative w-full m-auto max-w-[140rem]">
       <header className="flex justify-between items-center pb-6">
