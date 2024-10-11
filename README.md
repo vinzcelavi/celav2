@@ -1,8 +1,6 @@
-# :warning: Remove no-index, no-follow before production
+# celav2
 
-# celav2-fr
-
-🚜👷🚧🏗️ [My personal portfolio](https://main--celav2.netlify.app/)
+[My personal portfolio](https://celav2.netlify.app/)
 
 ![celav2](https://github.com/user-attachments/assets/66d57aa2-1cd4-403d-9a72-271b00816f9d)
 
