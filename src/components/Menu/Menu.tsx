@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-// Works also with SSR as expected
 import CopyEmail from '../CopyEmail';
 import MagneticFramer from '../MagneticFramer';
 import MenuItem from './MenuItem';
@@ -10,6 +8,8 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
       <MenuItem
         data-splitbee-event="Click on Linkedin"
         href="https://www.linkedin.com/in/vincent-bianciotto/"
+        target="_blank"
+        rel="noreferrer noopener"
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
@@ -18,6 +18,8 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
       <MenuItem
         data-splitbee-event="Click on Instagram"
         href="https://www.instagram.com/vinzcelavi/"
+        target="_blank"
+        rel="noreferrer noopener"
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
@@ -26,6 +28,8 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
       <MenuItem
         data-splitbee-event="Click on Github"
         href="https://www.github.com/vinzcelavi/"
+        target="_blank"
+        rel="noreferrer noopener"
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
@@ -34,15 +38,13 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
 
       {hasEmail && (
         <li className="flex items-end">
-          <Suspense fallback={<span>...</span>}>
-            {isMagnetic ? (
-              <MagneticFramer>
-                <CopyEmail label="Email" />
-              </MagneticFramer>
-            ) : (
+          {isMagnetic ? (
+            <MagneticFramer>
               <CopyEmail label="Email" />
-            )}
-          </Suspense>
+            </MagneticFramer>
+          ) : (
+            <CopyEmail label="Email" />
+          )}
         </li>
       )}
     </ul>

@@ -26,6 +26,8 @@ function Footer() {
         <a
           data-splitbee-event="Click on 'Source code'"
           href="https://github.com/vinzcelavi/celav2/"
+          target="_blank"
+          rel="noreferrer noopener"
           className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-300"
         >
           <span className="flex w-4 h-4 translate-y-0.5">
