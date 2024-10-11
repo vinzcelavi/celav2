@@ -24,7 +24,7 @@ function Avatar({ alt }: { alt: string }) {
   return (
     <div
       style={{
-        backgroundImage: `url(${import.meta.env.VITE_AWS_BUCKET_URL}/images/avatar.avif})`,
+        backgroundImage: `url(${import.meta.env.VITE_AWS_BUCKET_URL}/images/avatar.avif)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
