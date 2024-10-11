@@ -59,7 +59,7 @@ function WhoAmI() {
       whileTap="tap"
       exit="exit"
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
-      onClick={() => console.log('click')} // splitbee.track('Click on Avatar')
+      onClick={() => splitbee.track('Click on Avatar')}
       className="flex items-center select-none group hover:cursor-zoom-in"
     >
       <motion.div
