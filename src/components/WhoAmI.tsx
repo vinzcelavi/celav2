@@ -72,7 +72,7 @@ function WhoAmI() {
           animate={{
             zIndex: 10,
             x: mousePosition.x + 80,
-            y: mousePosition.y + 100
+            y: mousePosition.y + 60
           }}
           className="absolute top-0 left-0 text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] group-active:opacity-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         >
