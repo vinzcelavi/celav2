@@ -10,8 +10,11 @@ function StickyHeader() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const isScrollingUp = currentScrollY < lastScrollY;
+      const isAboveThreshold = currentScrollY >= 400;
+      const isNotAtBottom = window.innerHeight + window.scrollY < document.body.offsetHeight - 200;
 
-      if (currentScrollY < lastScrollY && currentScrollY >= 1000) {
+      if (isScrollingUp && isAboveThreshold && isNotAtBottom) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -28,18 +31,16 @@ function StickyHeader() {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50 bg-slate-950 transition-all duration-300 -translate-y-full',
-        isVisible && 'translate-y-0'
+        'fixed top-0 left-[50%] -translate-x-1/2 z-50 transition-all duration-300 -translate-y-full scale-50',
+        isVisible && 'translate-y-0 scale-100'
       )}
     >
-      <div className="flex justify-between items-center py-2 px-6 md:px-8 lg:px-12">
+      <div className="relative top-4 flex justify-between items-center gap-4 p-2 pr-6 rounded-full bg-slate-950">
         <div className="flex items-center w-12 h-12">
           <Avatar alt="Vincent Bianciotto" />
         </div>
 
-        <div className="hidden md:flex">
-          <Menu isShorten isMagnetic hasEmail />
-        </div>
+        <Menu isShorten isMagnetic hasEmail />
       </div>
     </header>
   );

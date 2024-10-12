@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect';
 import CopyEmail from '../CopyEmail';
 import MagneticFramer from '../MagneticFramer';
 import MenuItem from './MenuItem';
@@ -36,7 +37,7 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         {isShorten ? 'Gh' : 'Github'}
       </MenuItem>
 
-      {hasEmail && (
+      {hasEmail && !isMobile && (
         <li className="flex items-end">
           {isMagnetic ? (
             <MagneticFramer>
