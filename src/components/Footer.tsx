@@ -3,7 +3,7 @@ import Paragraph from './Paragraph';
 
 function Footer() {
   return (
-    <footer className="flex flex-col m-auto md:items-center justify-center text-center py-16 max-w-[30rem]">
+    <footer className="flex flex-col m-auto md:items-center justify-center text-center px-6 py-16 max-w-[30rem]">
       <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h2>
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}

@@ -1,10 +1,10 @@
+import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
-import splitbee from '@splitbee/web';
 
 const avatarMotion = {
   initial: {
@@ -86,8 +86,8 @@ function WhoAmI() {
           ref={tooltipRef}
           animate={{
             zIndex: 10,
-            x: mousePosition.x + 20,
-            y: mousePosition.y + 30
+            x: mousePosition.x + 80,
+            y: mousePosition.y + 100
           }}
           className="absolute top-0 left-0 text-xs text-gray-400 font-semibold uppercase tracking-wider [text-shadow:_0_2px_5px_rgb(0_0_0_/_60%)] group-active:opacity-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         >
