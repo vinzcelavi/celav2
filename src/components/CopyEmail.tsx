@@ -1,6 +1,6 @@
+import splitbee from '@splitbee/web';
 import type React from 'react';
 import { useState } from 'react';
-import splitbee from '@splitbee/web';
 import { cn } from '../utils/cn';
 
 function decodeHtmlEntities(encodedString: string): string {

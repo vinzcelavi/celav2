@@ -1,7 +1,16 @@
 import { isMobile } from 'react-device-detect';
+import AppIcon from '../AppIcon';
 import CopyEmail from '../CopyEmail';
 import MagneticFramer from '../MagneticFramer';
 import MenuItem from './MenuItem';
+
+function SocialIcon({ name }: { name: string }) {
+  return (
+    <div className="flex w-4 h-4">
+      <AppIcon name={name} />
+    </div>
+  );
+}
 
 function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagnetic?: boolean; hasEmail?: boolean }) {
   return (
@@ -14,7 +23,7 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
-        {isShorten ? 'Li' : 'Linkedin'}
+        {isShorten ? <SocialIcon name="linkedin" /> : 'Linkedin'}
       </MenuItem>
       <MenuItem
         data-splitbee-event="Click on Instagram"
@@ -24,7 +33,7 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
-        {isShorten ? 'Ig' : 'Instagram'}
+        {isShorten ? <SocialIcon name="instagram" /> : 'Instagram'}
       </MenuItem>
       <MenuItem
         data-splitbee-event="Click on Github"
@@ -34,7 +43,7 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         isMagnetic={isMagnetic}
         hasHover={!isShorten}
       >
-        {isShorten ? 'Gh' : 'Github'}
+        {isShorten ? <SocialIcon name="github" /> : 'Github'}
       </MenuItem>
 
       {hasEmail && !isMobile && (
