@@ -1,3 +1,4 @@
+import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
@@ -58,6 +59,7 @@ function WhoAmI() {
       whileTap="tap"
       exit="exit"
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
+      onClick={() => splitbee.track('Click on Avatar')}
       className="flex items-center select-none group hover:cursor-zoom-in"
     >
       <motion.div
