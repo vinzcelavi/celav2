@@ -6,7 +6,6 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
   return (
     <ul className="flex items-center justify-center gap-4">
       <MenuItem
-        data-splitbee-event="Click on Linkedin"
         href="https://www.linkedin.com/in/vincent-bianciotto/"
         target="_blank"
         rel="noreferrer noopener"
@@ -16,7 +15,6 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         {isShorten ? 'Li' : 'Linkedin'}
       </MenuItem>
       <MenuItem
-        data-splitbee-event="Click on Instagram"
         href="https://www.instagram.com/vinzcelavi/"
         target="_blank"
         rel="noreferrer noopener"
@@ -26,7 +24,6 @@ function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagn
         {isShorten ? 'Ig' : 'Instagram'}
       </MenuItem>
       <MenuItem
-        data-splitbee-event="Click on Github"
         href="https://www.github.com/vinzcelavi/"
         target="_blank"
         rel="noreferrer noopener"

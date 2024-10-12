@@ -1,6 +1,5 @@
 import type React from 'react';
 import { useState } from 'react';
-import splitbee from '@splitbee/web';
 import { cn } from '../utils/cn';
 
 function decodeHtmlEntities(encodedString: string): string {
@@ -20,7 +19,6 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label, huge }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(decodeHtmlEntities(email));
     setCopied(true);
-    splitbee.track('Copy email');
     setTimeout(() => setCopied(false), 2000);
   };
 

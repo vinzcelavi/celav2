@@ -1,5 +1,4 @@
-import splitbee from '@splitbee/web';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import IntroductionReveal from './components/IntroductionReveal';
@@ -7,12 +6,6 @@ import ProjectSection from './components/ProjectSection';
 import projects from './data/projects';
 
 function App() {
-  useEffect(() => {
-    splitbee.init({
-      token: 'YKTNWY0Y42M6'
-    });
-  }, []);
-
   return (
     <div className="relative w-full m-auto max-w-[140rem]">
       <Header />
