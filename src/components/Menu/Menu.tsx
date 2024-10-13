@@ -3,14 +3,6 @@ import AppIcon from '../AppIcon';
 import CopyEmail from '../CopyEmail';
 import MenuItem from './MenuItem';
 
-function SocialIcon({ name }: { name: string }) {
-  return (
-    <span className="flex w-4 h-4">
-      <AppIcon name={name} />
-    </span>
-  );
-}
-
 function Menu() {
   return (
     <ul className="flex items-center justify-center gap-1">
@@ -27,7 +19,9 @@ function Menu() {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <SocialIcon name={name} />
+          <span className="flex w-4 h-4">
+            <AppIcon name={name} />
+          </span>
         </MenuItem>
       ))}
 
