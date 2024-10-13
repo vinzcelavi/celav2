@@ -4,7 +4,7 @@ import { cn } from '../utils/cn';
 import Avatar from './Avatar';
 import Menu from './Menu/Menu';
 
-function StickyHeader() {
+function StickyNotch() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ function StickyHeader() {
   );
 }
 
-export default StickyHeader;
+export default StickyNotch;
