@@ -26,7 +26,7 @@ const projects = [
         text: 'On the development side, I focused on performance and cross-browser compatibility, making sure the website runs smoothly on both desktop and mobile devices.'
       }
     ],
-    technos: ['figma', 'nextjs', 'typescript', 'styledComponents'],
+    technos: ['figma', 'nextjs', 'typeScript', 'styledComponents'],
     medias: [
       {
         id: 1,
@@ -98,7 +98,7 @@ const projects = [
         text: "It offers a versatile toolkit that empowers designers and developers to build interfaces efficiently, enhancing both the visual identity and functional integrity of Axeptio's digital products."
       }
     ],
-    technos: ['figma', 'react', 'typescript', 'storybookFull', 'styledComponents'],
+    technos: ['figma', 'react', 'typeScript', 'storybook', 'styledComponents'],
     medias: [
       { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-thumbnail.avif`, alt: 'gusto thumbnail' },
       {
@@ -150,7 +150,7 @@ const projects = [
         text: "With Taste, you regain your browsing freedom, ensuring that your preferences are respected while you navigate the web effortlessly. It's all about giving you back control, so you can focus on what truly matters online."
       }
     ],
-    technos: ['figma', 'typescript', 'react', 'styledComponents'],
+    technos: ['figma', 'typeScript', 'react', 'styledComponents'],
     medias: [
       { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-hero.avif`, alt: 'taste hero' },
       {

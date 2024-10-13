@@ -8,7 +8,7 @@ import Nextjs from '../assets/svg/nextjs.svg?react';
 import Photoshop from '../assets/svg/photoshop.svg?react';
 import React from '../assets/svg/react.svg?react';
 import StorybookFull from '../assets/svg/storybook-full.svg?react';
-import Storybook from '../assets/svg/storybook.svg?react';
+import StorybookRough from '../assets/svg/storybook-rough.svg?react';
 import StyledComponents from '../assets/svg/styled-components.svg?react';
 import TailwindCSS from '../assets/svg/tailwindcss.svg?react';
 import TypeScript from '../assets/svg/typescript.svg?react';
@@ -25,9 +25,9 @@ const technos = {
   nextjs: <Nextjs />,
   photoshop: <Photoshop />,
   react: <React />,
-  typescript: <TypeScript />,
-  storybook: <Storybook />,
-  storybookFull: <StorybookFull />,
+  typeScript: <TypeScript />,
+  storybookRough: <StorybookRough />,
+  storybook: <StorybookFull />,
   styledComponents: <StyledComponents />,
   tailwindCSS: <TailwindCSS />,
   linkedin: <Linkedin />,

@@ -1,13 +1,13 @@
-import reactLogo from '../assets/svg/react.svg';
-import nextLogo from '../assets/svg/nextjs.svg';
-import typescriptLogo from '../assets/svg/typescript.svg';
-import storybookLogo from '../assets/svg/storybook.svg';
-import styledComponentsLogo from '../assets/svg/styled-components.svg';
-import tailwindLogo from '../assets/svg/tailwindcss.svg';
 import figmaLogo from '../assets/svg/figma.svg';
 import framerLogo from '../assets/svg/framer.svg';
 import illustratorLogo from '../assets/svg/illustrator.svg';
+import nextLogo from '../assets/svg/nextjs.svg';
 import photoshopLogo from '../assets/svg/photoshop.svg';
+import reactLogo from '../assets/svg/react.svg';
+import storybookLogo from '../assets/svg/storybook-rough.svg';
+import styledComponentsLogo from '../assets/svg/styled-components.svg';
+import tailwindLogo from '../assets/svg/tailwindcss.svg';
+import typescriptLogo from '../assets/svg/typescript.svg';
 
 const appIconsFrontEnd = [
   { name: 'React', icon: <img src={reactLogo} className="w-full" alt="React logo" /> },

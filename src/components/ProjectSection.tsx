@@ -2,8 +2,19 @@ import { Suspense } from 'react';
 import { cn } from '../utils/cn';
 import AppIcon from './AppIcon';
 import LazyImage from './LazyImage';
-import Video from './Video';
 import Paragraph from './Paragraph';
+import Video from './Video';
+
+function Techno({ children, name }: { children: React.ReactNode; name: string }) {
+  return (
+    <div className="relative flex items-center group">
+      {children}
+      <span className="absolute top-full left-[50%] translate-x-[-50%] mt-2 flex text-sm font-extrabold capitalize opacity-0 rotate-[-5deg] scale-50 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 ease-in-out transition-all duration-150 ease-[cubic-bezier(0.77, 0, 0.175, 1)]">
+        {name}
+      </span>
+    </div>
+  );
+}
 
 interface ProjectSectionProps {
   active: boolean;
@@ -29,12 +40,13 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
           <div className="flex flex-wrap gap-4 md:flex-nowrap">
             {technos.map((techno: string) => (
-              <AppIcon
-                key={techno}
-                name={techno}
-                aria-label={techno}
-                className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15"
-              />
+              <Techno key={techno} name={techno}>
+                <AppIcon
+                  name={techno}
+                  aria-label={techno}
+                  className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15"
+                />
+              </Techno>
             ))}
           </div>
         </div>
