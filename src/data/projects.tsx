@@ -31,6 +31,7 @@ const projects = [
       {
         id: 1,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-desktop.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/axeptio-website-homepage-desktop.avif`,
         alt: 'axeptio homepage desktop'
       },
       {
@@ -41,17 +42,24 @@ const projects = [
       {
         id: 3,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-mobile.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/axeptio-website-homepage-mobile.avif`,
         alt: 'axeptio homepage mobile'
       },
       {
         id: 4,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-widget-desktop.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/axeptio-website-widget-desktop.avif`,
         alt: 'axeptio widget'
       },
-      { id: 5, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/screencast-widget.mp4`, alt: 'screencast widget' },
+      {
+        id: 5,
+        video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/screencast-widget.mp4`,
+        alt: 'screencast widget'
+      },
       {
         id: 6,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-pricing-desktop.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/axeptio-website-pricing-desktop.avif`,
         alt: 'axeptio pricing desktop'
       },
       {
@@ -67,6 +75,7 @@ const projects = [
       {
         id: 9,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-contact-desktop.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/axeptio-website-contact-desktop.avif`,
         alt: 'axeptio contact desktop'
       }
     ]
@@ -104,21 +113,25 @@ const projects = [
       {
         id: 2,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-typography.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/gusto-typography.avif`,
         alt: 'gusto typography'
       },
       {
         id: 3,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-primary-button.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/gusto-primary-button.avif`,
         alt: 'gusto primary button'
       },
       {
         id: 4,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-button.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/gusto-button.avif`,
         alt: 'gusto button'
       },
       {
         id: 5,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-checkbox-radio.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/gusto-checkbox-radio.avif`,
         alt: 'gusto checkbox radio'
       }
     ]
@@ -152,17 +165,29 @@ const projects = [
     ],
     technos: ['figma', 'typeScript', 'react', 'styledComponents'],
     medias: [
-      { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-hero.avif`, alt: 'taste hero' },
+      {
+        id: 1,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-hero.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/taste-hero.avif`,
+        alt: 'taste hero'
+      },
       {
         id: 2,
         video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/taste-hero-animation.mp4`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/taste-hero-animation.mp4`,
         alt: 'taste hero animation'
       },
-      { id: 3, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-join-beta.avif`, alt: 'taste join beta' },
+      {
+        id: 3,
+        img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-join-beta.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/taste-join-beta.avif`,
+        alt: 'taste join beta'
+      },
       { id: 4, video: `${import.meta.env.VITE_AWS_BUCKET_URL}/videos/open-on-desktop.mp4`, alt: 'open on desktop' },
       {
         id: 5,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-creators-of-axeptio.avif`,
+        placeholder: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/lowfi/taste-creators-of-axeptio.avif`,
         alt: 'taste creators of axeptio'
       }
     ]

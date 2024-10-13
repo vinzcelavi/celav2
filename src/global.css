@@ -65,7 +65,7 @@ video {
 
 .blurred img {
   filter: blur(10px);
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .loaded img {

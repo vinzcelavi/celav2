@@ -1,5 +1,5 @@
 import splitbee from '@splitbee/web';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import IntroductionReveal from './components/IntroductionReveal';
@@ -22,13 +22,11 @@ function App() {
       <main className="px-6 md:px-8 lg:px-12">
         <IntroductionReveal />
 
-        <Suspense fallback={<span>loading...</span>}>
-          <div className="flex flex-col gap-2">
-            {projects.map((project) => (
-              <ProjectSection key={project.title} {...project} />
-            ))}
-          </div>
-        </Suspense>
+        <div className="flex flex-col gap-2">
+          {projects.map((project) => (
+            <ProjectSection key={project.title} {...project} />
+          ))}
+        </div>
       </main>
 
       <Footer />
