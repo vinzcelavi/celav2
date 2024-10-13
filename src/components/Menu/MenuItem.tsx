@@ -47,7 +47,6 @@ function MenuItem({
   rel?: string;
 }) {
   return (
-    // <li className="border-2 border-red-600">
     <li>
       <MenuLink href={href} label={label} target={target} rel={rel}>
         {children}
