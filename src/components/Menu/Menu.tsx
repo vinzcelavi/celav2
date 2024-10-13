@@ -1,60 +1,39 @@
 import { isMobile } from 'react-device-detect';
 import AppIcon from '../AppIcon';
 import CopyEmail from '../CopyEmail';
-import MagneticFramer from '../MagneticFramer';
 import MenuItem from './MenuItem';
 
 function SocialIcon({ name }: { name: string }) {
   return (
-    <div className="flex w-4 h-4">
+    <span className="flex w-4 h-4">
       <AppIcon name={name} />
-    </div>
+    </span>
   );
 }
 
-function Menu({ isShorten, isMagnetic, hasEmail }: { isShorten?: boolean; isMagnetic?: boolean; hasEmail?: boolean }) {
+function Menu() {
   return (
-    <ul className="flex items-center justify-center gap-4">
-      <MenuItem
-        data-splitbee-event="Click on Linkedin"
-        href="https://www.linkedin.com/in/vincent-bianciotto/"
-        target="_blank"
-        rel="noreferrer noopener"
-        isMagnetic={isMagnetic}
-        hasHover={!isShorten}
-      >
-        {isShorten ? <SocialIcon name="linkedin" /> : 'Linkedin'}
-      </MenuItem>
-      <MenuItem
-        data-splitbee-event="Click on Instagram"
-        href="https://www.instagram.com/vinzcelavi/"
-        target="_blank"
-        rel="noreferrer noopener"
-        isMagnetic={isMagnetic}
-        hasHover={!isShorten}
-      >
-        {isShorten ? <SocialIcon name="instagram" /> : 'Instagram'}
-      </MenuItem>
-      <MenuItem
-        data-splitbee-event="Click on Github"
-        href="https://www.github.com/vinzcelavi/"
-        target="_blank"
-        rel="noreferrer noopener"
-        isMagnetic={isMagnetic}
-        hasHover={!isShorten}
-      >
-        {isShorten ? <SocialIcon name="github" /> : 'Github'}
-      </MenuItem>
+    <ul className="flex items-center justify-center gap-1">
+      {[
+        { name: 'linkedin', href: 'https://www.linkedin.com/in/vincent-bianciotto/' },
+        { name: 'instagram', href: 'https://www.instagram.com/vinzcelavi/' },
+        { name: 'github', href: 'https://www.github.com/vinzcelavi/' }
+      ].map(({ name, href }) => (
+        <MenuItem
+          key={name}
+          data-splitbee-event={`Click on ${name.charAt(0).toUpperCase() + name.slice(1)}`}
+          href={href}
+          label={name.charAt(0).toUpperCase() + name.slice(1)}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <SocialIcon name={name} />
+        </MenuItem>
+      ))}
 
-      {hasEmail && !isMobile && (
+      {!isMobile && (
         <li className="flex items-end">
-          {isMagnetic ? (
-            <MagneticFramer>
-              <CopyEmail label="Email" />
-            </MagneticFramer>
-          ) : (
-            <CopyEmail label="Email" />
-          )}
+          <CopyEmail label="Email" />
         </li>
       )}
     </ul>
