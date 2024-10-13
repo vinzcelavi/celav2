@@ -27,4 +27,4 @@ function getMouseCoordinates(event: MouseEvent, referenceElement: HTMLElement): 
   };
 }
 
-export default getMouseCoordinates;
+export { getMouseCoordinates };

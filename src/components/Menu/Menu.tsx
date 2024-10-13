@@ -1,4 +1,3 @@
-import { isMobile } from 'react-device-detect';
 import AppIcon from '../AppIcon';
 import CopyEmail from '../CopyEmail';
 import MenuItem from './MenuItem';
@@ -25,11 +24,9 @@ function Menu() {
         </MenuItem>
       ))}
 
-      {!isMobile && (
-        <li className="flex items-end">
-          <CopyEmail label="Email" />
-        </li>
-      )}
+      <li>
+        <CopyEmail label="Email" />
+      </li>
     </ul>
   );
 }

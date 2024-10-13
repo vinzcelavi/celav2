@@ -1,18 +1,22 @@
+import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
 import AppIcon from './AppIcon';
 import Menu from './Menu/Menu';
 import Paragraph from './Paragraph';
+
 function Footer() {
+  const email = '&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;';
+
   return (
     <footer className="flex flex-col m-auto md:items-center justify-center text-center px-6 py-16 max-w-[30rem]">
-      <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in Touch</h2>
+      <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in touch</h2>
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
         <a
-          data-splitbee-event="Click on 'Mailto'"
-          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;"
+          data-splitbee-event="Click on 'Mailto' footer"
+          href={`mailto:${decodeHtmlEntities(email)}`}
           className="text-white hover:text-primary transition-all duration-300"
         >
-          vincent@celavi.fr
+          {decodeHtmlEntities(email)}
         </a>{' '}
         or shoot me a dm and I'll be happy to get back to you.
       </Paragraph>

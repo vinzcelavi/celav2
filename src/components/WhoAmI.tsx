@@ -4,7 +4,7 @@ import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import type { MouseType } from '../types';
-import getMouseCoordinates from '../utils/getMouseCoordinates';
+import { getMouseCoordinates } from '../utils/getMouseCoordinates';
 import Avatar from './Avatar';
 
 const avatarMotion = {

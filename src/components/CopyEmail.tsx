@@ -2,11 +2,9 @@ import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
-
-function decodeHtmlEntities(encodedString: string): string {
-  return encodedString.replace(/&#(\d+);/g, (_match, dec) => String.fromCharCode(dec));
-}
+import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
 
 interface EmailComponentProps {
   label: string;
@@ -24,6 +22,31 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  if (isMobile) {
+    return (
+      <a
+        data-splitbee-event="Click on 'Mailto' notch on mobile"
+        href={`mailto:${decodeHtmlEntities(email)}`}
+        className="flex items-center gap-0 py-1.5 px-2 rounded-full text-sm font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
+      >
+        <span className="relative flex items-center justify-center w-5 h-5 md:w-4 md:h-4">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            aria-label="send icon"
+          >
+            <path d="M22.984.638a.5.5,0,0,0-.718-.559L1.783,10.819a1.461,1.461,0,0,0-.1,2.527h0l4.56,2.882a.25.25,0,0,0,.3-.024L18.7,5.336a.249.249,0,0,1,.361.342L9.346,17.864a.25.25,0,0,0,.062.367L15.84,22.3a1.454,1.454,0,0,0,2.19-.895Z" />
+            <path d="M7.885,19.182a.251.251,0,0,0-.385.211c0,1.056,0,3.585,0,3.585a1,1,0,0,0,1.707.707l2.018-2.017a.251.251,0,0,0-.043-.388Z" />
+          </svg>
+        </span>
+      </a>
+    );
+  }
+
   return (
     <motion.button
       type="button"
@@ -33,7 +56,7 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
       onClick={copyToClipboard}
       className="flex items-center gap-0 py-1.5 px-2 rounded-full text-sm font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
     >
-      <span className="relative hidden md:flex items-center justify-center w-5 h-5 md:w-4 md:h-4">
+      <span className="relative flex items-center justify-center w-5 h-5 md:w-4 md:h-4">
         <svg
           width="24"
           height="24"
