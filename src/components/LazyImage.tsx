@@ -24,7 +24,12 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
   }, []);
 
   return (
-    <figure className={cn(`w-[${width}px] h-[${height}px] lazy-image bg-cover`, imageLoaded ? 'loaded' : 'blurred')}>
+    <figure
+      className={cn(
+        `w-[${width}px] h-[${height}px] bg-white/20 lazy-image bg-cover`,
+        imageLoaded ? 'loaded' : 'blurred'
+      )}
+    >
       <span
         className="absolute z-10 inset-0 bg-cover bg-position-center bg-no-repeat blur-[10px]"
         style={{
