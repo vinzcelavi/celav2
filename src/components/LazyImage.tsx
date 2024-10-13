@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
+import { cn } from '../utils/cn';
 interface LazyImageProps {
   src: string;
   alt: string;
@@ -22,7 +22,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height }) => {
   }, []);
 
   return (
-    <figure className={`lazy-image ${imageLoaded ? 'loaded' : 'blurred'}`}>
+    <figure className={cn(`w-[${width}px] h-[${height}px] bg-white/20 lazy-image blurred`, imageLoaded && 'loaded')}>
       <img
         ref={imgRef}
         src={src}
