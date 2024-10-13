@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
 import AppIcon from './AppIcon';
 import LazyImage from './LazyImage';
@@ -30,6 +32,35 @@ interface ProjectSectionProps {
 }
 
 function ProjectSection({ title, subTitle, paragraphs, technos, medias }: ProjectSectionProps) {
+  const [visibleMedias, setVisibleMedias] = useState<{ [key: number]: boolean }>({});
+  const mediasRefs = useRef<HTMLDivElement[] | null[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = (entry.target as HTMLElement).dataset.id;
+            if (id) {
+              setVisibleMedias((prev) => ({ ...prev, [id]: true }));
+            }
+          }
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the video is visible
+    );
+
+    for (const media of mediasRefs.current) {
+      if (media) observer.observe(media);
+    }
+
+    return () => {
+      for (const media of mediasRefs.current) {
+        if (media) observer.unobserve(media);
+      }
+    };
+  }, []);
+
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-2 gap-2 mb-20">
@@ -69,11 +100,21 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
           {medias.map((media, index) => (
             <div
               key={media.alt}
+              ref={(el) => {
+                if (mediasRefs.current[index] !== el) {
+                  mediasRefs.current[index] = el;
+                }
+              }}
+              data-id={index}
               className={cn(
-                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1',
+                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-1000 ease-in-out',
                 index === 0 && 'md:col-span-2 2xl:col-span-2',
-                index === 1 && 'md:col-span-1 2xl:col-span-2'
+                index === 1 && 'md:col-span-1 2xl:col-span-2',
+                visibleMedias[index] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
               )}
+              style={{
+                transitionDelay: isMobile ? '0ms' : `${index * 100}ms`
+              }}
             >
               {'video' in media ? (
                 <Video src={media.video} />
