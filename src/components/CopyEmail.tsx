@@ -33,7 +33,7 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
       onClick={copyToClipboard}
       className="flex items-center gap-0 py-1.5 px-2 rounded-full text-sm font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
     >
-      <span className={cn('relative hidden md:flex items-center justify-center h-4 w-4')}>
+      <span className="relative hidden md:flex items-center justify-center w-5 h-5 md:w-4 md:h-4">
         <svg
           width="24"
           height="24"

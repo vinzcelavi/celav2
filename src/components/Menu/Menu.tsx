@@ -19,7 +19,7 @@ function Menu() {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <span className="flex w-4 h-4">
+          <span className="flex w-5 h-5 md:w-4 md:h-4">
             <AppIcon name={name} />
           </span>
         </MenuItem>

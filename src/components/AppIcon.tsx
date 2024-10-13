@@ -41,7 +41,7 @@ function AppIcon({ name, className = '' }: AppIconProps) {
     return null;
   }
 
-  return <div className={className}>{technos[name as keyof typeof technos]}</div>;
+  return <span className={className}>{technos[name as keyof typeof technos]}</span>;
 }
 
 export default AppIcon;

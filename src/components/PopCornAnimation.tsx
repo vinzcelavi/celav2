@@ -4,19 +4,15 @@ import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
-
-// We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-// then wrap that within 0-2 to find our image ID in the array below. By passing an
-// absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-// detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
+import wrap from '../utils/wrap';
 
 const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.ReactNode }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
+  // then wrap that within 0-2 to find our image ID in the array below. By passing an
+  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
+  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
   const iconIndex = wrap(0, appIcons.length, currentIndex);
 
   const [mousePosition, setMousePosition] = useState<MouseType>({
