@@ -81,7 +81,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.
               }}
             >
               {appIcons[iconIndex].icon}
-              <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-2xl font-extrabold bg-black/80 text-white capitalize rounded-xl">
+              <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-2xl font-extrabold bg-slate-950/90 text-white capitalize rounded-xl">
                 {appIcons[iconIndex].name}
               </span>
             </motion.div>
