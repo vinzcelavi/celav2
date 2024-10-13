@@ -10,37 +10,17 @@ interface LazyImageProps {
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, height }) => {
-  const imgRef = useRef<HTMLImageElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const handleImageLoad = () => {
-    if (imgRef.current) {
-      setImageLoaded(true);
-    }
+    setImageLoaded(true);
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 } // Trigger when 10% of the video is visible
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-
-      if (imgRef.current.complete) {
-        setImageLoaded(true);
-      }
+    if (imgRef.current?.complete) {
+      setImageLoaded(true);
     }
-
-    return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
-      }
-    };
   }, []);
 
   return (
@@ -62,7 +42,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
         alt={alt}
         width={width}
         height={height}
-        onLoad={isVisible ? handleImageLoad : undefined}
+        onLoad={handleImageLoad}
         className="relative z-20 image"
       />
     </figure>
