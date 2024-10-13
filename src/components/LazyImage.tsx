@@ -4,7 +4,7 @@ import { cn } from '../utils/cn';
 interface LazyImageProps {
   src: string;
   alt: string;
-  placeholder: string;
+  placeholder?: string;
   width?: number;
   height?: number;
 }
@@ -26,16 +26,14 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
   return (
     <figure
       className={cn(
-        `w-[${width}px] h-[${height}px] bg-white/20 lazy-image bg-cover`,
+        `flex items-center justify-center w-[${width}px] h-[${height}px] bg-white lazy-image bg-cover bg-position-center bg-no-repeat`,
         imageLoaded ? 'loaded' : 'blurred'
       )}
+      style={{
+        backgroundImage: `url(${placeholder})`,
+        backgroundSize: '100% 100%'
+      }}
     >
-      <span
-        className="absolute z-10 inset-0 bg-cover bg-position-center bg-no-repeat blur-[10px]"
-        style={{
-          backgroundImage: `url(${placeholder})`
-        }}
-      />
       <img
         ref={imgRef}
         src={src}
@@ -43,7 +41,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
         width={width}
         height={height}
         onLoad={handleImageLoad}
-        className="relative z-20 image"
+        className="relative aspect-project-preview"
       />
     </figure>
   );

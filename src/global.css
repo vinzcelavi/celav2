@@ -63,16 +63,14 @@ video {
   height: auto;
 }
 
-.lazy-image img {
-  transition: filter 0.5s ease, opacity 0.5s ease;
+.lazy-image {
+  transition: filter 0.5s ease;
 }
 
-.blurred img {
+.lazy-image.blurred {
   filter: blur(10px);
-  opacity: 0.5;
 }
 
-.loaded img {
+.lazy-image.loaded {
   filter: blur(0);
-  opacity: 1;
 }
