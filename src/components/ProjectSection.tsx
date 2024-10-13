@@ -9,7 +9,7 @@ function Techno({ children, name }: { children: React.ReactNode; name: string })
   return (
     <div className="relative flex items-center group">
       {children}
-      <span className="absolute top-full left-[50%] translate-x-[-50%] mt-2 flex text-sm font-extrabold capitalize opacity-0 rotate-[-5deg] scale-50 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 ease-in-out transition-all duration-150 ease-[cubic-bezier(0.77, 0, 0.175, 1)]">
+      <span className="absolute top-full left-[50%] translate-x-[-50%] mt-2 flex text-sm font-extrabold capitalize opacity-0 rotate-[-5deg] scale-[0.25] group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 ease-in-out transition-all duration-150 ease-[cubic-bezier(0.77, 0, 0.175, 1)]">
         {name}
       </span>
     </div>

@@ -1,10 +1,10 @@
+import splitbee from '@splitbee/web';
 import { AnimatePresence, motion } from 'framer-motion';
 import { wrap } from 'popmotion';
 import type React from 'react';
 import { useCallback, useRef, useState } from 'react';
 import type { MouseType } from '../types';
 import getMouseCoordinates from '../utils/getMouseCoordinates';
-import splitbee from '@splitbee/web';
 
 const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.ReactNode }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,6 +81,9 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.
               }}
             >
               {appIcons[iconIndex].icon}
+              <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-2xl font-extrabold bg-black/80 text-white capitalize rounded-xl">
+                {appIcons[iconIndex].name}
+              </span>
             </motion.div>
           )}
         </AnimatePresence>
