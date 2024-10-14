@@ -1,3 +1,6 @@
+import { isMobile } from 'react-device-detect';
+import { cn } from '../utils/cn';
+
 function Avatar({ alt }: { alt: string }) {
   return (
     <div className="relative w-full h-full rounded-full p-[1px] group">
@@ -14,7 +17,12 @@ function Avatar({ alt }: { alt: string }) {
           <span className="sr-only">{alt}</span>
         </div>
       </div>
-      <div className="absolute z-0 inset-0 rounded-full bg-gradient-to-br from-primary via-20% to-secondary transition-all duration-300 opacity-35 group-hover:opacity-100" />
+      <div
+        className={cn(
+          'absolute z-0 inset-0 rounded-full bg-gradient-to-br from-primary via-20% to-secondary transition-all duration-300 opacity-35 group-hover:opacity-100',
+          isMobile && 'opacity-100'
+        )}
+      />
     </div>
   );
 }
