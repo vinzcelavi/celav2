@@ -28,7 +28,7 @@ function StickyNotch() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-[50%] -translate-x-1/2 z-50 transition-all duration-300 -translate-y-full scale-50',
+        'fixed top-0 z-50 left-[50%] -translate-x-1/2 select-none transition-all duration-300 -translate-y-full scale-50',
         isVisible && 'translate-y-0 scale-100'
       )}
     >
@@ -36,6 +36,7 @@ function StickyNotch() {
         <motion.div
           initial="initial"
           whileHover="hover"
+          whileTap="hover"
           exit="exit"
           className="flex items-center cursor-default group hover:gap-1"
         >
