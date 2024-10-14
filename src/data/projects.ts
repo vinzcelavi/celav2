@@ -26,7 +26,16 @@ const projects = [
         text: 'On the development side, I focused on performance and cross-browser compatibility, making sure the website runs smoothly on both desktop and mobile devices.'
       }
     ],
-    technos: ['figma', 'nextjs', 'typeScript', 'styledComponents'],
+    technos: [
+      { id: 0, name: 'figma', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/figma.avif` },
+      { id: 1, name: 'nextjs', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/nextjs.avif` },
+      { id: 2, name: 'typeScript', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/typescript.avif` },
+      {
+        id: 3,
+        name: 'styledComponents',
+        image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/styled-components.avif`
+      }
+    ],
     medias: [
       {
         id: 1,
@@ -107,7 +116,21 @@ const projects = [
         text: "It offers a versatile toolkit that empowers designers and developers to build interfaces efficiently, enhancing both the visual identity and functional integrity of Axeptio's digital products."
       }
     ],
-    technos: ['figma', 'react', 'typeScript', 'storybook', 'styledComponents'],
+    technos: [
+      { id: 0, name: 'figma', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/figma.avif` },
+      { id: 1, name: 'typeScript', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/typescript.avif` },
+      { id: 2, name: 'react', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/react.avif` },
+      {
+        id: 3,
+        name: 'styledComponents',
+        image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/styled-components.avif`
+      },
+      {
+        id: 4,
+        name: 'storybook',
+        image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/storybook.avif`
+      }
+    ],
     medias: [
       { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-thumbnail.avif`, alt: 'gusto thumbnail' },
       {
@@ -163,7 +186,16 @@ const projects = [
         text: "With Taste, you regain your browsing freedom, ensuring that your preferences are respected while you navigate the web effortlessly. It's all about giving you back control, so you can focus on what truly matters online."
       }
     ],
-    technos: ['figma', 'typeScript', 'react', 'styledComponents'],
+    technos: [
+      { id: 0, name: 'figma', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/figma.avif` },
+      { id: 1, name: 'typeScript', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/typescript.avif` },
+      { id: 2, name: 'react', image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/react.avif` },
+      {
+        id: 3,
+        name: 'styledComponents',
+        image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/styled-components.avif`
+      }
+    ],
     medias: [
       {
         id: 1,

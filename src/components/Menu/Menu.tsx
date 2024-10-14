@@ -1,5 +1,5 @@
-import AppIcon from '../AppIcon';
 import CopyEmail from '../CopyEmail';
+import Icon from '../Icon';
 import MenuItem from './MenuItem';
 
 function Menu() {
@@ -19,7 +19,7 @@ function Menu() {
           rel="noreferrer noopener"
         >
           <span className="flex w-5 h-5 md:w-4 md:h-4">
-            <AppIcon name={name} />
+            <Icon name={name} />
           </span>
         </MenuItem>
       ))}

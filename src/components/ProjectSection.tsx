@@ -1,21 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
-import AppIcon from './AppIcon';
+import AppIconTooltip from './AppIconTooltip';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import Video from './Video';
-
-function Techno({ children, name }: { children: React.ReactNode; name: string }) {
-  return (
-    <span className="relative flex items-center group">
-      {children}
-      <span className="absolute top-full left-[50%] translate-x-[-50%] mt-2 flex text-sm font-extrabold capitalize opacity-0 rotate-[-5deg] scale-[0.25] group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 ease-in-out transition-all duration-150 ease-[cubic-bezier(0.77, 0, 0.175, 1)]">
-        {name}
-      </span>
-    </span>
-  );
-}
 
 interface ProjectSectionProps {
   active: boolean;
@@ -27,7 +16,7 @@ interface ProjectSectionProps {
     bigger?: boolean;
     text: string;
   }[];
-  technos: string[];
+  technos: { id: number; name: string; image: string }[];
   medias: Array<{ alt: string; placeholder?: string } & ({ img: string } | { video: string })>;
 }
 
@@ -68,17 +57,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
           <h2 className="text-4xl md:text-5xl font-bold">{title}</h2>
           <h3 className="text-xl font-light text-primary mb-4 md:mb-6">{subTitle}</h3>
 
-          <div className="flex flex-wrap gap-4 md:flex-nowrap">
-            {technos.map((techno: string) => (
-              <Techno key={techno} name={techno}>
-                <AppIcon
-                  name={techno}
-                  aria-label={techno}
-                  className="w-12 overflow-hidden rounded-[14px] border-2 border-white/15"
-                />
-              </Techno>
-            ))}
-          </div>
+          <AppIconTooltip items={technos} />
         </div>
         <div className="max-w-[42rem] md:pl-8">
           {paragraphs.map(

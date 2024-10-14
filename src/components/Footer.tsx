@@ -1,5 +1,5 @@
 import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
-import AppIcon from './AppIcon';
+import Icon from './Icon';
 import Menu from './Menu/Menu';
 import Paragraph from './Paragraph';
 
@@ -35,7 +35,7 @@ function Footer() {
           className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-300"
         >
           <span className="flex w-4 h-4 translate-y-0.5">
-            <AppIcon name="github" />
+            <Icon name="github" />
           </span>
           <span>Source code</span>
         </a>
