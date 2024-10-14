@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
 import Avatar from './Avatar';
 import Menu from './Menu/Menu';
@@ -11,7 +12,7 @@ function StickyNotch() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const isAboveThreshold = currentScrollY >= 400;
-      const isNotAtBottom = window.innerHeight + window.scrollY < document.body.offsetHeight - 200;
+      const isNotAtBottom = window.innerHeight + window.scrollY < document.body.offsetHeight - 600;
 
       if (isAboveThreshold && isNotAtBottom) {
         setIsVisible(true);
@@ -28,11 +29,12 @@ function StickyNotch() {
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 left-[50%] -translate-x-1/2 select-none transition-all duration-300 -translate-y-full scale-50',
-        isVisible && 'translate-y-0 scale-100'
+        `fixed z-50 left-[50%] -translate-x-1/2 select-none scale-50 transition-all duration-300 ${isMobile ? 'bottom-0 translate-y-full' : 'top-0 -translate-y-full'}`,
+        isMobile && isVisible && 'bottom-8 translate-y-0 scale-100',
+        !isMobile && isVisible && 'top-8 translate-y-0 scale-100'
       )}
     >
-      <div className="relative top-4 flex justify-between items-center gap-2 p-2 rounded-full bg-black shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
+      <div className="relative flex justify-between items-center gap-2 p-2 rounded-full bg-black shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
         <motion.div
           initial="initial"
           whileHover="hover"
