@@ -1,5 +1,6 @@
 import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
 import Icon from './Icon';
+import MagneticFramer from './MagneticFramer';
 import Menu from './Menu/Menu';
 import Paragraph from './Paragraph';
 
@@ -11,13 +12,15 @@ function Footer() {
       <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in touch</h2>
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
-        <a
-          data-splitbee-event="Click on 'Mailto' footer"
-          href={`mailto:${decodeHtmlEntities(email)}`}
-          className="text-white hover:text-primary transition-all duration-300"
-        >
-          {decodeHtmlEntities(email)}
-        </a>{' '}
+        <MagneticFramer>
+          <a
+            data-splitbee-event="Click on 'Mailto' footer"
+            href={`mailto:${decodeHtmlEntities(email)}`}
+            className="inline-flex bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent transition-all duration-300"
+          >
+            {decodeHtmlEntities(email)}
+          </a>
+        </MagneticFramer>{' '}
         or shoot me a dm and I'll be happy to get back to you.
       </Paragraph>
 

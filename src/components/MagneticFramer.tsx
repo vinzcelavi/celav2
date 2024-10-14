@@ -26,9 +26,9 @@ function MagneticFramer({ children }: { children: React.ReactNode }) {
       ref={ref}
       onMouseMove={!isMobile ? handleMouse : undefined}
       onMouseLeave={reset}
-      animate={{ x, y }}
-      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.3 }}
-      className="relative"
+      animate={{ x: x * 0.3, y }}
+      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.2 }}
+      className="relative inline-flex"
     >
       {children}
     </motion.span>
