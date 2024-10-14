@@ -1,33 +1,28 @@
-import splitbee from '@splitbee/web';
-import { AnimatePresence, motion } from 'framer-motion';
+// import splitbee from '@splitbee/web';
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import type React from 'react';
-import { useCallback, useRef, useState } from 'react';
-import type { MouseType } from '../types';
-import { getMouseCoordinates } from '../utils/getMouseCoordinates';
-import { wrap } from '../utils/wrap';
+import { useRef, useState } from 'react';
 
-const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; image: string }[] }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const iconIndex = wrap(0, appIcons.length, currentIndex);
-
-  const [mousePosition, setMousePosition] = useState<MouseType>({
-    x: 0,
-    y: 0
-  });
+const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; image: string }[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const boxRef = useRef<HTMLDivElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const springConfig = { stiffness: 100, damping: 5 };
+  const x = useMotionValue(0); // going to set this value on mouse move
+  // rotate the tooltip
+  const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
+  // translate the tooltip
+  const translateX = useSpring(useTransform(x, [-100, 100], [-50, 50]), springConfig);
 
   // Function that changes the icon according to mouse position x
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (boxRef.current) {
-      setMousePosition(getMouseCoordinates(e.nativeEvent, boxRef.current));
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof HTMLElement) {
+      const targetRect = event.target.getBoundingClientRect();
+      const eventOffsetX = event.clientX - targetRect.left;
+      const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
+      x.set(offsetFromCenter);
     }
-  }, []);
+  };
 
   return (
     <motion.span
@@ -38,56 +33,45 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; image: strin
         transition: { duration: 0.2 }
       }}
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
-      onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
-      onClick={() => {
-        setCurrentIndex(currentIndex + 1);
-        splitbee.track(`PopCornAnim App Icon clicked: ${appIcons[iconIndex].name}`);
-      }}
-      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+      className="absolute inset-0 flex items-stretch justify-center"
     >
-      <motion.span
-        ref={boxRef}
-        animate={{
-          x: mousePosition.x - 64,
-          y: mousePosition.y - 64
-        }}
-      >
-        <AnimatePresence initial={false} mode="popLayout">
-          {appIcons[iconIndex] && (
-            <motion.span
-              key={iconIndex}
-              className="absolute w-[8rem]"
-              initial={{
-                zIndex: 0,
-                scale: 0,
-                rotate: -45
-              }}
-              animate={{
-                zIndex: 1,
-                scale: 1,
-                rotate: 0
-              }}
-              exit={{
-                zIndex: 0,
-                scale: 0,
-                rotate: -145
-              }}
-              transition={{
-                duration: 0.2,
-                type: 'spring',
-                stiffness: 200,
-                damping: 15,
-                ease: 'easeInOut'
-              }}
-            >
-              <img src={appIcons[iconIndex].image} className="w-full" alt={appIcons[iconIndex].name} />
-              <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-2xl font-extrabold bg-slate-950/90 text-white capitalize rounded-xl">
-                {appIcons[iconIndex].name}
-              </span>
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.span>
+      {appIcons.map((item, _idx) => (
+        <div
+          key={item.name}
+          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseLeave={() => setHoveredIndex(null)}
+          className="relative group grow"
+        >
+          <AnimatePresence mode="popLayout">
+            {hoveredIndex === item.id && (
+              <motion.span
+                initial={{ opacity: 0, y: 0, scale: 0.6 }}
+                animate={{
+                  opacity: 1,
+                  y: -60,
+                  scale: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 260,
+                    damping: 10
+                  }
+                }}
+                exit={{ opacity: 0, y: 0, scale: 0.6 }}
+                style={{
+                  rotate: rotate,
+                  translateX: translateX
+                }}
+                className="absolute bottom-full left-0 w-[6rem] h-[6rem]"
+              >
+                <img src={item.image} className="w-full" alt={item.name} />
+                <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-xl font-extrabold bg-slate-950/90 text-white capitalize rounded-xl">
+                  {item.name}
+                </span>
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
     </motion.span>
   );
 };
