@@ -33,7 +33,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
         transition: { duration: 0.2 }
       }}
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
-      className="absolute inset-0 flex items-stretch justify-center"
+      className="absolute z-20 inset-0 flex items-stretch justify-center"
     >
       {appIcons.map((item, _idx) => (
         <div
