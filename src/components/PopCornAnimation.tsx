@@ -6,7 +6,7 @@ import type { MouseType } from '../types';
 import { getMouseCoordinates } from '../utils/getMouseCoordinates';
 import { wrap } from '../utils/wrap';
 
-const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.ReactNode }[] }) => {
+const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; image: string }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -80,7 +80,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { name: string; icon: React.
                 ease: 'easeInOut'
               }}
             >
-              {appIcons[iconIndex].icon}
+              <img src={appIcons[iconIndex].image} className="w-full" alt={appIcons[iconIndex].name} />
               <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-2 px-4 py-2 text-2xl font-extrabold bg-slate-950/90 text-white capitalize rounded-xl">
                 {appIcons[iconIndex].name}
               </span>

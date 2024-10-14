@@ -34,16 +34,11 @@ const IntroductionReveal = () => {
                 {word}
                 {'\u00A0'}
               </span>
-              {isFrontEnd && !isMobile ? (
+              {(isFrontEnd || isDesigner) && !isMobile && (
                 <span className="absolute z-20 inset-0">
-                  <PopCornAnimation appIcons={appIconsFrontEnd} />
+                  <PopCornAnimation appIcons={isFrontEnd ? appIconsFrontEnd : appIconsDesigner} />
                 </span>
-              ) : null}
-              {isDesigner && !isMobile ? (
-                <span className="absolute z-20 inset-0">
-                  <PopCornAnimation appIcons={appIconsDesigner} />
-                </span>
-              ) : null}
+              )}
               {isKeyword && (
                 <span
                   className={cn(
