@@ -31,6 +31,12 @@ function Video({ src }: { src: string }) {
         videoRef.current.pause();
       }
     }
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+    };
   }, [isVisible]);
 
   return <video ref={videoRef} src={src} loop muted playsInline />;
