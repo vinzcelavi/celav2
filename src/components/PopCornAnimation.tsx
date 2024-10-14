@@ -25,7 +25,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
     }
   };
 
-  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     if (event.target instanceof HTMLElement) {
       const touch = event.touches[0];
       const targetRect = event.target.getBoundingClientRect();
@@ -48,7 +48,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
           : {}
       }
       onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
-      onTouchStart={(e: React.TouchEvent<HTMLDivElement>) => handleTouchMove(e)}
+      onTouchStart={(e: React.TouchEvent<HTMLDivElement>) => handleTouchStart(e)}
       className="absolute z-20 inset-0 flex items-stretch justify-center"
     >
       {appIcons.map((item, _idx) => (
@@ -79,7 +79,11 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
                 }}
                 className="absolute bottom-1/2 md:bottom-full left-0 w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]"
               >
-                <img src={item.image} className="w-full" alt={item.name} />
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full rounded-2xl md:rounded-[1.5rem] border-4 border-white/15"
+                />
                 <span className="absolute top-full left-[50%] translate-x-[-50%] flex mt-1 md:mt-2 py-1 px-2 md:py-2 md:px-4 text-sm md:text-xl rounded-md md:rounded-xl font-extrabold bg-slate-950/90 text-white capitalize">
                   {item.name}
                 </span>
