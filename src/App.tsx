@@ -2,6 +2,7 @@ import splitbee from '@splitbee/web';
 import { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import HelloThere from './components/HelloThere';
 import IntroductionReveal from './components/IntroductionReveal';
 import ProjectSection from './components/ProjectSection';
 import StickyNotch from './components/StickyNotch';
@@ -10,7 +11,7 @@ import projects from './data/projects';
 function App() {
   useEffect(() => {
     splitbee.init({
-      token: 'YKTNWY0Y42M6'
+      token: import.meta.env.VITE_SPLITBEE_TOKEN
     });
   }, []);
 
@@ -30,6 +31,7 @@ function App() {
       </main>
 
       <Footer />
+      <HelloThere />
     </div>
   );
 }

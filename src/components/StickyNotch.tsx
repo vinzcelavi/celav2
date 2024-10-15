@@ -1,12 +1,15 @@
+import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useApp } from '../contexts/AppContext';
 import { cn } from '../utils/cn';
 import Avatar from './Avatar';
 import Menu from './Menu/Menu';
 
 function StickyNotch() {
   const [isVisible, setIsVisible] = useState(false);
+  const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,13 +37,17 @@ function StickyNotch() {
         !isMobile && isVisible && 'top-8 translate-y-0 scale-100'
       )}
     >
-      <div className="relative flex justify-between items-center gap-2 p-2 rounded-full bg-black shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
+      <div className="relative flex justify-between items-center gap-2 p-2 rounded-full bg-dark shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
         <motion.div
           initial="initial"
           whileHover="hover"
           whileTap="hover"
           exit="exit"
-          className="flex items-center cursor-default group hover:gap-1"
+          onClick={() => {
+            splitbee.track('Click on Avatar from notch');
+            setHelloThereIsOpen(!helloThereIsOpen);
+          }}
+          className="flex items-center gap-0 group cursor-pointer hover:gap-2 transition-all duration-150"
         >
           <span className="flex w-8 h-8">
             <Avatar alt="Vincent Bianciotto" />

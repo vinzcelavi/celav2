@@ -6,8 +6,8 @@
   :root {
     --primary: #f1c40f;
     --secondary: #d946ef;
-    --black: #020617;
-    --white: #f8fafc;
+    --dark: #020617;
+    --light: #f8fafc;
     margin: 0 auto;
 
     font-family: Mada, system-ui, Helvetica, Arial, sans-serif;
@@ -15,7 +15,7 @@
     font-weight: 400;
 
     color-scheme: dark;
-    @apply text-white;
+    @apply text-light;
     @apply bg-slate-950;
 
     font-synthesis: none;
@@ -27,7 +27,7 @@
 }
 
 a {
-  @apply text-white;
+  @apply text-light;
 }
 
 p {

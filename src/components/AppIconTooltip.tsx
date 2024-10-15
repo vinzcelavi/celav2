@@ -17,6 +17,7 @@ const AppIconTooltip = ({
   const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
   // translate the tooltip
   const translateX = useSpring(useTransform(x, [-100, 100], [-50, 50]), springConfig);
+
   const handleMouseMove = (event: React.MouseEvent<HTMLImageElement>) => {
     const halfWidth = event.currentTarget.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth);
@@ -53,7 +54,7 @@ const AppIconTooltip = ({
                 }}
                 className="absolute z-50 w-full -top-12 flex text-xs flex-col items-center justify-center"
               >
-                <div className="absolute z-30 left-1/2 -translate-x-1/2 py-2 px-4 font-bold text-base rounded-md bg-slate-950/90 text-white">
+                <div className="absolute z-30 left-1/2 -translate-x-1/2 py-2 px-4 font-bold text-base rounded-md bg-slate-950/90 text-light">
                   {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                 </div>
               </motion.div>

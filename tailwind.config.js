@@ -26,8 +26,8 @@ export default {
       colors: {
         'primary': 'var(--primary)',
         'secondary': 'var(--secondary)',
-        'black-color': 'var(--black-color)',
-        'white-color': 'var(--white-color)',
+        'dark': 'var(--dark)',
+        'light': 'var(--light)',
       },
       animation: {
         'word-reveal': 'word-reveal 0.75s ease forwards',
