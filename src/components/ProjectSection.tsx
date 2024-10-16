@@ -52,7 +52,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
   return (
     <section className="mb-52 md:mb-72">
-      <div className="md:grid md:grid-cols-2 gap-2 mb-20">
+      <div className="md:grid md:grid-cols-33/67 gap-2 mb-20">
         <div className="flex flex-col items-start md:items-end gap-2 mb-16 md:pb-0 md:pr-8">
           <h2 className="text-4xl md:text-5xl font-bold">{title}</h2>
           <h3 className="text-xl font-light text-primary mb-4 md:mb-6">{subTitle}</h3>
@@ -74,7 +74,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="relative -mx-4 flex flex-col gap-2">
         <div className="grid gap-2 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
           {medias.map((media, index) => (
             <div

@@ -8,6 +8,9 @@ export default {
   },
   theme: {
     extend: {
+      gridTemplateColumns: {
+        '33/67': '33% 67%',
+      },
       aspectRatio: {
         'project-preview': '7 / 5',
       },
