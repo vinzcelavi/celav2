@@ -59,7 +59,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
           <AppIconTooltip items={technos} />
         </div>
-        <div className="max-w-[42rem] md:pl-8">
+        <div className="md:pl-8">
           {paragraphs.map(
             (paragraph: {
               bold?: boolean;
