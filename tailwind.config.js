@@ -32,6 +32,9 @@ export default {
         'dark': 'var(--dark)',
         'light': 'var(--light)',
       },
+      transitionTimingFunction: {
+        'ease-in-out-quad': 'cubic-bezier(0.45, 0, 0.55, 1)',
+      },
       animation: {
         'word-reveal': 'word-reveal 0.75s ease forwards',
         'marker-animation': 'marker-animation 1.15s cubic-bezier(0.77, 0, 0.175, 1) 0.15s forwards',

@@ -86,7 +86,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
               }}
               data-id={index}
               className={cn(
-                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-1000 ease-in-out',
+                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-700 ease-ease-in-out-quad',
                 index === 0 && 'md:col-span-2 2xl:col-span-2',
                 index === 1 && 'md:col-span-1 2xl:col-span-2',
                 visibleMedias[index] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
