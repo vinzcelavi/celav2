@@ -2,15 +2,19 @@ import { motion, stagger, useAnimate } from 'framer-motion';
 import { useEffect } from 'react';
 import { useApp } from '../contexts/AppContext';
 import { cn } from '../utils/cn';
-import splitStringUsingRegex from '../utils/splitStringUsingRegex';
+import { splitStringUsingRegex } from '../utils/splitStringUsingRegex';
 import Avatar from './Avatar';
-const about =
-  "With a real passion for design and digital experiences, I aim to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs. In the past, I've been lucky enough to work with companies like Axeptio, Swile and Teads, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns. When I'm not behind my screen designing applications or websites, you'll probably find me on a squash court, drinking a good beer, or cracking jokes — more or less good, but always with panache! It's this balance between passion, hard work and lightness that keeps me going with enthusiasm on each new project.";
+
+const helloThere = [
+  'With a real passion for design and digital experiences, I aim to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs.',
+  "In the past, I've been lucky enough to work with companies and brands like Axeptio, Swile and Teads, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns.",
+  "When I'm not behind my screen designing applications or websites, you'll probably find me on a squash court, drinking a good beer, or cracking jokes — more or less good, but always with panache! It's this balance between passion, hard work and lightness that keeps me going with enthusiasm on each new project."
+];
 
 function HelloThere() {
   const [scope, animate] = useAnimate();
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
-  const staggerCharacters = stagger(0.01, { startDelay: 0 });
+  const staggerCharacters = stagger(0.015, { startDelay: 0 });
 
   useEffect(() => {
     if (scope.current) {
@@ -73,18 +77,22 @@ function HelloThere() {
       {/* Dark background */}
       <div className="fixed z-10 inset-1 bg-dark rounded-md select-none" />
 
-      <p className="relative z-20 block px-8 py-32 pb-52 md:px-10 md:py-40 select-none">
-        <span
-          ref={scope}
-          className="relative z-10 block mx-auto max-w-2xl text-[1.25rem] md:text-[2rem] font-medium text-white/80 leading-snug"
-        >
-          {splitStringUsingRegex(about).map((char, index) => (
-            <motion.span key={`${char}-${index + 1}`} initial={{ opacity: 0 }} className="inline">
-              {char}
-            </motion.span>
+      <div className="relative z-20 block px-8 py-32 pb-52 md:px-10 md:py-40 select-none">
+        <span ref={scope} className="relative z-10 block mx-auto max-w-2xl">
+          {helloThere.map((paragraph, index) => (
+            <p
+              key={`${paragraph}-${index + 1}`}
+              className="mb-12 text-[1.25rem] md:text-[2rem] font-medium text-white/80 leading-snug"
+            >
+              {splitStringUsingRegex(paragraph).map((char, index) => (
+                <motion.span key={`${char}-${index + 1}`} initial={{ opacity: 0 }} className="inline">
+                  {char}
+                </motion.span>
+              ))}
+            </p>
           ))}
         </span>
-      </p>
+      </div>
     </div>
   );
 }
