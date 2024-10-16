@@ -10,7 +10,7 @@ const about =
 function HelloThere() {
   const [scope, animate] = useAnimate();
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
-  const staggerCharacters = stagger(0.01, { startDelay: 0.15 });
+  const staggerCharacters = stagger(0.01, { startDelay: 0 });
 
   useEffect(() => {
     if (scope.current) {
@@ -40,11 +40,11 @@ function HelloThere() {
         setHelloThereIsOpen(false);
         document.body.classList.remove('overflow-hidden');
       }}
-      className="fixed z-[1000] inset-0 min-h-screen flex flex-col items-stretch bg-dark cursor-zoom-out overflow-auto overscroll-contain"
+      className="fixed z-[1000] inset-0 min-h-screen flex flex-col items-stretch cursor-zoom-out overflow-auto overscroll-contain"
     >
       <div
         className={cn(
-          'fixed z-50 bottom-12 md:bottom-auto md:top-10 left-1/2 -translate-x-1/2 -ml-6 flex items-center gap-2 text-light text-xl font-bold cursor-pointer transition-all duration-500'
+          'fixed z-40 bottom-12 md:bottom-auto md:top-10 left-1/2 -translate-x-1/2 -ml-6 flex items-center gap-2 text-light text-xl font-bold cursor-pointer transition-all duration-500'
         )}
       >
         <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -60,13 +60,18 @@ function HelloThere() {
         <span>Back</span>
       </div>
 
-      <div className="fixed z-40 top-0 left-0 w-full h-36 bg-gradient-to-b from-dark to-transparent select-none" />
-      <div className="fixed z-40 bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-dark select-none" />
+      {/* Top/Bottom dark to transparent gradient */}
+      <div className="fixed z-30 top-1 left-1 right-1 h-36 rounded-md bg-gradient-to-b from-dark to-transparent select-none" />
+      <div className="fixed z-30 bottom-1 left-1 right-1 h-40 rounded-md bg-gradient-to-t from-dark to-transparent select-none" />
 
-      <p className="relative block mx-auto max-w-2xl px-10 py-32 pb-52 md:px-10 md:py-40 select-none">
+      {/* Gradient border */}
+      <div className="fixed z-0 inset-0 bg-gradient-to-b from-primary to-secondary select-none" />
+      <div className="fixed z-10 inset-1 bg-dark rounded-md select-none" />
+
+      <p className="relative z-20 block px-10 py-32 pb-52 md:px-10 md:py-40 select-none">
         <span
           ref={scope}
-          className="relative z-10 block text-[1.25rem] md:text-[2rem] font-medium text-white/80 leading-snug"
+          className="relative z-10 block mx-auto max-w-2xl text-[1.25rem] md:text-[2rem] font-medium text-white/80 leading-snug"
         >
           {splitStringUsingRegex(about).map((char, index) => (
             <motion.span key={`${char}-${index + 1}`} initial={{ opacity: 0 }} className="inline">
