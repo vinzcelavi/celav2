@@ -52,14 +52,14 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
   return (
     <section className="mb-52 md:mb-72">
-      <div className="md:grid md:grid-cols-33/67 gap-2 mb-20">
-        <div className="flex flex-col items-start md:items-end gap-2 mb-16 md:pb-0 md:pr-8">
+      <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
+        <div className="flex flex-col items-start md:items-end gap-2 mb-8">
           <h2 className="text-4xl md:text-5xl font-bold">{title}</h2>
           <h3 className="text-xl font-light text-primary mb-4 md:mb-6">{subTitle}</h3>
 
           <AppIconTooltip items={technos} />
         </div>
-        <div className="md:pl-8">
+        <div className="w-full md:w-10/12">
           {paragraphs.map(
             (paragraph: {
               bold?: boolean;

@@ -24,7 +24,7 @@ const AppIconTooltip = ({
   };
 
   return (
-    <div className="flex flex-wrap">
+    <div className="relative mr-2 flex flex-wrap">
       {items.map((item, _idx) => (
         <div
           className="relative -mr-2 group"

@@ -7,7 +7,7 @@ const IntroductionReveal = () => {
 
   return (
     <div className="flex justify-center mb-28 md:mb-40">
-      <h2 className="font-extrabold text-5xl text-intro leading-[1.25] text-white">
+      <h1 className="font-extrabold text-5xl text-intro leading-[1.25] text-white">
         {text.split(' ').map((word, index) => {
           const isKeyword = ['front-end', 'designer'].includes(word.toLowerCase());
           const isFrontEnd = word.toLowerCase() === 'front-end';
@@ -41,7 +41,7 @@ const IntroductionReveal = () => {
             </span>
           );
         })}
-      </h2>
+      </h1>
     </div>
   );
 };

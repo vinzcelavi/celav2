@@ -6,6 +6,7 @@ import HelloThere from './components/HelloThere';
 import IntroductionReveal from './components/IntroductionReveal';
 import ProjectSection from './components/ProjectSection';
 import StickyNotch from './components/StickyNotch';
+import WorkSectionTitle from './components/WorkSectionTitle';
 import projects from './data/projects';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
       <main className="px-8 lg:px-12">
         <IntroductionReveal />
+        <WorkSectionTitle />
 
         <div className="flex flex-col gap-2">
           {projects.map((project) => (
