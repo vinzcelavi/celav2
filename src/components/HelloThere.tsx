@@ -64,7 +64,7 @@ function HelloThere() {
         <span>Back</span>
       </div>
 
-      <div className="fixed z-40 top-8 left-8 md:top-10 md:left-10 lg:left-12 w-[4.5rem] h-[4.5rem]">
+      <div className="fixed z-40 top-8 left-8 md:top-10 lg:left-12 w-[4.5rem] h-[4.5rem]">
         <Avatar isActive alt="avatar" />
       </div>
 

@@ -20,7 +20,7 @@ function App() {
       <StickyNotch />
       <Header />
 
-      <main className="px-8 md:px-8 lg:px-12">
+      <main className="px-8 lg:px-12">
         <IntroductionReveal />
 
         <div className="flex flex-col gap-2">
