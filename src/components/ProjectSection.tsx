@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useInView } from 'react-intersection-observer';
 import { cn } from '../utils/cn';
 import AppIconTooltip from './AppIconTooltip';
 import LazyImage from './LazyImage';
@@ -21,37 +21,6 @@ interface ProjectSectionProps {
 }
 
 function ProjectSection({ title, subTitle, paragraphs, technos, medias }: ProjectSectionProps) {
-  const [visibleMedias, setVisibleMedias] = useState<{ [key: number]: boolean }>({});
-  const mediasRefs = useRef<HTMLDivElement[] | null[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const id = (entry.target as HTMLElement).dataset.id;
-          if (id) {
-            if (entry.isIntersecting) {
-              setVisibleMedias((prev) => ({ ...prev, [id]: true }));
-            } else {
-              setVisibleMedias((prev) => ({ ...prev, [id]: false }));
-            }
-          }
-        }
-      },
-      { threshold: 0.1 } // Trigger when 10% of the video is visible
-    );
-
-    for (const media of mediasRefs.current) {
-      if (media) observer.observe(media);
-    }
-
-    return () => {
-      for (const media of mediasRefs.current) {
-        if (media) observer.unobserve(media);
-      }
-    };
-  }, []);
-
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
@@ -78,45 +47,44 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
       </div>
       <div className="relative -mx-7">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
-          {medias.map((media, index) => (
-            <div
-              key={media.alt}
-              ref={(el) => {
-                if (mediasRefs.current[index] !== el) {
-                  mediasRefs.current[index] = el;
-                }
-              }}
-              data-id={index}
-              className={cn(
-                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-[.75s] ease-out-quad',
-                index === 0 && 'md:col-span-2 2xl:col-span-2',
-                index === 1 && 'md:col-span-1 2xl:col-span-2',
-                visibleMedias[index] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-              )}
-              style={{
-                transitionDelay: isMobile ? '0ms' : `${index * 100}ms`
-              }}
-            >
+          {medias.map((media, index) => {
+            const { ref, inView } = useInView({
+              triggerOnce: true,
+              threshold: 0.1
+            });
+
+            return (
               <div
+                key={media.alt}
+                ref={ref}
                 className={cn(
-                  'transition-all duration-[1.35s] ease-out-quad',
-                  visibleMedias[index] ? 'scale-100' : 'scale-110'
+                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-[.75s] ease-out-quad',
+                  index === 0 && 'md:col-span-2 2xl:col-span-2',
+                  index === 1 && 'md:col-span-1 2xl:col-span-2',
+                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                 )}
+                style={{
+                  transitionDelay: isMobile ? '0ms' : `${index * 100}ms`
+                }}
               >
-                {'video' in media ? (
-                  <Video src={media.video} />
-                ) : (
-                  <LazyImage
-                    src={media.img}
-                    placeholder={media.placeholder ?? ''}
-                    alt={media.alt}
-                    width={105}
-                    height={75}
-                  />
-                )}
+                <div
+                  className={cn('transition-all duration-[1.35s] ease-out-quad', inView ? 'scale-100' : 'scale-110')}
+                >
+                  {'video' in media ? (
+                    <Video src={media.video} />
+                  ) : (
+                    <LazyImage
+                      src={media.img}
+                      placeholder={media.placeholder ?? ''}
+                      alt={media.alt}
+                      width={105}
+                      height={75}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
