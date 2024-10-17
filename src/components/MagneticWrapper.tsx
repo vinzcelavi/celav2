@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 
-function MagneticFramer({ children }: { children: React.ReactNode }) {
+function MagneticWrapper({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -35,4 +35,4 @@ function MagneticFramer({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default MagneticFramer;
+export default MagneticWrapper;

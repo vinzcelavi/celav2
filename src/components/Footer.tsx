@@ -1,6 +1,6 @@
 import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
 import Icon from './Icon';
-import MagneticFramer from './MagneticFramer';
+import MagneticWrapper from './MagneticWrapper';
 import Menu from './Menu/Menu';
 import Paragraph from './Paragraph';
 
@@ -12,7 +12,7 @@ function Footer() {
       <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in touch</h2>
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
-        <MagneticFramer>
+        <MagneticWrapper>
           <a
             data-splitbee-event="Click on 'Mailto' footer"
             href={`mailto:${decodeHtmlEntities(email)}`}
@@ -20,7 +20,7 @@ function Footer() {
           >
             {decodeHtmlEntities(email)}
           </a>
-        </MagneticFramer>{' '}
+        </MagneticWrapper>{' '}
         or shoot me a dm and I'll be happy to get back to you.
       </Paragraph>
 
