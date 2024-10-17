@@ -6,7 +6,7 @@ import HelloThere from './components/HelloThere';
 import IntroductionReveal from './components/IntroductionReveal';
 import ProjectSection from './components/ProjectSection';
 import StickyNotch from './components/StickyNotch';
-import WorkSectionTitle from './components/WorkSectionTitle';
+import WorkSectionTitle from './components/WorkSectionTitle/WorkSectionTitle';
 import projects from './data/projects';
 
 function App() {

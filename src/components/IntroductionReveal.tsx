@@ -6,7 +6,7 @@ const IntroductionReveal = () => {
   const text = "Hello, I've been a Front-End Developer and Product Designer for over ten years.";
 
   return (
-    <div className="flex justify-center mb-28 md:mb-40">
+    <div className="flex justify-center mb-28 md:mb-52">
       <h1 className="font-extrabold text-5xl text-intro leading-[1.25] text-white">
         {text.split(' ').map((word, index) => {
           const isKeyword = ['front-end', 'designer'].includes(word.toLowerCase());
