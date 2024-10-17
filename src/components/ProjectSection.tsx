@@ -28,10 +28,12 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = (entry.target as HTMLElement).dataset.id;
-            if (id) {
+          const id = (entry.target as HTMLElement).dataset.id;
+          if (id) {
+            if (entry.isIntersecting) {
               setVisibleMedias((prev) => ({ ...prev, [id]: true }));
+            } else {
+              setVisibleMedias((prev) => ({ ...prev, [id]: false }));
             }
           }
         }
@@ -74,8 +76,8 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
           )}
         </div>
       </div>
-      <div className="relative -mx-4 flex flex-col gap-2">
-        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
+      <div className="relative -mx-7">
+        <div className="grid gap-1 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
           {medias.map((media, index) => (
             <div
               key={media.alt}
@@ -86,7 +88,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
               }}
               data-id={index}
               className={cn(
-                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-700 ease-ease-in-out-quad',
+                'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-[.75s] ease-out-quad',
                 index === 0 && 'md:col-span-2 2xl:col-span-2',
                 index === 1 && 'md:col-span-1 2xl:col-span-2',
                 visibleMedias[index] ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
@@ -95,17 +97,24 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
                 transitionDelay: isMobile ? '0ms' : `${index * 100}ms`
               }}
             >
-              {'video' in media ? (
-                <Video src={media.video} />
-              ) : (
-                <LazyImage
-                  src={media.img}
-                  placeholder={media.placeholder ?? ''}
-                  alt={media.alt}
-                  width={105}
-                  height={75}
-                />
-              )}
+              <div
+                className={cn(
+                  'transition-all duration-[1.35s] ease-out-quad',
+                  visibleMedias[index] ? 'scale-100' : 'scale-110'
+                )}
+              >
+                {'video' in media ? (
+                  <Video src={media.video} />
+                ) : (
+                  <LazyImage
+                    src={media.img}
+                    placeholder={media.placeholder ?? ''}
+                    alt={media.alt}
+                    width={105}
+                    height={75}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>

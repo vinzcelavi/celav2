@@ -35,6 +35,7 @@ export default {
       },
       transitionTimingFunction: {
         'ease-in-out-quad': 'cubic-bezier(0.45, 0, 0.55, 1)',
+        'ease-out-quad': 'cubic-bezier(0.5, 1, 0.89, 1);',
       },
       animation: {
         'word-reveal': 'word-reveal 0.75s ease forwards',

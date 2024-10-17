@@ -37,10 +37,11 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
       <img
         ref={imgRef}
         src={src}
+        onLoad={handleImageLoad}
+        loading="lazy"
         alt={alt}
         width={width}
         height={height}
-        onLoad={handleImageLoad}
         className="relative aspect-project-preview"
       />
     </figure>
