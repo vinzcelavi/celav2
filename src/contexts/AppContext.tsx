@@ -1,4 +1,10 @@
 import { type ReactNode, createContext, useContext, useState } from 'react';
+import '@fontsource/mada/400.css';
+import '@fontsource/mada/500.css';
+import '@fontsource/mada/600.css';
+import '@fontsource/mada/700.css';
+import '@fontsource/mada/800.css';
+import '@fontsource/mada/900.css';
 
 // Create a context to manage `isOpen`
 interface AppContextType {
