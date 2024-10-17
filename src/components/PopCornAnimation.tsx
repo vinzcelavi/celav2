@@ -51,7 +51,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
       className="absolute z-20 inset-0 flex items-stretch justify-center"
     >
       {appIcons.map((item, _idx) => (
-        <div
+        <span
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -89,7 +89,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
               </motion.span>
             )}
           </AnimatePresence>
-        </div>
+        </span>
       ))}
     </motion.span>
   );
