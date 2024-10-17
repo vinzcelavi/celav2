@@ -30,7 +30,8 @@ function StickyMenu() {
   }, []);
 
   return (
-    <menu
+    <div
+      role="menu"
       className={cn(
         `fixed z-50 left-[50%] -translate-x-1/2 select-none scale-50 transition-all duration-300 ${isMobile ? 'bottom-0 translate-y-full' : 'top-0 -translate-y-full'}`,
         isMobile && isVisible && 'bottom-10 translate-y-0 scale-100',
@@ -66,7 +67,7 @@ function StickyMenu() {
 
         <Menu />
       </div>
-    </menu>
+    </div>
   );
 }
 
