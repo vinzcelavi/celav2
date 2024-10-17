@@ -1,4 +1,4 @@
-// import splitbee from '@splitbee/web';
+import splitbee from '@splitbee/web';
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -53,7 +53,10 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
       {appIcons.map((item, _idx) => (
         <span
           key={item.name}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseEnter={() => {
+            setHoveredIndex(item.id);
+            splitbee.track('Hovered App Icon:', { name: item.name });
+          }}
           onMouseLeave={() => setHoveredIndex(null)}
           className="relative group grow"
         >
