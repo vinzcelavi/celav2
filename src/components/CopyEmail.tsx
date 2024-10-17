@@ -1,6 +1,5 @@
 import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
-import type React from 'react';
 import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';

@@ -16,7 +16,6 @@ function WhoAmI() {
 
   const handleMouseMove = (event: React.MouseEvent<HTMLImageElement>) => {
     const halfWidth = event.currentTarget.offsetWidth / 2;
-    console.log('halfWidth', halfWidth);
     x.set(event.nativeEvent.offsetX - halfWidth);
   };
 

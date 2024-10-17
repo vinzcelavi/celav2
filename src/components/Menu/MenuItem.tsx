@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import type React from 'react';
 
 function MenuLink({
   children,
