@@ -2,12 +2,12 @@ import Asterisk from './asterisk.svg?react';
 
 function WorkSectionTitle() {
   return (
-    <div className="">
+    <>
       <h2 className="relative z-10 inline-flex md:pr-8 text-project-title leading-[0.8] font-extrabold text-slate-800 float-right sm:float-none">
         Work{'\u00A0\u00A0'}
-        <div className="absolute top-[-3%] right-[1%] md:right-[4%] w-[14%] animate-spin-slow">
+        <span className="block absolute top-[-3%] right-[1%] md:right-[4%] w-[14%] animate-spin-slow">
           <Asterisk />
-        </div>
+        </span>
       </h2>
 
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-40 clear-both">
@@ -17,7 +17,7 @@ function WorkSectionTitle() {
           </small>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
