@@ -38,7 +38,7 @@ function StickyMenu() {
         !isMobile && isVisible && 'top-8 translate-y-0 scale-100'
       )}
     >
-      <div className="relative flex justify-between items-center gap-2 p-2 rounded-full bg-dark shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
+      <div className="relative flex justify-between items-center gap-2 px-2.5 py-2 rounded-full bg-dark shadow-[0_1px_2px_rgba(0,0,0,0.07),0_2px_4px_rgba(0,0,0,0.07),0_4px_8px_rgba(0,0,0,0.07),0_8px_16px_rgba(0,0,0,0.07),0_16px_32px_rgba(0,0,0,0.07),0_32px_64px_rgba(0,0,0,0.07)]">
         <motion.div
           initial="initial"
           whileHover="hover"
@@ -54,14 +54,14 @@ function StickyMenu() {
             <Avatar alt="Vincent Bianciotto" />
           </span>
           <motion.span
-            className="inline-flex text-sm font-bold whitespace-nowrap bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent overflow-hidden"
+            className="inline-flex text-base font-bold whitespace-nowrap bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent overflow-hidden"
             variants={{
               initial: { width: 0, scale: 0, opacity: 0 },
               hover: { width: 'auto', scale: 1, opacity: 1 },
               exit: { width: 0, scale: 0, opacity: 0 }
             }}
           >
-            vinzcelavi
+            Hello there!
           </motion.span>
         </motion.div>
 

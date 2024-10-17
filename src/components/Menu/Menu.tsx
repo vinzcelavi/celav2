@@ -5,7 +5,7 @@ import MenuItem from './MenuItem';
 function Menu() {
   return (
     <menu>
-      <ul className="flex items-center justify-center gap-1">
+      <ul className="flex items-center justify-center">
         {[
           { name: 'linkedin', href: 'https://www.linkedin.com/in/vincent-bianciotto/' },
           { name: 'instagram', href: 'https://www.instagram.com/vinzcelavi/' },
@@ -19,9 +19,7 @@ function Menu() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <span className="flex w-5 h-5 md:w-4 md:h-4">
-              <Icon name={name} />
-            </span>
+            <Icon name={name} className="flex w-5 h-5" />
           </MenuItem>
         ))}
 
