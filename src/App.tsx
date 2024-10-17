@@ -5,7 +5,7 @@ import Header from './components/Header';
 import HelloThere from './components/HelloThere';
 import IntroductionReveal from './components/IntroductionReveal';
 import ProjectSection from './components/ProjectSection';
-import StickyNotch from './components/StickyNotch';
+import StickyMenu from './components/StickyMenu';
 import WorkSectionTitle from './components/WorkSectionTitle/WorkSectionTitle';
 import projects from './data/projects';
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="relative w-full m-auto max-w-[140rem]">
-      <StickyNotch />
+      <StickyMenu />
       <Header />
 
       <main className="px-8 lg:px-12">
