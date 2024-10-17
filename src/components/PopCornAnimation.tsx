@@ -1,6 +1,5 @@
 // import splitbee from '@splitbee/web';
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import type React from 'react';
 import { useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 
