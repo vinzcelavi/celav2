@@ -64,7 +64,7 @@ function WhoAmI() {
         </div>
         <div className="flex flex-col items-baseline pl-4">
           <h1 className="text-lg font-semibold leading-tight">Vincent Bianciotto</h1>
-          <span className="text-base bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <span className="text-base bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
             Front-End Designer
           </span>
         </div>

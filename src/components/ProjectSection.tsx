@@ -45,7 +45,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
           )}
         </div>
       </div>
-      <div className="relative -mx-7">
+      <div className="relative -mx-4">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
           {medias.map((media, index) => {
             const { ref, inView } = useInView({

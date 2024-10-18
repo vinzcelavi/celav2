@@ -21,7 +21,7 @@ function App() {
       <StickyMenu />
       <Header />
 
-      <main className="px-8 lg:px-12">
+      <main className="px-6 md:px-10 lg:px-12">
         <IntroductionReveal />
         <WorkSectionTitle />
 

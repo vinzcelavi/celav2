@@ -8,7 +8,7 @@ function Footer() {
   const email = '&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;';
 
   return (
-    <footer className="flex flex-col m-auto md:items-center justify-center text-center px-8 py-16 max-w-[30rem]">
+    <footer className="flex flex-col m-auto md:items-center justify-center text-center px-6 md:px-10 py-16 max-w-[30rem]">
       <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Get in touch</h2>
       <Paragraph bigger>
         For any specific request, or just for fun, you can contact me at{' '}
