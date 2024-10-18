@@ -6,6 +6,8 @@ import Copy from '../assets/svg/copy.svg?react';
 import Github from '../assets/svg/github.svg?react';
 import Instagram from '../assets/svg/instagram.svg?react';
 import Linkedin from '../assets/svg/linkedin.svg?react';
+import Minus from '../assets/svg/minus.svg?react';
+import Plus from '../assets/svg/plus.svg?react';
 import Send from '../assets/svg/send.svg?react';
 import Tick from '../assets/svg/tick.svg?react';
 
@@ -24,7 +26,9 @@ const technos = {
   'arrow-down': <ArrowDown />,
   copy: <Copy />,
   send: <Send />,
-  tick: <Tick />
+  tick: <Tick />,
+  plus: <Plus />,
+  minus: <Minus />
 };
 
 function Icon({ name, className = '' }: IconProps) {

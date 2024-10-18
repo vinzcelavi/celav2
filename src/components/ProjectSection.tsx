@@ -49,9 +49,9 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
           <button
             type="button"
             onClick={() => setShowMore(!showMore)}
-            className="inline-flex items-center gap-2 text-slate-500 text-base font-bold md:hidden"
+            className="inline-flex items-center gap-1 text-slate-500 text-base font-bold md:hidden"
           >
-            <Icon name={showMore ? 'arrow-up' : 'arrow-down'} className="w-6 h-6 -translate-y-[1px]" />
+            <Icon name={showMore ? 'minus' : 'plus'} className="w-6 h-6 -translate-y-[1px]" />
             {showMore ? 'Read less' : 'Read more'}
           </button>
         </div>
