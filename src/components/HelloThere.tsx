@@ -7,8 +7,8 @@ import Avatar from './Avatar';
 import Icon from './Icon';
 
 const helloThere = [
-  'With a real passion for design 💅🏻 and computer science 👨🏻‍💻, I love to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs.',
-  "In the past, I've been lucky enough to work with companies and brands like Axeptio ✋🏻, Swile 💳 and Teads 📺, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns.",
+  'With a real passion for design 💅 and computer science 👨‍💻, I love to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs.',
+  "In the past, I've been lucky enough to work with companies and brands like Axeptio ✋, Swile 💳 and Teads 📺, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns.",
   "When I'm not behind my screen designing applications or websites, you'll probably find me on a Squash 🏸 court, drinking beers 🍻, or cracking some jokes 🤡 — more or less good, but always with panache!"
 ];
 
