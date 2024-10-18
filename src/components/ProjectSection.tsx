@@ -58,7 +58,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
                 key={asset.alt}
                 ref={ref}
                 className={cn(
-                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-[.75s] ease-out-quad',
+                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.75s] ease-out-quad',
                   index === 0 && 'md:col-span-2 2xl:col-span-2',
                   index === 1 && 'md:col-span-1 2xl:col-span-2',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'

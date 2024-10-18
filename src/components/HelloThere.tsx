@@ -68,7 +68,7 @@ function HelloThere() {
       <div className="fixed z-30 bottom-1 left-1 right-1 h-40 rounded-md bg-gradient-to-t from-dark to-transparent select-none" />
 
       {/* Gradient border */}
-      <div className="fixed z-0 inset-0 bg-gradient-to-br from-primary to-secondary select-none" />
+      <div className="fixed z-0 inset-0 bg-gradient-to-b from-primary to-secondary select-none" />
       {/* Dark background */}
       <div className="fixed z-10 inset-1 bg-dark rounded-md select-none" />
 

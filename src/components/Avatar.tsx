@@ -16,7 +16,7 @@ function Avatar({ alt, isActive }: { alt: string; isActive?: boolean }) {
       </div>
       <div
         className={cn(
-          'absolute z-0 inset-0 rounded-full bg-gradient-to-br from-primary via-20% to-secondary transition-all duration-300 opacity-35 group-hover:opacity-100',
+          'absolute z-0 inset-0 rounded-full bg-gradient-to-b from-primary via-20% to-secondary transition-all duration-300 opacity-35 group-hover:opacity-100',
           (isMobile || isActive) && 'opacity-100'
         )}
       />
