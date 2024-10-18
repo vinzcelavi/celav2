@@ -68,7 +68,10 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
                 }}
               >
                 <div
-                  className={cn('transition-all duration-[1.35s] ease-out-quad', inView ? 'scale-100' : 'scale-110')}
+                  className={cn(
+                    'will-change-transform transition-all duration-[1.35s] ease-out-quad',
+                    inView ? 'scale-100' : 'scale-110'
+                  )}
                 >
                   {'video' in asset ? (
                     <Video src={asset.video} />
