@@ -3,7 +3,6 @@ import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '../utils/cn';
 import AppIconTooltip from './AppIconTooltip';
-import Icon from './Icon';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import Video from './Video';
@@ -49,9 +48,11 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
           <button
             type="button"
             onClick={() => setShowMore(!showMore)}
-            className="inline-flex items-center gap-1 text-slate-500 text-base font-bold md:hidden"
+            className={cn(
+              'inline-flex px-2 py-0.5 text-base leading-normal font-bold rounded-md md:hidden',
+              showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
+            )}
           >
-            <Icon name={showMore ? 'minus' : 'plus'} className="w-6 h-6 -translate-y-[1px]" />
             {showMore ? 'Read less' : 'Read more'}
           </button>
         </div>
