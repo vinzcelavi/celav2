@@ -17,10 +17,10 @@ interface ProjectSectionProps {
     text: string;
   }[];
   technos: { id: number; name: string; image: string }[];
-  medias: Array<{ alt: string; placeholder?: string } & ({ img: string } | { video: string })>;
+  assets: Array<{ alt: string; placeholder?: string } & ({ img: string } | { video: string })>;
 }
 
-function ProjectSection({ title, subTitle, paragraphs, technos, medias }: ProjectSectionProps) {
+function ProjectSection({ title, subTitle, paragraphs, technos, assets }: ProjectSectionProps) {
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
@@ -47,7 +47,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
       </div>
       <div className="relative -mx-4">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
-          {medias.map((media, index) => {
+          {assets.map((asset, index) => {
             const { ref, inView } = useInView({
               triggerOnce: true,
               threshold: 0.1
@@ -55,7 +55,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
 
             return (
               <div
-                key={media.alt}
+                key={asset.alt}
                 ref={ref}
                 className={cn(
                   'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 transition-all duration-[.75s] ease-out-quad',
@@ -70,13 +70,13 @@ function ProjectSection({ title, subTitle, paragraphs, technos, medias }: Projec
                 <div
                   className={cn('transition-all duration-[1.35s] ease-out-quad', inView ? 'scale-100' : 'scale-110')}
                 >
-                  {'video' in media ? (
-                    <Video src={media.video} />
+                  {'video' in asset ? (
+                    <Video src={asset.video} />
                   ) : (
                     <LazyImage
-                      src={media.img}
-                      placeholder={media.placeholder ?? ''}
-                      alt={media.alt}
+                      src={asset.img}
+                      placeholder={asset.placeholder ?? ''}
+                      alt={asset.alt}
                       width={105}
                       height={75}
                     />

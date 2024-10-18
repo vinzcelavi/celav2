@@ -36,7 +36,7 @@ const projects = [
         image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/styled-components.avif`
       }
     ],
-    medias: [
+    assets: [
       {
         id: 1,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/axeptio-website-homepage-desktop.avif`,
@@ -131,7 +131,7 @@ const projects = [
         image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/storybook.avif`
       }
     ],
-    medias: [
+    assets: [
       { id: 1, img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/gusto-thumbnail.avif`, alt: 'gusto thumbnail' },
       {
         id: 2,
@@ -196,7 +196,7 @@ const projects = [
         image: `${import.meta.env.VITE_AWS_BUCKET_URL}/appicon/styled-components.avif`
       }
     ],
-    medias: [
+    assets: [
       {
         id: 1,
         img: `${import.meta.env.VITE_AWS_BUCKET_URL}/images/taste-hero.avif`,
