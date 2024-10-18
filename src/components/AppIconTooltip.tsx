@@ -62,6 +62,7 @@ const AppIconTooltip = ({
           </AnimatePresence>
           <img
             onMouseMove={handleMouseMove}
+            loading="lazy"
             height={100}
             width={100}
             src={item.image}

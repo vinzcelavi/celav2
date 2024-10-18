@@ -82,6 +82,7 @@ const PopCornAnimation = ({ appIcons }: { appIcons: { id: number; name: string; 
                 className="absolute bottom-1/2 md:bottom-full left-0 w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]"
               >
                 <img
+                  loading="lazy"
                   src={item.image}
                   alt={item.name}
                   className="w-full rounded-2xl md:rounded-[1.5rem] border-4 border-white/15"
