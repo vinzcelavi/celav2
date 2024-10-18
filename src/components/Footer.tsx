@@ -30,6 +30,7 @@ function Footer() {
 
       <p className="text-base text-gray-500">
         Celavi © 2024 Vincent Bianciotto. <br className="block md:hidden" />
+        {'\u00A0'}
         <a
           data-splitbee-event="Click on 'Source code'"
           href="https://github.com/vinzcelavi/celav2/"
@@ -37,7 +38,7 @@ function Footer() {
           rel="noreferrer noopener"
           className="inline-flex gap-1 items-baseline text-white/80 hover:text-white transition-all duration-300"
         >
-          <span className="flex w-4 h-4 translate-y-0.5">
+          <span className="flex w-4 h-4 translate-y-[3px]">
             <Icon name="github" />
           </span>
           <span>Source code</span>

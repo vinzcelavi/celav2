@@ -1,7 +1,10 @@
 import Back from '../assets/svg/back.svg?react';
+import Copy from '../assets/svg/copy.svg?react';
 import Github from '../assets/svg/github.svg?react';
 import Instagram from '../assets/svg/instagram.svg?react';
 import Linkedin from '../assets/svg/linkedin.svg?react';
+import Send from '../assets/svg/send.svg?react';
+import Tick from '../assets/svg/tick.svg?react';
 
 interface IconProps {
   name: string;
@@ -12,7 +15,10 @@ const technos = {
   linkedin: <Linkedin />,
   instagram: <Instagram />,
   github: <Github />,
-  back: <Back />
+  back: <Back />,
+  copy: <Copy />,
+  send: <Send />,
+  tick: <Tick />
 };
 
 function Icon({ name, className = '' }: IconProps) {

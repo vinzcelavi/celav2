@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
 import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
+import Icon from './Icon';
 
 interface EmailComponentProps {
   label: string;
@@ -26,22 +27,9 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
       <a
         data-splitbee-event="Click on 'Mailto' notch on mobile"
         href={`mailto:${decodeHtmlEntities(email)}`}
-        className="flex items-center gap-0 py-1.5 px-2 rounded-full text-sm font-bold hover:bg-white/15 transition-all duration-150 group cursor-pointer"
+        className="flex items-center gap-0 py-1.5 px-2 rounded-full text-base font-bold hover:bg-white/15 transition-all duration-150 group cursor-pointer"
       >
-        <span className="relative flex items-center justify-center w-5 h-5">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            aria-label="send icon"
-          >
-            <path d="M22.984.638a.5.5,0,0,0-.718-.559L1.783,10.819a1.461,1.461,0,0,0-.1,2.527h0l4.56,2.882a.25.25,0,0,0,.3-.024L18.7,5.336a.249.249,0,0,1,.361.342L9.346,17.864a.25.25,0,0,0,.062.367L15.84,22.3a1.454,1.454,0,0,0,2.19-.895Z" />
-            <path d="M7.885,19.182a.251.251,0,0,0-.385.211c0,1.056,0,3.585,0,3.585a1,1,0,0,0,1.707.707l2.018-2.017a.251.251,0,0,0-.043-.388Z" />
-          </svg>
-        </span>
+        <Icon name="send" className="relative flex items-center justify-center w-5 h-5" />
       </a>
     );
   }
@@ -53,54 +41,32 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
       whileHover="hover"
       exit="exit"
       onClick={copyToClipboard}
-      className="flex items-center gap-0 px-3 py-1.5 rounded-full text-sm font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
+      className="flex items-center gap-0 px-3 py-1.5 rounded-full text-base font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
     >
       <span className="relative flex items-center justify-center w-5 h-5">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          preserveAspectRatio="none"
+        <Icon
+          name="send"
           className={cn(
             'absolute duration-150 group-hover:opacity-0 group-hover:scale-50',
             copied && 'transition-all opacity-0 scale-50'
           )}
-          aria-hidden="true"
-          aria-label="send icon"
-        >
-          <path d="M22.984.638a.5.5,0,0,0-.718-.559L1.783,10.819a1.461,1.461,0,0,0-.1,2.527h0l4.56,2.882a.25.25,0,0,0,.3-.024L18.7,5.336a.249.249,0,0,1,.361.342L9.346,17.864a.25.25,0,0,0,.062.367L15.84,22.3a1.454,1.454,0,0,0,2.19-.895Z" />
-          <path d="M7.885,19.182a.251.251,0,0,0-.385.211c0,1.056,0,3.585,0,3.585a1,1,0,0,0,1.707.707l2.018-2.017a.251.251,0,0,0-.043-.388Z" />
-        </svg>
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 512 512"
-          fill="currentColor"
-          preserveAspectRatio="none"
+        />
+        <Icon
+          name="copy"
           className={cn(
             'absolute duration-150 opacity-0 scale-50',
             copied
               ? 'transition-all scale-50 opacity-0'
               : 'opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100'
           )}
-          aria-hidden="true"
-          aria-label="copy icon"
-        >
-          <path d="M448 0H224C188.7 0 160 28.65 160 64v224c0 35.35 28.65 64 64 64h224c35.35 0 64-28.65 64-64V64C512 28.65 483.3 0 448 0zM464 288c0 8.822-7.178 16-16 16H224C215.2 304 208 296.8 208 288V64c0-8.822 7.178-16 16-16h224c8.822 0 16 7.178 16 16V288zM304 448c0 8.822-7.178 16-16 16H64c-8.822 0-16-7.178-16-16V224c0-8.822 7.178-16 16-16h64V160H64C28.65 160 0 188.7 0 224v224c0 35.35 28.65 64 64 64h224c35.35 0 64-28.65 64-64v-64h-48V448z" />
-        </svg>
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="#f1c40f"
-          preserveAspectRatio="none"
-          className={cn('absolute duration-150 opacity-0 scale-50', copied && 'transition-color opacity-100 scale-100')}
-          aria-hidden="true"
-          aria-label="tick icon"
-        >
-          <path d="M 20.292969 5.2929688 L 9 16.585938 L 4.7070312 12.292969 L 3.2929688 13.707031 L 9 19.414062 L 21.707031 6.7070312 L 20.292969 5.2929688 z" />
-        </svg>
+        />
+        <Icon
+          name="tick"
+          className={cn(
+            'absolute duration-150 opacity-0 scale-50 text-primary',
+            copied && 'transition-color opacity-100 scale-100'
+          )}
+        />
       </span>
       <motion.span
         className="inline-flex text-md overflow-hidden"
