@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '../utils/cn';
 import AppIconTooltip from './AppIconTooltip';
+import Icon from './Icon';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import Video from './Video';
@@ -21,6 +23,8 @@ interface ProjectSectionProps {
 }
 
 function ProjectSection({ title, subTitle, paragraphs, technos, assets }: ProjectSectionProps) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
@@ -31,18 +35,25 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
           <AppIconTooltip items={technos} />
         </div>
         <div className="w-full md:w-10/12">
-          {paragraphs.map(
-            (paragraph: {
-              bold?: boolean;
-              white?: boolean;
-              bigger?: boolean;
-              text: string;
-            }) => (
-              <Paragraph key={paragraph.text} bold={paragraph.bold} white={paragraph.white} bigger={paragraph.bigger}>
-                {paragraph.text}
-              </Paragraph>
-            )
+          {paragraphs.length > 0 && (
+            <Paragraph bold white bigger>
+              {paragraphs[0].text}
+            </Paragraph>
           )}
+
+          <div className={cn('hidden md:block', showMore ? 'block' : 'hidden')}>
+            {paragraphs.slice(1).map((paragraph) => (
+              <Paragraph key={paragraph.text}>{paragraph.text}</Paragraph>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowMore(!showMore)}
+            className="inline-flex items-center gap-2 text-slate-500 text-base font-bold md:hidden"
+          >
+            <Icon name={showMore ? 'arrow-up' : 'arrow-down'} className="w-6 h-6 -translate-y-[1px]" />
+            {showMore ? 'Read less' : 'Read more'}
+          </button>
         </div>
       </div>
       <div className="relative -mx-4">

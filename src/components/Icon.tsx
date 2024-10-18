@@ -1,4 +1,7 @@
-import Back from '../assets/svg/back.svg?react';
+import ArrowDown from '../assets/svg/arrow-down.svg?react';
+import ArrowLeft from '../assets/svg/arrow-left.svg?react';
+import ArrowRight from '../assets/svg/arrow-right.svg?react';
+import ArrowUp from '../assets/svg/arrow-up.svg?react';
 import Copy from '../assets/svg/copy.svg?react';
 import Github from '../assets/svg/github.svg?react';
 import Instagram from '../assets/svg/instagram.svg?react';
@@ -15,7 +18,10 @@ const technos = {
   linkedin: <Linkedin />,
   instagram: <Instagram />,
   github: <Github />,
-  back: <Back />,
+  'arrow-left': <ArrowLeft />,
+  'arrow-right': <ArrowRight />,
+  'arrow-up': <ArrowUp />,
+  'arrow-down': <ArrowDown />,
   copy: <Copy />,
   send: <Send />,
   tick: <Tick />

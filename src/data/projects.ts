@@ -6,23 +6,14 @@ const projects = [
     paragraphs: [
       {
         id: 1,
-        bold: true,
-        white: true,
-        bigger: true,
         text: "I designed Axeptio's website with a strong emphasis on creating an intuitive and user-friendly experience. My goal was to present Axeptio's solutions in a way that users could easily grasp, with a smooth and effortless navigation."
       },
       {
         id: 2,
-        bold: false,
-        white: false,
-        bigger: false,
         text: "From a design perspective, I aimed for clarity and simplicity. I crafted a clean, modern look that reflects Axeptio's values of trust and transparency—key elements for a consent management system."
       },
       {
         id: 3,
-        bold: false,
-        white: false,
-        bigger: false,
         text: 'On the development side, I focused on performance and cross-browser compatibility, making sure the website runs smoothly on both desktop and mobile devices.'
       }
     ],
@@ -96,23 +87,14 @@ const projects = [
     paragraphs: [
       {
         id: 1,
-        bold: true,
-        white: true,
-        bigger: true,
         text: 'Gusto is a comprehensive design system crafted for Axeptio, providing a cohesive and intuitive foundation for creating digital experiences.'
       },
       {
         id: 2,
-        bold: false,
-        white: false,
-        bigger: false,
         text: 'Developed with a focus on scalability, consistency, and user-friendliness, Gusto streamlines the design and development process, ensuring that all components, from typography to UI elements, align seamlessly.'
       },
       {
         id: 3,
-        bold: false,
-        white: false,
-        bigger: false,
         text: "It offers a versatile toolkit that empowers designers and developers to build interfaces efficiently, enhancing both the visual identity and functional integrity of Axeptio's digital products."
       }
     ],
@@ -166,23 +148,14 @@ const projects = [
     paragraphs: [
       {
         id: 1,
-        bold: true,
-        white: true,
-        bigger: true,
         text: 'Taste is an innovative browser extension designed to take control of your online experience by acting as a personal consent manager.'
       },
       {
         id: 2,
-        bold: false,
-        white: false,
-        bigger: false,
         text: 'Say goodbye to the annoyance of cookie banners, as Taste seamlessly filters and manages cookies on websites, automating the entire consent process on your behalf.'
       },
       {
         id: 3,
-        bold: false,
-        white: false,
-        bigger: false,
         text: "With Taste, you regain your browsing freedom, ensuring that your preferences are respected while you navigate the web effortlessly. It's all about giving you back control, so you can focus on what truly matters online."
       }
     ],
