@@ -16,8 +16,8 @@ export default {
       },
       fontSize: {
         // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/#calculating-preferred-value-parameters-based-on-specific-starting-and-ending-points
-        'intro': 'clamp(2.5rem, 5vw + 0.875rem, 6rem)',
-        'project-title': 'clamp(12rem, 25vw + 0.875rem, 18rem)',
+        'intro': 'clamp(2.5rem, 7vw, 6rem)',
+        'project-title': 'clamp(12rem, 25vw, 18rem)',
       },
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
