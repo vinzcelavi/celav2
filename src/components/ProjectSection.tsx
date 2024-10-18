@@ -46,7 +46,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
         </div>
       </div>
       <div className="relative -mx-4">
-        <div className="grid gap-1 grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
+        <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
           {assets.map((asset, index) => {
             const { ref, inView } = useInView({
               triggerOnce: true,
@@ -59,8 +59,7 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
                 ref={ref}
                 className={cn(
                   'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.75s] ease-out-quad',
-                  index === 0 && 'md:col-span-2 2xl:col-span-2',
-                  index === 1 && 'md:col-span-1 2xl:col-span-2',
+                  index === 0 && 'md:col-span-2',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                 )}
                 style={{
