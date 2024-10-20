@@ -88,7 +88,7 @@ function HelloThere() {
           {helloThere.map((paragraph, index) => (
             <p
               key={`${paragraph}-${index + 1}`}
-              className="mb-12 text-[1.25rem] md:text-[2rem] font-medium text-white/80 leading-snug"
+              className="mb-12 text-[1.25rem] md:text-[2rem] font-medium text-white/95 leading-snug"
             >
               {splitStringUsingRegex(paragraph).map((char, index) => (
                 <motion.span key={`${char}-${index + 1}`} initial={{ opacity: 0 }} className="inline">
