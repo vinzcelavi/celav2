@@ -1,6 +1,6 @@
 import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { cn } from '../utils/cn';
 import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
@@ -11,9 +11,14 @@ interface EmailComponentProps {
 }
 
 const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const email = '&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;';
   // ☝🏻 vincent@celavi.fr encoded as HTML entities
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(decodeHtmlEntities(email));
@@ -21,6 +26,9 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
     splitbee.track('Copy email');
     setTimeout(() => setCopied(false), 2000);
   };
+
+  // Prevent Hydration failed error
+  if (!isMounted) return null;
 
   if (isMobile) {
     return (

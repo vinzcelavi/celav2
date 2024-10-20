@@ -10,9 +10,14 @@ import Menu from './Menu/Menu';
 
 function StickyMenu() {
   const { locale } = useLocale();
+  const [isMounted, setIsMounted] = useState(false);
   const [welcomeMessage, setWelcomeMessage] = useState<string>('Hello there!');
   const [isVisible, setIsVisible] = useState(false);
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (locale === 'en') {
@@ -37,6 +42,9 @@ function StickyMenu() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [locale]);
+
+  // Prevent Hydration failed error
+  if (!isMounted) return null;
 
   return (
     <div

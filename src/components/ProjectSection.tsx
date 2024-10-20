@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
@@ -92,7 +91,7 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                 )}
                 style={{
-                  transitionDelay: isMobile ? '0ms' : `${index * 100}ms`
+                  transitionDelay: `${index * 100}ms`
                 }}
               >
                 <div

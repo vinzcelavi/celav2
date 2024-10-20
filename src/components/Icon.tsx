@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import ArrowDown from '../assets/svg/arrow-down.svg?react';
 import ArrowLeft from '../assets/svg/arrow-left.svg?react';
 import ArrowRight from '../assets/svg/arrow-right.svg?react';
@@ -34,10 +35,19 @@ const icons = {
 };
 
 function Icon({ name, className = '' }: IconProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   if (!icons[name as keyof typeof icons]) {
     console.warn(`Icon "${name}" not found`);
     return null;
   }
+
+  // Prevent Hydration failed error
+  if (!isMounted) return null;
 
   return <span className={className}>{icons[name as keyof typeof icons]}</span>;
 }
