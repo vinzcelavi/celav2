@@ -75,9 +75,9 @@ const getProjects = async () => {
 }
 
 getProjects().then(() => {
-  console.info('Successfully wrote file')
+  console.info('projectsNotion.json: Successfully wrote file')
 }).catch((err) => {
-  console.info('Error writing file', err)
+  console.info('projectsNotion.json: Error writing file', err)
 })
 
 export { getProjects };
