@@ -23,7 +23,7 @@ function HelloThere() {
   } else if (locale === 'fr') {
     helloThere = [
       "Avec une véritable passion pour le design 💅 et le développement web 👨‍💻, j'aime créer des interfaces simples et élégantes, faciles à utiliser et qui se distinguent par leur esthétique. Pour moi, chaque projet est l'occasion de mêler créativité et performance technique pour concevoir des solutions sur mesure adaptées aux besoins de mes clients.",
-      "Jusqu'à présent, j'ai eu la chance de travailler avec des entreprises comme Axeptio ✋, Swile 💳 et Teads 📺, où j'y ai aiguisé mon goût pour les interfaces web minimalistes et bien pensées. Que je travaille pour de jeunes startups ambitieuses ou des entreprises plus établies, je mets un point d'honneur à soigner chaque détail de mes créations, en gardant toujours l'utilisateur final au centre de mes préoccupations.",
+      "Jusqu'à présent, j'ai eu la chance de travailler avec des entreprises comme Axeptio ✋, Swile 💳 et Teads 📺, où j'ai aiguisé mon goût pour les interfaces web minimalistes et bien pensées. Que je travaille pour de jeunes startups ambitieuses ou des entreprises plus établies, je mets un point d'honneur à soigner chaque détail de mes créations, en gardant toujours l'utilisateur final au centre de mes préoccupations.",
       'Lorsque je ne suis pas derrière mon écran à concevoir des applications ou des sites web, vous me trouverez probablement sur un court de Squash 🏸, en train de boire des bières 🍻, ou de faire des blagues 🤡 - plus ou moins bonnes, mais toujours avec panache !'
     ];
   }
