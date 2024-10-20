@@ -17,7 +17,7 @@ function Paragraph({
     <p
       className={cn(
         'text-slate-400 max-w-2xl',
-        bold && 'font-semibold',
+        bold && 'font-medium',
         white && 'text-white',
         big && 'text-lg md:text-xl',
         bigger && 'text-xl md:text-2xl'
