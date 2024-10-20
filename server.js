@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import express from 'express'
 import { Transform } from 'node:stream'
+import { getProjects } from './import-from-notion.js';
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
@@ -36,7 +37,9 @@ if (!isProduction) {
   app.use(base, sirv('./dist/client', { extensions: [] }))
 }
 
-// Serve HTML
+// Load projects from Notion
+getProjects();
+
 app.use('*', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '')

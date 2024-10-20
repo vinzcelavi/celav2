@@ -4,11 +4,7 @@ import { useState } from 'react';
 const AppIconTooltip = ({
   items
 }: {
-  items: {
-    id: number;
-    name: string;
-    image: string;
-  }[];
+  items: string[];
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
@@ -25,15 +21,15 @@ const AppIconTooltip = ({
 
   return (
     <div className="relative mr-2 flex flex-wrap">
-      {items.map((item, _idx) => (
+      {items.map((item, index) => (
         <div
           className="relative -mr-2 group"
-          key={item.name}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          key={item}
+          onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence mode="popLayout">
-            {hoveredIndex === item.id && (
+            {hoveredIndex === index && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
@@ -55,7 +51,7 @@ const AppIconTooltip = ({
                 className="absolute z-50 w-full -top-12 flex text-xs flex-col items-center justify-center"
               >
                 <div className="absolute z-30 left-1/2 -translate-x-1/2 py-2 px-4 font-bold text-base rounded-md bg-slate-950/90 text-light">
-                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
                 </div>
               </motion.div>
             )}
@@ -65,8 +61,8 @@ const AppIconTooltip = ({
             loading="lazy"
             height={100}
             width={100}
-            src={item.image}
-            alt={item.name}
+            src={`${import.meta.env.VITE_AWS_BUCKET_URL}/appicons/${item}.avif`}
+            alt={item}
             className="relative object-cover !m-0 !p-0 object-top rounded-xl h-10 w-10 border-2 border-slate-800 group-hover:border-white group-hover:scale-125 group-hover:z-30 transition duration-150"
           />
         </div>

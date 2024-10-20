@@ -2,47 +2,45 @@ import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '../utils/cn';
+import { identifyAssetType } from '../utils/identifyAssetType';
+import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
 import AppIconTooltip from './AppIconTooltip';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import Video from './Video';
 
 interface ProjectSectionProps {
-  active: boolean;
   title: string;
-  subTitle: string;
-  paragraphs: {
-    bold?: boolean;
-    white?: boolean;
-    bigger?: boolean;
-    text: string;
-  }[];
-  technos: { id: number; name: string; image: string }[];
-  assets: Array<{ alt: string; placeholder?: string } & ({ img: string } | { video: string })>;
+  type: string;
+  description: string;
+  skills: string[];
+  assets: string[];
+  active: boolean;
 }
 
-function ProjectSection({ title, subTitle, paragraphs, technos, assets }: ProjectSectionProps) {
+function ProjectSection({ title, type, description, skills, assets }: ProjectSectionProps) {
   const [showMore, setShowMore] = useState(false);
+  const paragraphs = splitIntoParagraphs(description);
 
   return (
     <section className="mb-52 md:mb-72">
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
         <div className="flex flex-col items-start md:items-end gap-2 mb-8">
           <h2 className="text-4xl md:text-5xl font-bold">{title}</h2>
-          <h3 className="text-xl font-light text-primary mb-4 md:mb-6">{subTitle}</h3>
+          <h3 className="mb-4 md:mb-6 text-xl font-light text-primary capitalize">{type}</h3>
 
-          <AppIconTooltip items={technos} />
+          <AppIconTooltip items={skills} />
         </div>
         <div className="w-full md:w-10/12">
           {paragraphs.length > 0 && (
             <Paragraph bold white bigger>
-              {paragraphs[0].text}
+              {paragraphs[0] ?? ''}
             </Paragraph>
           )}
 
           <div className={cn('hidden md:block', showMore ? 'block' : 'hidden')}>
-            {paragraphs.slice(1).map((paragraph) => (
-              <Paragraph key={paragraph.text}>{paragraph.text}</Paragraph>
+            {paragraphs.slice(1).map((paragraph: string) => (
+              <Paragraph key={paragraph.slice(0, 10)}>{paragraph}</Paragraph>
             ))}
           </div>
           <button
@@ -67,10 +65,10 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
 
             return (
               <div
-                key={asset.alt}
+                key={asset}
                 ref={ref}
                 className={cn(
-                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.75s] ease-out-quad',
+                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad',
                   index === 0 && 'md:col-span-2',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                 )}
@@ -84,17 +82,16 @@ function ProjectSection({ title, subTitle, paragraphs, technos, assets }: Projec
                     inView ? 'scale-100' : 'scale-110'
                   )}
                 >
-                  {'video' in asset ? (
-                    <Video src={asset.video} />
-                  ) : (
+                  {identifyAssetType(asset) === 'video' ? (
+                    <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${asset}`} />
+                  ) : identifyAssetType(asset) === 'image' ? (
                     <LazyImage
-                      src={asset.img}
-                      placeholder={asset.placeholder ?? ''}
-                      alt={asset.alt}
+                      src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${asset}`}
+                      alt={asset}
                       width={105}
                       height={75}
                     />
-                  )}
+                  ) : null}
                 </div>
               </div>
             );

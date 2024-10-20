@@ -7,7 +7,7 @@ import IntroductionReveal from './components/IntroductionReveal';
 import ProjectSection from './components/ProjectSection';
 import StickyMenu from './components/StickyMenu';
 import WorkSectionTitle from './components/WorkSectionTitle/WorkSectionTitle';
-import projects from './data/projects';
+import projectsNotion from './data/projectsNotion.json';
 
 function App() {
   useEffect(() => {
@@ -26,9 +26,11 @@ function App() {
         <WorkSectionTitle />
 
         <div className="flex flex-col gap-2">
-          {projects.map((project) => (
-            <ProjectSection key={project.title} {...project} />
-          ))}
+          {projectsNotion
+            .filter((project) => project.active)
+            .map((project) => (
+              <ProjectSection key={project.title} {...project} />
+            ))}
         </div>
       </main>
 
