@@ -1,11 +1,15 @@
 import CopyEmail from '../CopyEmail';
 import Icon from '../Icon';
+import LanguageToggle from '../LanguageToggle';
 import MenuItem from './MenuItem';
 
 function Menu() {
   return (
     <menu>
       <ul className="flex items-center justify-center">
+        <li>
+          <LanguageToggle />
+        </li>
         {[
           { name: 'linkedin', href: 'https://www.linkedin.com/in/vincent-bianciotto/' },
           { name: 'instagram', href: 'https://www.instagram.com/vinzcelavi/' },

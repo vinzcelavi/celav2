@@ -1,21 +1,32 @@
 import { motion, stagger, useAnimate } from 'framer-motion';
 import { useEffect } from 'react';
 import { useApp } from '../contexts/AppContext';
+import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
 import { splitStringUsingRegex } from '../utils/splitStringUsingRegex';
 import Avatar from './Avatar';
 import Icon from './Icon';
 
-const helloThere = [
-  'With a real passion for design 💅 and computer science 👨‍💻, I love to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs.',
-  "In the past, I've been lucky enough to work with companies and brands like Axeptio ✋, Swile 💳 and Teads 📺, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns.",
-  "When I'm not behind my screen designing applications or websites, you'll probably find me on a Squash 🏸 court, drinking beers 🍻, or cracking some jokes 🤡 — more or less good, but always with panache!"
-];
-
 function HelloThere() {
+  const { locale } = useLocale();
   const [scope, animate] = useAnimate();
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
   const staggerCharacters = stagger(0.015, { startDelay: 0 });
+
+  let helloThere: string[] = [];
+  if (locale === 'en') {
+    helloThere = [
+      'With a real passion for design 💅 and web development 👨‍💻, I love to create simple, elegant interfaces that are easy to use and pleasing to the eye. For me, each project is an opportunity to blend creativity and technical performance to design tailor-made solutions adapted to my customers needs.',
+      "So far, I've been lucky enough to work with companies like Axeptio ✋, Swile 💳 and Teads 📺, where I've honed my taste for minimalist, well-thought-out web interfaces. Whether I'm working for ambitious young startups or more established companies, I make it a point of honor to take care of every detail of my creations, always keeping the end user at the center of my concerns.",
+      "When I'm not behind my screen designing applications or websites, you'll probably find me on a Squash 🏸 court, drinking beers 🍻, or cracking some jokes 🤡 — more or less good, but always with panache!"
+    ];
+  } else if (locale === 'fr') {
+    helloThere = [
+      "Avec une véritable passion pour le design 💅 et le développement web 👨‍💻, j'aime créer des interfaces simples et élégantes, faciles à utiliser et qui se distinguent par leur esthétique. Pour moi, chaque projet est l'occasion de mêler créativité et performance technique pour concevoir des solutions sur mesure adaptées aux besoins de mes clients.",
+      "Jusqu'à présent, j'ai eu la chance de travailler avec des entreprises comme Axeptio ✋, Swile 💳 et Teads 📺, où j'y ai aiguisé mon goût pour les interfaces web minimalistes et bien pensées. Que je travaille pour de jeunes startups ambitieuses ou des entreprises plus établies, je mets un point d'honneur à soigner chaque détail de mes créations, en gardant toujours l'utilisateur final au centre de mes préoccupations.",
+      'Lorsque je ne suis pas derrière mon écran à concevoir des applications ou des sites web, vous me trouverez probablement sur un court de Squash 🏸, en train de boire des bières 🍻, ou de faire des blagues 🤡 - plus ou moins bonnes, mais toujours avec panache !'
+    ];
+  }
 
   useEffect(() => {
     if (scope.current) {

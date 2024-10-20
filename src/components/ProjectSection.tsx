@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
+import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
@@ -12,15 +13,27 @@ import Video from './Video';
 interface ProjectSectionProps {
   title: string;
   type: string;
-  description: string;
+  descriptionEn: string;
+  descriptionFr: string;
   skills: string[];
   assets: string[];
   active: boolean;
 }
 
-function ProjectSection({ title, type, description, skills, assets }: ProjectSectionProps) {
+function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, assets }: ProjectSectionProps) {
+  const { locale } = useLocale();
   const [showMore, setShowMore] = useState(false);
-  const paragraphs = splitIntoParagraphs(description);
+  const [description, setDescription] = useState<string>(descriptionEn);
+  const [paragraphs, setParagraphs] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (locale === 'en') {
+      setDescription(descriptionEn);
+    } else {
+      setDescription(descriptionFr);
+    }
+    setParagraphs(splitIntoParagraphs(description));
+  }, [locale, descriptionEn, descriptionFr, description]);
 
   return (
     <section className="mb-52 md:mb-72">

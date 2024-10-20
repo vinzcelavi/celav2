@@ -6,7 +6,7 @@ import '@fontsource/mada/700.css';
 import '@fontsource/mada/800.css';
 import '@fontsource/mada/900.css';
 
-// Create a context to manage `isOpen`
+// Create a context to manage `helloThereIsOpen`
 interface AppContextType {
   helloThereIsOpen: boolean;
   setHelloThereIsOpen: (value: boolean) => void;
@@ -14,7 +14,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Create a provider to wrap the components that need to access `isOpen`
+// Create a provider to wrap the components that need to access `helloThereIsOpen`
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [helloThereIsOpen, setHelloThereIsOpen] = useState<boolean>(false);
 

@@ -1,10 +1,13 @@
 import splitbee from '@splitbee/web';
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useApp } from '../contexts/AppContext';
+import { useLocale } from '../contexts/LocaleContext';
 import Avatar from './Avatar';
 
 function WhoAmI() {
+  const { locale } = useLocale();
+  const [welcomeMessage, setWelcomeMessage] = useState<string>('Hello there!');
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const springConfig = { stiffness: 100, damping: 5 };
@@ -18,6 +21,14 @@ function WhoAmI() {
     const halfWidth = event.currentTarget.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth);
   };
+
+  useEffect(() => {
+    if (locale === 'en') {
+      setWelcomeMessage('Hello there!');
+    } else {
+      setWelcomeMessage('Bonjour!');
+    }
+  }, [locale]);
 
   return (
     <>
@@ -55,7 +66,7 @@ function WhoAmI() {
                 className="absolute z-50 w-full -top-2 -left-1/2 -translate-x-1/2 -ml-6 flex text-xs flex-col items-center justify-center pointer-events-none"
               >
                 <div className="absolute z-30 top-0 left-0 px-1.5 py-0.5 font-bold text-sm rounded-sm bg-primary text-dark">
-                  Hello there!
+                  {welcomeMessage}
                 </div>
               </motion.div>
             )}

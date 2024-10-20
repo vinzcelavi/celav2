@@ -3,15 +3,24 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useApp } from '../contexts/AppContext';
+import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
 import Avatar from './Avatar';
 import Menu from './Menu/Menu';
 
 function StickyMenu() {
+  const { locale } = useLocale();
+  const [welcomeMessage, setWelcomeMessage] = useState<string>('Hello there!');
   const [isVisible, setIsVisible] = useState(false);
   const { helloThereIsOpen, setHelloThereIsOpen } = useApp();
 
   useEffect(() => {
+    if (locale === 'en') {
+      setWelcomeMessage('Hello there!');
+    } else {
+      setWelcomeMessage('Bonjour!');
+    }
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const isAboveThreshold = currentScrollY >= 400;
@@ -27,7 +36,7 @@ function StickyMenu() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [locale]);
 
   return (
     <div
@@ -60,7 +69,7 @@ function StickyMenu() {
               exit: { width: 0, scale: 0, opacity: 0 }
             }}
           >
-            Hello there!
+            {welcomeMessage}
           </motion.span>
         </motion.div>
 

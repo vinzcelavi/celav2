@@ -34,7 +34,8 @@ const getProjects = async () => {
     // way to reference the data in that column
     const titleCell = row.properties.title;
     const typeCell = row.properties.type;
-    const descriptionCell = row.properties.description;
+    const descriptionEnCell = row.properties.description_en;
+    const descriptionFrCell = row.properties.description_fr;
     const urlCell = row.properties.url;
     const skillsCell = row.properties.skills;
     const assetsCell = row.properties.assets;
@@ -45,24 +46,26 @@ const getProjects = async () => {
     // to safely infer we have to check the `type` value.  We had one text and one url column.
     const isTitle = titleCell.type === "title";
     const isType = typeCell.type === "select";
-    const isDescription = descriptionCell.type === "rich_text";
+    const isDescriptionEn = descriptionEnCell.type === "rich_text";
+    const isDescriptionFr = descriptionFrCell.type === "rich_text";
     const isUrl = urlCell.type === "url";
     const isSkills = skillsCell.type === "multi_select";
     const isAssets = assetsCell.type === "multi_select";
     const isActive = activeCell.type === "checkbox";
 
     // Verify the types are correct
-    if (isTitle && isType && isDescription && isUrl && isSkills && isAssets && isActive) {
+    if (isTitle && isType && isDescriptionEn && isDescriptionFr && isUrl && isSkills && isAssets && isActive) {
       // Pull the string values of the cells off the column data
       const title = titleCell.title?.[0].plain_text;
       const url = urlCell.url ?? "";
-      const description = descriptionCell.rich_text?.[0].plain_text;
+      const descriptionEn = descriptionEnCell.rich_text?.[0].plain_text;
+      const descriptionFr = descriptionFrCell.rich_text?.[0].plain_text;
       const type = typeCell.select?.name;
       const skills = skillsCell.multi_select?.map((skill) => skill.name);
       const assets = assetsCell.multi_select?.map((asset) => asset.name);
       const active = activeCell.checkbox;
 
-      return { title, description, url, type, skills, assets, active };
+      return { title, descriptionEn, descriptionFr, url, type, skills, assets, active };
     }
 
     // If a row is found that does not match the rules we checked it will still return in the
@@ -75,9 +78,9 @@ const getProjects = async () => {
 }
 
 getProjects().then(() => {
-  console.info('projectsNotion.json: Successfully wrote file')
+  console.info("---###--- 🥳 './src/data/projectsNotion.json' file has been updated ---###---")
 }).catch((err) => {
-  console.info('projectsNotion.json: Error writing file', err)
+  console.info("---###--- 🥵 Error updating './src/data/projectsNotion.json' file ---###---", err)
 })
 
 export { getProjects };
