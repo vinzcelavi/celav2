@@ -75,9 +75,9 @@ const getProjects = async () => {
 }
 
 getProjects().then(() => {
-  console.log('Successfully wrote file')
+  console.info('Successfully wrote file')
 }).catch((err) => {
-  console.log('Error writing file', err)
+  console.info('Error writing file', err)
 })
 
 export { getProjects };
