@@ -26,7 +26,7 @@ function WhoAmI() {
     if (locale === 'en') {
       setWelcomeMessage('Hello there!');
     } else {
-      setWelcomeMessage('Bonjour!');
+      setWelcomeMessage('Bonjour !');
     }
   }, [locale]);
 
