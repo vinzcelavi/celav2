@@ -64,7 +64,7 @@ function StickyMenu() {
             splitbee.track('Click on Avatar from notch');
             setHelloThereIsOpen(!helloThereIsOpen);
           }}
-          className="flex items-center gap-0 group cursor-pointer hover:gap-2 transition-all duration-150"
+          className="flex items-center gap-0 group cursor-pointer md:hover:gap-2 transition-all duration-150"
         >
           <span className="flex w-8 h-8">
             <Avatar alt="Vincent Bianciotto" />

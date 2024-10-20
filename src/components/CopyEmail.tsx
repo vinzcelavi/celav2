@@ -49,7 +49,7 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
       exit="exit"
       // biome-ignore lint/a11y/useValidAnchor: <explanation>
       onClick={copyToClipboard}
-      className="flex items-center gap-0 px-3 py-1.5 rounded-full text-base font-bold hover:bg-white/15 hover:gap-2 transition-all duration-150 group cursor-pointer"
+      className="flex items-center gap-0 px-3 py-1.5 rounded-full text-base font-bold hover:bg-white/15 md:hover:gap-2 transition-all duration-150 group cursor-pointer"
     >
       <span className="relative flex items-center justify-center w-5 h-5">
         <Icon
