@@ -25,12 +25,18 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
   const [showMore, setShowMore] = useState(false);
   const [description, setDescription] = useState<string>(descriptionEn);
   const [paragraphs, setParagraphs] = useState<string[]>([]);
+  const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
+  const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
 
   useEffect(() => {
     if (locale === 'en') {
       setDescription(descriptionEn);
+      setReadMoreButtonText('Read more');
+      setReadLessButtonText('Read less');
     } else {
       setDescription(descriptionFr);
+      setReadMoreButtonText('Lire plus');
+      setReadLessButtonText('Lire moins');
     }
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
@@ -64,7 +70,7 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
               showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
             )}
           >
-            {showMore ? 'Read less' : 'Read more'}
+            {showMore ? readLessButtonText : readMoreButtonText}
           </button>
         </div>
       </div>
