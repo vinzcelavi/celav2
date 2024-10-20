@@ -31,8 +31,7 @@ a {
 }
 
 p {
-  @apply text-base;
-  @apply md:text-lg;
+  @apply text-lg;
   @apply leading-normal;
   @apply mb-4;
 }
