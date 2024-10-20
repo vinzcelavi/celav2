@@ -5,6 +5,7 @@ import ArrowUp from '../assets/svg/arrow-up.svg?react';
 import Copy from '../assets/svg/copy.svg?react';
 import Github from '../assets/svg/github.svg?react';
 import Instagram from '../assets/svg/instagram.svg?react';
+import Language from '../assets/svg/language.svg?react';
 import Linkedin from '../assets/svg/linkedin.svg?react';
 import Minus from '../assets/svg/minus.svg?react';
 import Plus from '../assets/svg/plus.svg?react';
@@ -16,7 +17,8 @@ interface IconProps {
   className?: string;
 }
 
-const technos = {
+const icons = {
+  language: <Language />,
   linkedin: <Linkedin />,
   instagram: <Instagram />,
   github: <Github />,
@@ -32,12 +34,12 @@ const technos = {
 };
 
 function Icon({ name, className = '' }: IconProps) {
-  if (!technos[name as keyof typeof technos]) {
-    console.warn(`Techno "${name}" not found`);
+  if (!icons[name as keyof typeof icons]) {
+    console.warn(`Icon "${name}" not found`);
     return null;
   }
 
-  return <span className={className}>{technos[name as keyof typeof technos]}</span>;
+  return <span className={className}>{icons[name as keyof typeof icons]}</span>;
 }
 
 export default Icon;
