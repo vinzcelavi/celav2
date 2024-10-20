@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "yarn build:client"
+  command = "node import-from-notion.js && yarn build:client"
   functions = "netlify/functions"
   publish = "dist/client"
 

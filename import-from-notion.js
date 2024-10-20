@@ -78,9 +78,9 @@ const getProjects = async () => {
 }
 
 getProjects().then(() => {
-  console.info("---###--- 🥳 './src/data/projectsNotion.json' file has been updated ---###---")
+  console.info("########## 🥳 './src/data/projectsNotion.json' file has been updated 🥳 ##########")
 }).catch((err) => {
-  console.info("---###--- 🥵 Error updating './src/data/projectsNotion.json' file ---###---", err)
+  console.info("########## 🥵 Error updating './src/data/projectsNotion.json' file 🥵 ##########", err)
 })
 
 export { getProjects };
