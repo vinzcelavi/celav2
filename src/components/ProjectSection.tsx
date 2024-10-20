@@ -47,7 +47,7 @@ function ProjectSection({ title, type, description, skills, assets }: ProjectSec
             type="button"
             onClick={() => setShowMore(!showMore)}
             className={cn(
-              'inline-flex px-2 py-0.5 text-base leading-normal font-bold rounded-md md:hidden',
+              'inline-flex px-2 py-0.5 text-sm leading-normal font-semibold rounded-[0.25rem] md:hidden',
               showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
             )}
           >
