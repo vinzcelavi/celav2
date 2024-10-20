@@ -63,11 +63,11 @@ function HelloThere() {
         {' '}
         <div
           className={cn(
-            'fixed z-40 bottom-12 left-1/2 -translate-x-1/2 lg:bottom-auto lg:top-16 lg:left-[4.5rem] lg:-translate-x-0 flex items-center gap-2 text-light text-xl font-bold cursor-pointer transition-all duration-500'
+            'fixed z-40 bottom-12 left-1/2 -translate-x-1/2 lg:bottom-auto lg:top-16 lg:left-[4.5rem] lg:-translate-x-0 flex items-center gap-2 -ml-4 text-light text-xl font-bold cursor-pointer transition-all duration-500'
           )}
         >
           <Icon name="arrow-left" />
-          <span>Back</span>
+          <span>{locale === 'en' ? 'Back' : 'Retour'}</span>
         </div>
         <div className="w-[4.5rem] h-[4.5rem] fixed z-40 top-6 left-6 md:top-10 md:left-1/2 md:-translate-x-1/2 md:-ml-[18.75rem]">
           <Avatar isActive alt="avatar" />
