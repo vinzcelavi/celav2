@@ -10,6 +10,7 @@ function Menu() {
         <li>
           <LanguageToggle />
         </li>
+
         {[
           { name: 'linkedin', href: 'https://www.linkedin.com/in/vincent-bianciotto/' },
           { name: 'instagram', href: 'https://www.instagram.com/vinzcelavi/' },
