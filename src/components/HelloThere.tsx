@@ -70,7 +70,7 @@ function HelloThere() {
           <span>{locale === 'en' ? 'Back' : 'Retour'}</span>
         </div>
         <div className="w-[4.5rem] h-[4.5rem] fixed z-40 top-6 left-6 md:top-10 md:left-1/2 md:-translate-x-1/2 md:-ml-[18.75rem]">
-          <Avatar isActive alt="avatar" />
+          <Avatar className="w-[4.5rem] h-[4.5rem]" width={72} height={72} isActive />
         </div>
       </div>
 

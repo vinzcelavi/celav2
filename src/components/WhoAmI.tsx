@@ -63,7 +63,7 @@ function WhoAmI() {
                   rotate: rotate,
                   whiteSpace: 'nowrap'
                 }}
-                className="absolute z-50 w-full -top-2 -left-1/2 -translate-x-1/2 -ml-6 flex text-xs flex-col items-center justify-center pointer-events-none"
+                className="absolute z-50 flex text-xs flex-col items-center justify-center w-full -top-2 -left-1/2 -translate-x-1/2 -ml-6 pointer-events-none"
               >
                 <div className="absolute z-30 top-0 left-0 px-1.5 py-0.5 font-bold text-sm rounded-sm bg-primary text-dark">
                   {welcomeMessage}
@@ -71,11 +71,11 @@ function WhoAmI() {
               </motion.div>
             )}
           </AnimatePresence>
-          <Avatar alt="Vincent Bianciotto" />
+          <Avatar className="w-[4.5rem] h-[4.5rem]" width={72} height={72} />
         </div>
         <div className="flex flex-col items-baseline pl-4">
-          <h1 className="text-lg font-semibold leading-tight">Vincent Bianciotto</h1>
-          <span className="text-base bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h1 className="text-md md:text-lg font-semibold leading-tight">Vincent Bianciotto</h1>
+          <span className="text-sm md:text-base bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Front-End Designer
           </span>
         </div>
