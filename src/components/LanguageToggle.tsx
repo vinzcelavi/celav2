@@ -5,15 +5,22 @@ import Icon from './Icon';
 
 function LanguageToggle() {
   const { locale, setLocale } = useLocale();
-  const [otherLanguage, setOtherLanguage] = useState<string>('Français');
+  const [isMounted, setIsMounted] = useState(false);
+  const [availableLanguage, setAvailableLanguage] = useState<string>('Français');
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (locale === 'en') {
-      setOtherLanguage('Français');
+      setAvailableLanguage('Français');
     } else {
-      setOtherLanguage('English');
+      setAvailableLanguage('English');
     }
   }, [locale]);
+
+  if (!isMounted) return null;
 
   return (
     <motion.button
@@ -33,7 +40,7 @@ function LanguageToggle() {
           exit: { width: 0, scale: 0, opacity: 0 }
         }}
       >
-        {otherLanguage}
+        {availableLanguage}
       </motion.span>
     </motion.button>
   );

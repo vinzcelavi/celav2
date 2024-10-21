@@ -6,7 +6,12 @@ import PopCornAnimation from './PopCornAnimation';
 
 const IntroductionReveal = () => {
   const { locale } = useLocale();
+  const [isMounted, setIsMounted] = useState(false);
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (locale === 'en') {
@@ -15,6 +20,8 @@ const IntroductionReveal = () => {
       setText('Bonjour, je suis développeur Front-end et Product Designer depuis plus de dix ans.');
     }
   }, [locale]);
+
+  if (!isMounted) return null;
 
   return (
     <>
