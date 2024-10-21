@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { type ReactNode, createContext, memo, useContext, useEffect, useMemo, useState } from 'react';
 
 interface LocaleContextType {
   locale: string;
@@ -29,7 +29,11 @@ export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   }, [locale]);
 
-  return <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>;
+  const contextValue = useMemo(() => {
+    return { locale, setLocale };
+  }, [locale]);
+
+  return <LocaleContext.Provider value={contextValue}>{children}</LocaleContext.Provider>;
 };
 
 export const useLocale = () => {
@@ -40,4 +44,14 @@ export const useLocale = () => {
   return context;
 };
 
+const withLocaleFromContext = (Component: React.FC<{ locale: string }>) => {
+  const ComponentMemo = memo(Component);
+
+  return () => {
+    const { locale } = useLocale();
+    return <ComponentMemo locale={locale} />;
+  };
+};
+
+export { withLocaleFromContext };
 export default LocaleContext;

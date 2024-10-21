@@ -21,10 +21,10 @@ function WorkSectionTitle() {
 
   return (
     <div className="mb-20 md:mb-40">
-      <h2 className="relative z-10 inline-flex text-project-title leading-[1.1] font-extrabold text-slate-800 float-right lg:float-none">
+      <h2 className="relative z-10 inline-flex text-project-title leading-[1.1] font-black text-slate-800 float-right lg:float-none">
         {workTitle}
         <span>{'\u00A0\u00A0'}</span>
-        <span className="block absolute top-[10%] right-0 w-[4.75rem] md:w-[5.25rem] lg:w-[7rem] animate-spin-slow">
+        <span className="block absolute top-[10%] right-0 w-[4.5rem] md:w-[5rem] lg:w-[7rem] animate-spin-slow">
           <Asterisk />
         </span>
       </h2>

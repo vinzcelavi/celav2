@@ -67,7 +67,7 @@ function StickyMenu() {
           className="flex items-center gap-0 group cursor-pointer md:hover:gap-2 transition-all duration-150"
         >
           <span className="flex w-8 h-8">
-            <Avatar alt="Vincent Bianciotto" />
+            <Avatar className="w-[32px] h-[32px]" width={32} height={32} />
           </span>
           <motion.span
             className="inline-flex text-base font-bold whitespace-nowrap bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent overflow-hidden"

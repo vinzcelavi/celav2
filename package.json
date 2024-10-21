@@ -24,7 +24,8 @@
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.13.1",
     "sirv": "^2.0.4",
-    "vite-plugin-biome": "^1.0.12"
+    "vite-plugin-biome": "^1.0.12",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@hiogawa/vite-plugin-ssr-css": "^0.0.1",

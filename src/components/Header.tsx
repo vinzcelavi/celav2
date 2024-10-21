@@ -1,3 +1,4 @@
+import LanguageToggle from './LanguageToggle';
 import Menu from './Menu/Menu';
 import WhoAmI from './WhoAmI';
 
@@ -7,6 +8,9 @@ function Header() {
       <WhoAmI />
       <div className="hidden md:flex">
         <Menu />
+      </div>
+      <div className="flex md:hidden">
+        <LanguageToggle />
       </div>
     </header>
   );

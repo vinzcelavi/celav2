@@ -78,9 +78,11 @@ const getProjects = async () => {
 }
 
 getProjects().then(() => {
-  console.info("########## 🥳 './src/data/projectsNotion.json' file has been updated 🥳 ##########")
+  let outputAnsiColor = '\x1b[38;5;83m%s\x1b[0m';
+  console.info(outputAnsiColor, 'File successfuly wrote: ./src/data/projectsNotion.json 🥳🥳🥳\n_____________________________________________________________');
 }).catch((err) => {
-  console.info("########## 🥵 Error updating './src/data/projectsNotion.json' file 🥵 ##########", err)
+  let outputAnsiColor = '\x1b[38;5;210m%s\x1b[0m';
+  console.error(outputAnsiColor, 'Error writing file: ./src/data/projectsNotion.json 🥵🥵🥵\n__________________________________________________________\n', err);
 })
 
 export { getProjects };
