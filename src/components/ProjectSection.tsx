@@ -34,8 +34,8 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
       setReadLessButtonText('Read less');
     } else {
       setDescription(descriptionFr);
-      setReadMoreButtonText('Lire plus');
-      setReadLessButtonText('Lire moins');
+      setReadMoreButtonText('En lire plus');
+      setReadLessButtonText('En lire moins');
     }
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
