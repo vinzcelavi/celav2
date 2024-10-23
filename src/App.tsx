@@ -24,7 +24,7 @@ function App({ locale }: { locale: string }) {
 
   useEffect(() => {
     if (locale === 'en') {
-      setLocaleSwitchMessage('Switch to English');
+      setLocaleSwitchMessage('Switching to English');
     } else {
       setLocaleSwitchMessage('On passe en Français');
     }
