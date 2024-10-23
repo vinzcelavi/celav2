@@ -57,7 +57,7 @@ const getProjects = async () => {
     if (isTitle && isType && isDescriptionEn && isDescriptionFr && isUrl && isSkills && isAssets && isActive) {
       // Pull the string values of the cells off the column data
       const title = titleCell.title?.[0].plain_text;
-      const url = urlCell.url ?? "";
+      const url = urlCell.url ?? '';
       const descriptionEn = descriptionEnCell.rich_text?.[0].plain_text;
       const descriptionFr = descriptionFrCell.rich_text?.[0].plain_text;
       const type = typeCell.select?.name;

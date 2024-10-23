@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
@@ -26,6 +27,7 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
   const [paragraphs, setParagraphs] = useState<string[]>([]);
   const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
   const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
+  const [fullscreenAsset, setFullscreenAsset] = useState<string | null>(null);
 
   useEffect(() => {
     if (locale === 'en') {
@@ -39,6 +41,11 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
     }
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
+
+  const handleImageClick = ({ asset }: { asset: string }) => {
+    setFullscreenAsset(asset);
+    document.body.classList.toggle('overflow-hidden');
+  };
 
   return (
     <section className="mb-52 md:mb-72">
@@ -82,17 +89,19 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
             });
 
             return (
+              // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
               <div
                 key={asset}
                 ref={ref}
                 className={cn(
-                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad',
+                  'relative w-full aspect-project-preview rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
                   index === 0 && 'md:col-span-2',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                 )}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
+                onClick={() => handleImageClick({ asset: asset })}
               >
                 <div
                   className={cn(
@@ -116,6 +125,32 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
           })}
         </div>
       </div>
+
+      <AnimatePresence>
+        {fullscreenAsset && (
+          <motion.div
+            className="z-[10000] fixed inset-0 flex items-center justify-center w-screen h-screen bg-dark cursor-zoom-out overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: 'easeInOut', duration: 0.3 }}
+            onClick={() => {
+              document.body.classList.remove('overflow-hidden');
+              setFullscreenAsset(null);
+            }}
+          >
+            {identifyAssetType(fullscreenAsset) === 'video' ? (
+              <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} />
+            ) : identifyAssetType(fullscreenAsset) === 'image' ? (
+              <img
+                src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`}
+                alt={fullscreenAsset}
+                className="w-auto h-screen object-contain"
+              />
+            ) : null}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

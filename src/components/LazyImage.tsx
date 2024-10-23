@@ -4,12 +4,12 @@ import { cn } from '../utils/cn';
 interface LazyImageProps {
   src: string;
   alt: string;
-  placeholder?: string;
   width?: number;
   height?: number;
+  onClick?: () => void;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, height }) => {
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, onClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -24,15 +24,13 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
   }, []);
 
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
       className={cn(
         `flex items-center justify-center w-[${width}px] h-[${height}px] bg-white lazy-image bg-cover bg-position-center bg-no-repeat`,
         imageLoaded ? 'loaded' : 'blurred'
       )}
-      style={{
-        backgroundImage: `url(${placeholder})`,
-        backgroundSize: '100% 100%'
-      }}
+      onClick={onClick}
     >
       <img
         ref={imgRef}
