@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
@@ -16,16 +17,28 @@ interface ProjectSectionProps {
   descriptionFr: string;
   skills: string[];
   assets: string[];
+  bgColor?: string;
+  meshGradient?: string;
   active: boolean;
 }
 
-function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, assets }: ProjectSectionProps) {
+function ProjectSection({
+  title,
+  type,
+  descriptionEn,
+  descriptionFr,
+  skills,
+  assets,
+  bgColor,
+  meshGradient
+}: ProjectSectionProps) {
   const { locale } = useLocale();
   const [showMore, setShowMore] = useState(false);
   const [description, setDescription] = useState<string>(descriptionEn);
   const [paragraphs, setParagraphs] = useState<string[]>([]);
   const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
   const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
+  const [fullscreenAsset, setFullscreenAsset] = useState<string | null>(null);
 
   useEffect(() => {
     if (locale === 'en') {
@@ -39,6 +52,11 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
     }
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
+
+  const handleImageClick = ({ asset }: { asset: string }) => {
+    setFullscreenAsset(asset);
+    document.body.classList.toggle('overflow-hidden');
+  };
 
   return (
     <section className="mb-52 md:mb-72">
@@ -82,17 +100,21 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
             });
 
             return (
+              // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
               <div
                 key={asset}
                 ref={ref}
                 className={cn(
-                  'w-full aspect-project-preview rounded-md overflow-hidden col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad',
+                  'relative flex flex-col items-center justify-end w-full pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
                   index === 0 && 'md:col-span-2',
-                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0',
+                  `${title.toLowerCase()}-bg-color`,
+                  `${title.toLowerCase()}-mesh-gradient`
                 )}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
+                onClick={() => handleImageClick({ asset: asset })}
               >
                 <div
                   className={cn(
@@ -116,6 +138,45 @@ function ProjectSection({ title, type, descriptionEn, descriptionFr, skills, ass
           })}
         </div>
       </div>
+
+      <AnimatePresence>
+        {fullscreenAsset && (
+          <motion.div
+            className={cn(
+              'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark cursor-zoom-out overflow-hidden',
+              `${title.toLowerCase()}-bg-color`,
+              `${title.toLowerCase()}-mesh-gradient`
+            )}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: 'easeInOut', duration: 0.3 }}
+            onClick={() => {
+              document.body.classList.remove('overflow-hidden');
+              setFullscreenAsset(null);
+            }}
+          >
+            <div className="max-w-[94vw] h-auto lg:w-auto lg:max-h-[94vh] object-contain aspect-project-preview lg:-mb-1.5 shadow-3xl rounded-t-[8px]">
+              {identifyAssetType(fullscreenAsset) === 'video' ? (
+                <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} />
+              ) : identifyAssetType(fullscreenAsset) === 'image' ? (
+                <LazyImage src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} alt={fullscreenAsset} />
+              ) : null}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>
+        {`
+          .${title.toLowerCase()}-bg-color {
+            background-color: ${bgColor};
+          }
+          .${title.toLowerCase()}-mesh-gradient {
+            background-image: ${meshGradient};
+          }
+        `}
+      </style>
     </section>
   );
 }

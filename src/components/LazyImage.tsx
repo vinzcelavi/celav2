@@ -4,12 +4,13 @@ import { cn } from '../utils/cn';
 interface LazyImageProps {
   src: string;
   alt: string;
-  placeholder?: string;
   width?: number;
   height?: number;
+  className?: string;
+  onClick?: () => void;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, height }) => {
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, className, onClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -24,15 +25,14 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
   }, []);
 
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
       className={cn(
-        `flex items-center justify-center w-[${width}px] h-[${height}px] bg-white lazy-image bg-cover bg-position-center bg-no-repeat`,
+        'relative pt-0.5 px-0.5 lg:pt-1.5 lg:px-1.5 lg:pb-0 flex flex-col items-center justify-end bg-white/30 rounded-[6px] lg:rounded-t-[9px] lg:rounded-b-none border-[1px] border-white/20 lg:border-b-0',
+        className,
         imageLoaded ? 'loaded' : 'blurred'
       )}
-      style={{
-        backgroundImage: `url(${placeholder})`,
-        backgroundSize: '100% 100%'
-      }}
+      onClick={onClick}
     >
       <img
         ref={imgRef}
@@ -42,7 +42,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, placeholder, alt, width, hei
         alt={alt}
         width={width}
         height={height}
-        className="relative aspect-project-preview"
+        className="relative flex grow aspect-project-preview shadow-xl rounded-[4px] lg:rounded-[6px] lg:rounded-b-none"
       />
     </figure>
   );

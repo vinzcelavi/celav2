@@ -39,6 +39,8 @@ const getProjects = async () => {
     const urlCell = row.properties.url;
     const skillsCell = row.properties.skills;
     const assetsCell = row.properties.assets;
+    const bgColorCell = row.properties.bg_color;
+    const meshGradientCell = row.properties.mesh_gradient;
     const activeCell = row.properties.active;
 
     // Depending on the column "type" we selected in Notion there will be different
@@ -52,20 +54,22 @@ const getProjects = async () => {
     const isSkills = skillsCell.type === "multi_select";
     const isAssets = assetsCell.type === "multi_select";
     const isActive = activeCell.type === "checkbox";
-
+    
     // Verify the types are correct
     if (isTitle && isType && isDescriptionEn && isDescriptionFr && isUrl && isSkills && isAssets && isActive) {
       // Pull the string values of the cells off the column data
       const title = titleCell.title?.[0].plain_text;
-      const url = urlCell.url ?? "";
+      const url = urlCell.url ?? '';
       const descriptionEn = descriptionEnCell.rich_text?.[0].plain_text;
       const descriptionFr = descriptionFrCell.rich_text?.[0].plain_text;
       const type = typeCell.select?.name;
       const skills = skillsCell.multi_select?.map((skill) => skill.name);
       const assets = assetsCell.multi_select?.map((asset) => asset.name);
+      const bgColor = bgColorCell.rich_text?.[0]?.plain_text;
+      const meshGradient = meshGradientCell.rich_text?.[0]?.plain_text;
       const active = activeCell.checkbox;
 
-      return { title, descriptionEn, descriptionFr, url, type, skills, assets, active };
+      return { title, descriptionEn, descriptionFr, url, type, skills, assets, bgColor, meshGradient, active };
     }
 
     // If a row is found that does not match the rules we checked it will still return in the

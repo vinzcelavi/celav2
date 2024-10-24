@@ -39,7 +39,18 @@ function Video({ src }: { src: string }) {
     };
   }, [isVisible]);
 
-  return <video ref={videoRef} src={src} loop muted playsInline />;
+  return (
+    <div className="relative p-0.5 lg:p-1.5 lg:pb-0 flex flex-col items-center justify-end bg-white/30 rounded-[6px] lg:rounded-t-[9px] lg:rounded-b-none border-[1px] border-white/20 lg:border-b-0">
+      <video
+        ref={videoRef}
+        src={src}
+        loop
+        muted
+        playsInline
+        className="relative flex-1 aspect-project-preview shadow-xl rounded-[4px] lg:rounded-[6px] lg:rounded-b-none"
+      />
+    </div>
+  );
 }
 
 export default Video;
