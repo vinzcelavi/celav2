@@ -134,7 +134,7 @@ function ProjectSection({
                       src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${asset}`}
                       alt={asset}
                       width={105}
-                      height={75}
+                      height={87}
                     />
                   ) : null}
                 </div>
