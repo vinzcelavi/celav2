@@ -3,13 +3,13 @@ import { lazy, useEffect, useState } from 'react';
 import Header from './components/Header';
 import HelloThere from './components/HelloThere';
 import IntroductionReveal from './components/IntroductionReveal';
-import ProjectSection from './components/ProjectSection';
 import StickyMenu from './components/StickyMenu';
 import { Toast, useToastControls } from './components/Toast';
 import WorkSectionTitle from './components/WorkSectionTitle/WorkSectionTitle';
 import { withLocaleFromContext } from './contexts/LocaleContext';
 import projectsNotion from './data/projectsNotion.json';
 
+const ProjectSection = lazy(() => import('./components/ProjectSection'));
 const Footer = lazy(() => import('./components/Footer'));
 
 function App({ locale }: { locale: string }) {

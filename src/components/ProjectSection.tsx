@@ -33,12 +33,17 @@ function ProjectSection({
   meshGradient
 }: ProjectSectionProps) {
   const { locale } = useLocale();
+  const [isMounted, setIsMounted] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [description, setDescription] = useState<string>(descriptionEn);
   const [paragraphs, setParagraphs] = useState<string[]>([]);
   const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
   const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
   const [fullscreenAsset, setFullscreenAsset] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (locale === 'en') {
@@ -59,7 +64,7 @@ function ProjectSection({
   };
 
   return (
-    <section className="mb-52 md:mb-72">
+    <section className={cn('mb-52 md:mb-72', !isMounted ? 'opacity-0' : 'opacity-100')}>
       <div className="md:grid md:grid-cols-33/67 gap-16 mb-10">
         <div className="flex flex-col items-start md:items-end gap-2 mb-8">
           <h2 className="text-4xl md:text-5xl font-bold">{title}</h2>
