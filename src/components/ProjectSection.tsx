@@ -161,7 +161,7 @@ function ProjectSection({
               setFullscreenAsset(null);
             }}
           >
-            <div className="max-w-[94vw] h-auto lg:w-auto lg:max-h-[94vh] object-contain aspect-project-preview lg:-mb-1.5 shadow-3xl rounded-t-[8px]">
+            <div className="max-w-[94vw] h-auto lg:w-auto lg:max-h-[94vh] object-contain aspect-project-preview lg:-mb-3">
               {identifyAssetType(fullscreenAsset) === 'video' ? (
                 <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} />
               ) : identifyAssetType(fullscreenAsset) === 'image' ? (
