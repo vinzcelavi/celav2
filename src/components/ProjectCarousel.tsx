@@ -112,15 +112,15 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
     <AnimatePresence>
       {selectedAsset && assets && (
         <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: 'easeInOut', duration: 0.3 }}
           className={cn(
             'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden',
             `${title.toLowerCase()}-bg-color`,
             `${title.toLowerCase()}-mesh-gradient`
           )}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ ease: 'easeInOut', duration: 0.3 }}
         >
           <div className="hidden md:flex absolute z-200 top-8 left-1/2 -translate-x-1/2">
             <KeyboardKey
