@@ -122,7 +122,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
             `${title.toLowerCase()}-mesh-gradient`
           )}
         >
-          <div className="hidden md:flex absolute z-200 top-8 left-1/2 -translate-x-1/2">
+          <div className="hidden md:flex absolute z-50 top-4 left-1/2 -translate-x-1/2 px-8 pt-5 pb-7">
             <KeyboardKey
               onClick={() => {
                 swipeToImage(-1);
@@ -158,7 +158,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative flex flex-col items-center justify-end lg:justify-end grow w-auto h-auto max-w-[90vw] max-h-[74vh] lg:max-h-[84vh] object-contain aspect-project-preview lg:-mb-3 cursor-zoom-out"
+            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[92vw] lg:max-h-[92vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -173,7 +173,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={1}
                 onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
-                className="absolute top-0 bottom-0 w-full h-full flex flex-col items-center justify-center lg:justify-end lg:-mb-3"
+                className="absolute top-0 bottom-0 flex flex-col items-center justify-center"
               >
                 {identifyAssetType(assets[activeImageIndex]) === 'video' ? (
                   <Video
