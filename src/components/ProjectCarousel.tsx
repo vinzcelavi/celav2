@@ -45,7 +45,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
 
   useEffect(() => {
     if (selectedAssetIndex) {
-      setImageCount([selectedAssetIndex !== -1 ? selectedAssetIndex : 0, 0]);
+      skipToImage(selectedAssetIndex !== -1 ? selectedAssetIndex : 0);
     }
   }, [selectedAssetIndex]);
 
@@ -66,6 +66,16 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
     } else if (draggedDistance < -swipeThreshold) {
       swipeToImage(1);
     }
+  };
+
+  const skipToImage = (imageId: number) => {
+    let changeDirection = 1;
+    if (imageId > activeImageIndex) {
+      changeDirection = 1;
+    } else if (imageId < activeImageIndex) {
+      changeDirection = -1;
+    }
+    setImageCount([imageId, changeDirection]);
   };
 
   // Memoize the handleKeyPress function
