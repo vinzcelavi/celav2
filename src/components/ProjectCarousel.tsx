@@ -44,14 +44,10 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
   const keyPressTimer = setTimeout(resetKeyPress, 150);
 
   useEffect(() => {
-    if (selectedAsset && assets) {
+    if (selectedAssetIndex) {
       setImageCount([selectedAssetIndex !== -1 ? selectedAssetIndex : 0, 0]);
     }
-
-    return () => {
-      setImageCount([0, 0]);
-    };
-  }, [selectedAssetIndex, selectedAsset, assets]);
+  }, [selectedAssetIndex]);
 
   const swipeToImage = useCallback(
     (swipeDirection: number) => {
