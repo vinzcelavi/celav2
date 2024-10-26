@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import type { PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
@@ -39,6 +40,8 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
   const [keyPressed, setKeyPressed] = useState('');
 
   const activeImageIndex = wrap(0, assets?.length ?? 0, imageCount ?? 0);
+  const resetKeyPress = () => setKeyPressed('');
+  const keyPressTimer = setTimeout(resetKeyPress, 150);
 
   useEffect(() => {
     if (selectedAsset && assets) {
@@ -59,8 +62,15 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
     [assets, activeImageIndex]
   );
 
-  const resetKeyPress = () => setKeyPressed('');
-  const keyPressTimer = setTimeout(resetKeyPress, 150);
+  const dragEndHandler = (dragInfo: PanInfo) => {
+    const draggedDistance = dragInfo.offset.x;
+    const swipeThreshold = 50;
+    if (draggedDistance > swipeThreshold) {
+      swipeToImage(-1);
+    } else if (draggedDistance < -swipeThreshold) {
+      swipeToImage(1);
+    }
+  };
 
   // Memoize the handleKeyPress function
   const handleKeyPress = useCallback(
@@ -106,7 +116,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           exit={{ opacity: 0 }}
           transition={{ ease: 'easeInOut', duration: 0.3 }}
         >
-          <div className="absolute z-200 top-8 left-1/2 -translate-x-1/2">
+          <div className="hidden md:flex absolute z-200 top-8 left-1/2 -translate-x-1/2">
             <KeyboardKey
               onClick={() => {
                 swipeToImage(-1);
@@ -153,6 +163,10 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
                 animate="active"
                 exit="exit"
                 transition={sliderTransition}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
                 className="absolute top-0 bottom-0 w-full h-full flex flex-col items-center justify-center lg:justify-end lg:-mb-3"
               >
                 {identifyAssetType(assets[activeImageIndex]) === 'video' ? (
