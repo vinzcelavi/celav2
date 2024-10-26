@@ -28,7 +28,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, classNam
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
       className={cn(
-        'relative p-0.5 lg:p-1.5 lg:pb-0 -mb-1.5 flex flex-col items-center justify-end bg-white/30 rounded-[6px] lg:rounded-[9px] border-[1px] border-white/20',
+        'relative p-0.5 lg:p-1.5 lg:pb-0 -mb-2 flex flex-col items-center justify-end bg-white/30 rounded-[6px] lg:rounded-[9px] border border-white/20',
         className,
         imageLoaded ? 'loaded' : 'blurred'
       )}
