@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
@@ -8,6 +7,7 @@ import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
 import AppIconTooltip from './AppIconTooltip';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
+import ProjectCarousel from './ProjectCarousel';
 import Video from './Video';
 
 interface ProjectSectionProps {
@@ -39,7 +39,7 @@ function ProjectSection({
   const [paragraphs, setParagraphs] = useState<string[]>([]);
   const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
   const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
-  const [fullscreenAsset, setFullscreenAsset] = useState<string | null>(null);
+  const [selectedAsset, setSelectedAsset] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     setIsMounted(true);
@@ -59,8 +59,13 @@ function ProjectSection({
   }, [locale, descriptionEn, descriptionFr, description]);
 
   const handleImageClick = ({ asset }: { asset: string }) => {
-    setFullscreenAsset(asset);
     document.body.classList.toggle('overflow-hidden');
+    setSelectedAsset(asset);
+  };
+
+  const closeGallery = () => {
+    document.body.classList.remove('overflow-hidden');
+    setSelectedAsset(undefined);
   };
 
   return (
@@ -119,7 +124,7 @@ function ProjectSection({
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
-                onClick={() => handleImageClick({ asset: asset })}
+                onClick={() => handleImageClick({ asset })}
               >
                 <div
                   className={cn(
@@ -144,33 +149,7 @@ function ProjectSection({
         </div>
       </div>
 
-      <AnimatePresence>
-        {fullscreenAsset && (
-          <motion.div
-            className={cn(
-              'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark cursor-zoom-out overflow-hidden',
-              `${title.toLowerCase()}-bg-color`,
-              `${title.toLowerCase()}-mesh-gradient`
-            )}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ ease: 'easeInOut', duration: 0.3 }}
-            onClick={() => {
-              document.body.classList.remove('overflow-hidden');
-              setFullscreenAsset(null);
-            }}
-          >
-            <div className="max-w-[94vw] h-auto lg:w-auto lg:max-h-[94vh] object-contain aspect-project-preview lg:-mb-3">
-              {identifyAssetType(fullscreenAsset) === 'video' ? (
-                <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} />
-              ) : identifyAssetType(fullscreenAsset) === 'image' ? (
-                <LazyImage src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${fullscreenAsset}`} alt={fullscreenAsset} />
-              ) : null}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ProjectCarousel selectedAsset={selectedAsset} assets={assets} title={title} onClick={closeGallery} />
 
       <style>
         {`
