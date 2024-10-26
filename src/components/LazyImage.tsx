@@ -7,10 +7,11 @@ interface LazyImageProps {
   width?: number;
   height?: number;
   className?: string;
+  classNameWrapper?: string;
   onClick?: () => void;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, className, onClick }) => {
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, className, classNameWrapper, onClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -28,8 +29,8 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, classNam
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <figure
       className={cn(
-        'relative p-0.5 lg:p-1.5 lg:pb-0 -mb-2 flex flex-col items-center justify-end bg-white/30 rounded-[6px] lg:rounded-[9px] border border-white/20',
-        className,
+        'relative flex flex-col items-center justify-end p-[0.375rem] lg:pb-0 -mb-2 bg-white/30 rounded-[6px] lg:rounded-[9px] border border-white/20',
+        classNameWrapper,
         imageLoaded ? 'loaded' : 'blurred'
       )}
       onClick={onClick}
@@ -42,7 +43,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, classNam
         alt={alt}
         width={width}
         height={height}
-        className="relative flex grow aspect-project-preview shadow-xl rounded-[4px] lg:rounded-[6px]"
+        className={cn('relative flex grow aspect-project-preview shadow-xl rounded-[4px] lg:rounded-[6px]', className)}
       />
     </figure>
   );

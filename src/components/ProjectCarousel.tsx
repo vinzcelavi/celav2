@@ -176,11 +176,15 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
                 className="absolute top-0 bottom-0 w-full h-full flex flex-col items-center justify-center lg:justify-end lg:-mb-3"
               >
                 {identifyAssetType(assets[activeImageIndex]) === 'video' ? (
-                  <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[activeImageIndex]}`} />
+                  <Video
+                    src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[activeImageIndex]}`}
+                    classNameWrapper="lg:p-[0.475rem]"
+                  />
                 ) : identifyAssetType(assets[activeImageIndex]) === 'image' ? (
                   <LazyImage
                     src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[activeImageIndex]}`}
                     alt={assets[activeImageIndex]}
+                    classNameWrapper="lg:p-[0.475rem]"
                   />
                 ) : null}
               </motion.div>

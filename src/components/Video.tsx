@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { cn } from '../utils/cn';
 
-function Video({ src }: { src: string }) {
+interface VideoProps {
+  src: string;
+  className?: string;
+  classNameWrapper?: string;
+}
+
+function Video({ src, className, classNameWrapper }: VideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -40,14 +47,19 @@ function Video({ src }: { src: string }) {
   }, [isVisible]);
 
   return (
-    <div className="relative p-0.5 lg:p-1.5 lg:pb-0 -mb-2 flex flex-col items-center justify-end bg-white/30 shadow-3xl rounded-[6px] lg:rounded-[9px] border border-white/20">
+    <div
+      className={cn(
+        'relative flex flex-col items-center justify-end p-[0.375rem] lg:pb-0 -mb-2 bg-white/30 shadow-3xl rounded-[6px] lg:rounded-[9px] border border-white/20',
+        classNameWrapper
+      )}
+    >
       <video
         ref={videoRef}
         src={src}
         loop
         muted
         playsInline
-        className="relative flex grow aspect-project-preview shadow-md rounded-[4px] lg:rounded-[6px]"
+        className={cn('relative flex grow aspect-project-preview shadow-md rounded-[4px] lg:rounded-[6px]', className)}
       />
     </div>
   );
