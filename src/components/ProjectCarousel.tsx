@@ -97,7 +97,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
       {selectedAsset && assets && (
         <motion.div
           className={cn(
-            'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden border-2 border-yellow-500',
+            'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden',
             `${title.toLowerCase()}-bg-color`,
             `${title.toLowerCase()}-mesh-gradient`
           )}
@@ -142,7 +142,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative flex flex-col items-center justify-end lg:justify-end grow w-auto h-auto max-w-[90vw] max-h-[74vh] lg:max-h-[84vh] object-contain aspect-project-preview lg:-mb-3 cursor-zoom-out border-2 border-green-500"
+            className="relative flex flex-col items-center justify-end lg:justify-end grow w-auto h-auto max-w-[90vw] max-h-[74vh] lg:max-h-[84vh] object-contain aspect-project-preview lg:-mb-3 cursor-zoom-out"
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -153,7 +153,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
                 animate="active"
                 exit="exit"
                 transition={sliderTransition}
-                className="absolute top-0 bottom-0 w-full h-full flex flex-col items-center justify-center lg:justify-end lg:-mb-3 border-2 border-red-500"
+                className="absolute top-0 bottom-0 w-full h-full flex flex-col items-center justify-center lg:justify-end lg:-mb-3"
               >
                 {identifyAssetType(assets[activeImageIndex]) === 'video' ? (
                   <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[activeImageIndex]}`} />
