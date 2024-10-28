@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { wrap } from '../utils/wrap';
-import KeyboardKey from './KeyboardKey';
 import LazyImage from './LazyImage';
+import ShortcutsModal from './ShortcutsModal';
 import Video from './Video';
 
 interface ProjectCarouselProps {
@@ -82,7 +82,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       setKeyPressed(event.key);
-      keyPressTimer;
+      keyPressTimer && clearTimeout(keyPressTimer);
 
       switch (event.key) {
         case 'Escape':
@@ -122,43 +122,12 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
             `${title.toLowerCase()}-mesh-gradient`
           )}
         >
-          <div className="hidden md:flex absolute z-50 top-4 left-1/2 -translate-x-1/2 px-8 pt-5 pb-7">
-            <KeyboardKey
-              onClick={() => {
-                swipeToImage(-1);
-                setKeyPressed('ArrowLeft');
-              }}
-              keyValue="ArrowLeft"
-              keyPressed={keyPressed === 'ArrowLeft'}
-            >
-              ◀
-            </KeyboardKey>
-            <KeyboardKey
-              onClick={() => {
-                onClick();
-                setKeyPressed('Escape');
-              }}
-              keyValue="Escape"
-              keyPressed={keyPressed === 'Escape'}
-            >
-              esc
-            </KeyboardKey>
-            <KeyboardKey
-              onClick={() => {
-                swipeToImage(1);
-                setKeyPressed('ArrowRight');
-              }}
-              keyValue="ArrowRight"
-              keyPressed={keyPressed === 'ArrowRight'}
-            >
-              ▶
-            </KeyboardKey>
-          </div>
+          <ShortcutsModal keyPressed={keyPressed} />
 
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[92vw] lg:max-h-[92vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
+            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div

@@ -67,7 +67,7 @@ video {
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-center;
   gap: 10px;
   pointer-events: none;
 }

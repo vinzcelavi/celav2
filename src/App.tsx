@@ -52,7 +52,9 @@ function App({ locale }: { locale: string }) {
       <Footer />
       <HelloThere />
 
-      <Toast uniqueId="toast-language-toggle">{localeSwitchMessage}</Toast>
+      <Toast uniqueId="toast-language-toggle" config={{ duration: 3500 }}>
+        {localeSwitchMessage}
+      </Toast>
     </div>
   );
 }

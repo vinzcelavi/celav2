@@ -93,7 +93,7 @@ function ProjectSection({
             type="button"
             onClick={() => setShowMore(!showMore)}
             className={cn(
-              'inline-flex px-2 py-0.5 text-sm leading-normal font-semibold rounded-[0.25rem] md:hidden',
+              'inline-flex px-[0.5rem] py-[0.125rem] text-sm leading-normal font-semibold rounded-[0.25rem] md:hidden',
               showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
             )}
           >

@@ -2,20 +2,19 @@ import { cn } from '../utils/cn';
 
 interface KeyboardKeyProps {
   children: React.ReactNode;
-  keyValue: string;
+  keyValue?: string;
   keyPressed: boolean;
-  onClick: () => void;
+  className?: string;
 }
 
-function KeyboardKey({ children, onClick, keyValue, keyPressed }: KeyboardKeyProps) {
+function KeyboardKey({ children, keyPressed, className }: KeyboardKeyProps) {
   return (
     <button
       type="button"
-      onClick={onClick}
       className={cn(
-        'relative float-left m-[0.2em] px-[0.4em] py-[0.2em] w-[3.3em] h-full box-border cursor-pointer select-none text-center bg-white/30 text-slate-500 border border-solid border-white/25 border-b-white/90 shadow-[0_0.2em_0_0.05em_#ffffff90] rounded-[0.3em]',
-        keyValue === 'Escape' && 'text-left',
-        keyPressed && 'bg-white/60 top-[0.2em] shadow-[0_0_0_0.05em_#ffffff]'
+        'relative float-left m-[0.2rem] px-[0.2rem] py-[0.375rem] w-[2.25rem] h-auto box-border select-none text-center uppercase text-slate-200 bg-slate-700 border border-solid border-slate-600 shadow-[0_0.2em_0_0_rgba(71,85,105,1)] rounded-[0.25rem]',
+        keyPressed && 'bg-slate-800 border-slate-800 top-[0.1em] shadow-[0_0.1em_0_0_rgba(71,85,105,1)]',
+        className
       )}
     >
       <span className="text-xs">{children}</span>
