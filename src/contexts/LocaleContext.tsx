@@ -24,7 +24,7 @@ export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   useEffect(() => {
     // Save the locale to localStorage whenever it changes
-    if (import.meta.env?.MODE !== 'production') {
+    if (locale) {
       localStorage.setItem('user-locale', locale);
     }
   }, [locale]);
