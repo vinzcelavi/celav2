@@ -3,6 +3,7 @@ import ArrowDown from '../assets/svg/arrow-down.svg?react';
 import ArrowLeft from '../assets/svg/arrow-left.svg?react';
 import ArrowRight from '../assets/svg/arrow-right.svg?react';
 import ArrowUp from '../assets/svg/arrow-up.svg?react';
+import Command from '../assets/svg/command.svg?react';
 import Copy from '../assets/svg/copy.svg?react';
 import Github from '../assets/svg/github.svg?react';
 import Instagram from '../assets/svg/instagram.svg?react';
@@ -23,6 +24,7 @@ const icons = {
   linkedin: <Linkedin />,
   instagram: <Instagram />,
   github: <Github />,
+  command: <Command />,
   'arrow-left': <ArrowLeft />,
   'arrow-right': <ArrowRight />,
   'arrow-up': <ArrowUp />,

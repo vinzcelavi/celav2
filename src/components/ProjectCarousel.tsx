@@ -5,7 +5,7 @@ import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { wrap } from '../utils/wrap';
 import LazyImage from './LazyImage';
-import ShortcutsModal from './ShortcutsModal';
+import ShortcutsPopover from './ShortcutsPopover';
 import Video from './Video';
 
 interface ProjectCarouselProps {
@@ -122,7 +122,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
             `${title.toLowerCase()}-mesh-gradient`
           )}
         >
-          <ShortcutsModal keyPressed={keyPressed} />
+          <ShortcutsPopover keyPressed={keyPressed} />
 
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
