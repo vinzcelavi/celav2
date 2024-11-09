@@ -88,10 +88,10 @@ function ShortcutsPopover({ keyPressed }: { keyPressed: string }) {
               <div className="flex items-center justify-between gap-2">
                 <span className="flex font-semibold text-slate-300">{i18n.arrowsDescription}</span>
                 <div>
-                  <KeyboardKey keyValue="ArrowLeft" keyPressed={keyPressed === 'ArrowLeft'} className="text-xs">
+                  <KeyboardKey keyValue="ArrowLeft" keyPressed={keyPressed === 'ArrowLeft'}>
                     ◀
                   </KeyboardKey>
-                  <KeyboardKey keyValue="ArrowRight" keyPressed={keyPressed === 'ArrowRight'} className="text-xs">
+                  <KeyboardKey keyValue="ArrowRight" keyPressed={keyPressed === 'ArrowRight'}>
                     ▶
                   </KeyboardKey>
                 </div>
