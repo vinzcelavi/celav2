@@ -6,7 +6,7 @@ import Icon from './Icon';
 function LanguageToggle() {
   const { locale, setLocale } = useLocale();
   const [isMounted, setIsMounted] = useState(false);
-  const [availableLanguage, setAvailableLanguage] = useState<string>('Français');
+  const [availableLanguage, setAvailableLanguage] = useState<string>('English');
 
   useEffect(() => {
     setIsMounted(true);

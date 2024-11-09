@@ -36,7 +36,6 @@ function ShortcutsPopover({ keyPressed }: { keyPressed: string }) {
   };
 
   const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log('popoverRef.current', popoverRef.current);
     if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
       handleClose();
     }

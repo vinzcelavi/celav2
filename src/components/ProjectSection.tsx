@@ -22,6 +22,21 @@ interface ProjectSectionProps {
   active: boolean;
 }
 
+interface I18nStrings {
+  readMoreButtonText: string;
+  readLessButtonText: string;
+}
+
+const frenchI18n: I18nStrings = {
+  readMoreButtonText: 'En lire plus',
+  readLessButtonText: 'En lire moins'
+};
+
+const englishI18n = {
+  readMoreButtonText: 'Read more',
+  readLessButtonText: 'Read less'
+};
+
 function ProjectSection({
   title,
   type,
@@ -37,8 +52,7 @@ function ProjectSection({
   const [showMore, setShowMore] = useState(false);
   const [description, setDescription] = useState<string>(descriptionEn);
   const [paragraphs, setParagraphs] = useState<string[]>([]);
-  const [readMoreButtonText, setReadMoreButtonText] = useState<string>('Read more');
-  const [readLessButtonText, setReadLessButtonText] = useState<string>('Read less');
+  const [i18n, setI18n] = useState<I18nStrings>(englishI18n);
   const [selectedAsset, setSelectedAsset] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -48,12 +62,10 @@ function ProjectSection({
   useEffect(() => {
     if (locale === 'en') {
       setDescription(descriptionEn);
-      setReadMoreButtonText('Read more');
-      setReadLessButtonText('Read less');
+      setI18n(englishI18n);
     } else {
       setDescription(descriptionFr);
-      setReadMoreButtonText('En lire plus');
-      setReadLessButtonText('En lire moins');
+      setI18n(frenchI18n);
     }
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
@@ -97,7 +109,7 @@ function ProjectSection({
               showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
             )}
           >
-            {showMore ? readLessButtonText : readMoreButtonText}
+            {showMore ? i18n.readLessButtonText : i18n.readMoreButtonText}
           </button>
         </div>
       </div>

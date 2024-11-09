@@ -6,32 +6,42 @@ import MagneticWrapper from './MagneticWrapper';
 import Menu from './Menu/Menu';
 import Paragraph from './Paragraph';
 
+interface I18nStrings {
+  title: string;
+  requestText: string;
+  contactText: string;
+}
+
+const frenchI18n: I18nStrings = {
+  title: 'Me contacter',
+  requestText: 'Pour toute demande spécifique, ou juste pour le fun, vous pouvez me contacter sur ',
+  contactText: "ou m'envoyez un message sur les réseaux et je vous répondrai avec plaisir. "
+};
+
+const englishI18n: I18nStrings = {
+  title: 'Get in touch',
+  requestText: 'For any specific request, or just for fun, you can contact me at ',
+  contactText: "or shoot me a dm and I'll be happy to get back to you."
+};
+
 function Footer() {
   const { locale } = useLocale();
-  const [contactTitle, setContactTitle] = useState<string>('Get in touch');
-  const [requestText, setRequestText] = useState<string>(
-    'For any specific request, or just for fun, you can contact me at '
-  );
-  const [contactText, setContactText] = useState<string>("or shoot me a dm and I'll be happy to get back to you. ");
+  const [i18n, setI18n] = useState<I18nStrings>(englishI18n);
   const email = '&#118;&#105;&#110;&#99;&#101;&#110;&#116;&#64;&#99;&#101;&#108;&#97;&#118;&#105;&#46;&#102;&#114;';
 
   useEffect(() => {
     if (locale === 'en') {
-      setContactTitle('Get in touch');
-      setRequestText('For any specific request, or just for fun, you can contact me at ');
-      setContactText("or shoot me a dm and I'll be happy to get back to you.");
+      setI18n(englishI18n);
     } else {
-      setContactTitle('Me contacter');
-      setRequestText('Pour toute demande spécifique ou simplement pour le fun, vous pouvez me contacter à ');
-      setContactText("ou m'envoyez un message sur les réseaux et je vous répondrai avec plaisir. ");
+      setI18n(frenchI18n);
     }
   }, [locale]);
 
   return (
     <footer className="flex flex-col m-auto md:items-center justify-center text-center px-8 md:px-10 py-16 max-w-[30rem]">
-      <h2 className="text-5xl md:text-6xl font-extrabold mb-4">{contactTitle}</h2>
+      <h2 className="text-5xl md:text-6xl font-extrabold mb-4">{i18n.title}</h2>
       <Paragraph bigger>
-        {requestText}
+        {i18n.requestText}
         <MagneticWrapper>
           <a
             data-splitbee-event="Click on 'Mailto' footer"
@@ -41,7 +51,7 @@ function Footer() {
             {decodeHtmlEntities(email)}
           </a>
         </MagneticWrapper>{' '}
-        {contactText}
+        {i18n.contactText}
       </Paragraph>
 
       <div className="py-6">
