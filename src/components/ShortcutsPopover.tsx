@@ -66,7 +66,7 @@ function ShortcutsPopover({ keyPressed }: { keyPressed: string }) {
       <div
         className={cn(
           'fixed z-50 inset-0 p-10 hidden lg:flex flex-col',
-          showPopover ? 'pointer-events-auto' : 'pointer-events-none'
+          showPopover ? 'pointer-events-auto bg-white/30 backdrop-blur-sm' : 'pointer-events-none'
         )}
         onClick={showPopover ? handleClickOutside : undefined}
       >

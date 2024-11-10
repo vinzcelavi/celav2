@@ -49,7 +49,7 @@ function Video({ src, className, classNameWrapper }: VideoProps) {
   return (
     <div
       className={cn(
-        'relative flex flex-col items-center justify-end p-[0.375rem] lg:pb-0 -mb-2 bg-white/30 shadow-3xl rounded-[6px] lg:rounded-[9px] border border-white/20',
+        'relative flex flex-col items-center justify-end p-[0.375rem] lg:pb-0 -mb-3 bg-white/30 shadow-3xl rounded-[6px] lg:rounded-[9px] border border-white/20',
         classNameWrapper
       )}
     >
@@ -59,7 +59,7 @@ function Video({ src, className, classNameWrapper }: VideoProps) {
         loop
         muted
         playsInline
-        className={cn('relative flex grow aspect-project-preview shadow-md rounded-[4px] lg:rounded-[6px]', className)}
+        className={cn('relative flex grow shadow-md rounded-[4px] lg:rounded-[6px]', className)}
       />
     </div>
   );

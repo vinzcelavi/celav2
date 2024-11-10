@@ -114,8 +114,48 @@ function ProjectSection({
         </div>
       </div>
       <div className="relative -mx-4">
-        <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
-          {assets.map((asset, index) => {
+        {(() => {
+          const asset = assets[0];
+          console.log('asset', asset);
+          if (!asset) return null;
+
+          const { ref, inView } = useInView({
+            triggerOnce: true,
+            threshold: 0.1
+          });
+
+          return (
+            // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+            <div
+              key={asset.slice(0, 10)}
+              ref={ref}
+              className={cn(
+                'relative flex flex-col items-center justify-end w-full mb-2 pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
+                `${title.toLowerCase()}-bg-color`,
+                `${title.toLowerCase()}-mesh-gradient`,
+                inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              )}
+              onClick={() => handleImageClick({ asset })}
+            >
+              <div
+                className={cn(
+                  'will-change-transform transition-all duration-[1.35s] ease-out-quad',
+                  inView ? 'scale-100' : 'scale-110'
+                )}
+              >
+                <LazyImage
+                  src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[0]}`}
+                  alt={assets[0]}
+                  width={105}
+                  height={87}
+                />
+              </div>
+            </div>
+          );
+        })()}
+
+        <div className="columns-1 gap-2 md:columns-2">
+          {assets.slice(1).map((asset, index) => {
             const { ref, inView } = useInView({
               triggerOnce: true,
               threshold: 0.1
@@ -127,8 +167,7 @@ function ProjectSection({
                 key={asset}
                 ref={ref}
                 className={cn(
-                  'relative flex flex-col items-center justify-end w-full pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
-                  index === 0 && 'md:col-span-2',
+                  'relative flex flex-col items-center justify-end w-full mb-2 pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0',
                   `${title.toLowerCase()}-bg-color`,
                   `${title.toLowerCase()}-mesh-gradient`

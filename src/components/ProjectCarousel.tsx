@@ -117,7 +117,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           exit={{ opacity: 0 }}
           transition={{ ease: 'easeInOut', duration: 0.3 }}
           className={cn(
-            'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden',
+            'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-y-auto',
             `${title.toLowerCase()}-bg-color`,
             `${title.toLowerCase()}-mesh-gradient`
           )}
@@ -127,7 +127,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
+            className="relative z-40 flex flex-col items-center justify-center grow w-full h-auto max-w-[94vw] lg:h-full lg:max-w-[80vw] lg:max-h-[94vh] cursor-zoom-out"
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -142,7 +142,7 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={1}
                 onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
-                className="absolute top-0 bottom-0 flex flex-col items-center justify-center"
+                className="absolute top-0 left-0 flex flex-col items-center justify-center pb-12"
               >
                 {identifyAssetType(assets[activeImageIndex]) === 'video' ? (
                   <Video
