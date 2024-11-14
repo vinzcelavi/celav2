@@ -43,8 +43,8 @@ function App({ locale }: { locale: string }) {
         <div className="flex flex-col gap-2">
           {projectsNotion
             .filter((project) => project.active)
-            .map((project) => (
-              <ProjectSection key={project.title} {...project} />
+            .map((project, index) => (
+              <ProjectSection key={`${project.title}-${index}`} {...project} />
             ))}
         </div>
       </main>

@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
+import type { RefObject } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
-import { identifyAssetType } from '../utils/identifyAssetType';
 import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
 import AppIconTooltip from './AppIconTooltip';
-import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import ProjectCarousel from './ProjectCarousel';
-import Video from './Video';
+import ProjectGridAsset from './ProjectGridAsset';
 
 interface ProjectSectionProps {
   title: string;
@@ -70,11 +69,6 @@ function ProjectSection({
     setParagraphs(splitIntoParagraphs(description));
   }, [locale, descriptionEn, descriptionFr, description]);
 
-  const handleImageClick = ({ asset }: { asset: string }) => {
-    document.body.classList.toggle('overflow-hidden');
-    setSelectedAsset(asset);
-  };
-
   const closeGallery = () => {
     document.body.classList.remove('overflow-hidden');
     setSelectedAsset(undefined);
@@ -116,85 +110,43 @@ function ProjectSection({
       <div className="relative -mx-4">
         {(() => {
           const asset = assets[0];
-          console.log('asset', asset);
           if (!asset) return null;
 
-          const { ref, inView } = useInView({
+          const { ref: inViewRef, inView } = useInView({
             triggerOnce: true,
             threshold: 0.1
           });
 
           return (
-            // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-            <div
-              key={asset.slice(0, 10)}
-              ref={ref}
-              className={cn(
-                'relative flex flex-col items-center justify-end w-full mb-2 pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
-                `${title.toLowerCase()}-bg-color`,
-                `${title.toLowerCase()}-mesh-gradient`,
-                inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-              )}
-              onClick={() => handleImageClick({ asset })}
-            >
-              <div
-                className={cn(
-                  'will-change-transform transition-all duration-[1.35s] ease-out-quad',
-                  inView ? 'scale-100' : 'scale-110'
-                )}
-              >
-                <LazyImage
-                  src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${assets[0]}`}
-                  alt={assets[0]}
-                  width={105}
-                  height={87}
-                />
-              </div>
-            </div>
+            <ProjectGridAsset
+              forwardedRef={inViewRef as unknown as RefObject<HTMLDivElement>}
+              key={asset}
+              index={0}
+              asset={asset}
+              inView={inView}
+              title={title}
+              handleImageClick={setSelectedAsset}
+            />
           );
         })()}
 
         <div className="columns-1 gap-2 md:columns-2">
           {assets.slice(1).map((asset, index) => {
-            const { ref, inView } = useInView({
+            const { ref: inViewRef, inView } = useInView({
               triggerOnce: true,
               threshold: 0.1
             });
 
             return (
-              // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-              <div
+              <ProjectGridAsset
+                forwardedRef={inViewRef as unknown as RefObject<HTMLDivElement>}
                 key={asset}
-                ref={ref}
-                className={cn(
-                  'relative flex flex-col items-center justify-end w-full mb-2 pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
-                  inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0',
-                  `${title.toLowerCase()}-bg-color`,
-                  `${title.toLowerCase()}-mesh-gradient`
-                )}
-                style={{
-                  transitionDelay: `${index * 100}ms`
-                }}
-                onClick={() => handleImageClick({ asset })}
-              >
-                <div
-                  className={cn(
-                    'will-change-transform transition-all duration-[1.35s] ease-out-quad',
-                    inView ? 'scale-100' : 'scale-110'
-                  )}
-                >
-                  {identifyAssetType(asset) === 'video' ? (
-                    <Video src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${asset}`} />
-                  ) : identifyAssetType(asset) === 'image' ? (
-                    <LazyImage
-                      src={`${import.meta.env.VITE_AWS_BUCKET_URL}/${asset}`}
-                      alt={asset}
-                      width={105}
-                      height={87}
-                    />
-                  ) : null}
-                </div>
-              </div>
+                index={index}
+                asset={asset}
+                title={title}
+                inView={inView}
+                handleImageClick={setSelectedAsset}
+              />
             );
           })}
         </div>
