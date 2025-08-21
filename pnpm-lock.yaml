@@ -21,19 +21,19 @@ dependencies:
     specifier: ^1.7.4
     version: 1.7.4
   express:
-    specifier: ^4.19.2
+    specifier: ^4.21.0
     version: 4.21.0
   framer-motion:
     specifier: ^11.9.0
     version: 11.9.0(react-dom@18.3.1)(react@18.3.1)
   react:
-    specifier: ^18.2.0
+    specifier: ^18.3.1
     version: 18.3.1
   react-device-detect:
     specifier: ^2.2.3
     version: 2.2.3(react-dom@18.3.1)(react@18.3.1)
   react-dom:
-    specifier: ^18.2.0
+    specifier: ^18.3.1
     version: 18.3.1(react@18.3.1)
   react-intersection-observer:
     specifier: ^9.13.1
@@ -56,16 +56,16 @@ devDependencies:
     specifier: ^4.17.21
     version: 4.17.21
   '@types/node':
-    specifier: ^20.12.7
+    specifier: ^20.16.6
     version: 20.16.6
   '@types/react':
-    specifier: ^18.2.79
+    specifier: ^18.3.9
     version: 18.3.9
   '@types/react-dom':
-    specifier: ^18.2.25
+    specifier: ^18.3.0
     version: 18.3.0
   '@vitejs/plugin-react-swc':
-    specifier: ^3.5.0
+    specifier: ^3.7.0
     version: 3.7.0(vite@5.4.7)
   autoprefixer:
     specifier: ^10.4.20
@@ -86,10 +86,10 @@ devDependencies:
     specifier: ^3.4.13
     version: 3.4.13
   typescript:
-    specifier: ^5.4.5
+    specifier: ^5.6.2
     version: 5.6.2
   vite:
-    specifier: ^5.2.10
+    specifier: ^5.4.7
     version: 5.4.7(@types/node@20.16.6)
   vite-plugin-svgr:
     specifier: ^4.2.0
@@ -1241,7 +1241,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.3
-      caniuse-lite: 1.0.30001663
+      caniuse-lite: 1.0.30001717
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.0
@@ -1296,7 +1296,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001663
+      caniuse-lite: 1.0.30001717
       electron-to-chromium: 1.5.28
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
@@ -1338,8 +1338,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite@1.0.30001663:
-    resolution: {integrity: sha512-o9C3X27GLKbLeTYZ6HBOLU1tsAcBZsLis28wrVzddShCS16RujjHp9GDHKZqrB3meE0YjhawvMFsGb/igqiPzA==}
+  /caniuse-lite@1.0.30001717:
+    resolution: {integrity: sha512-auPpttCq6BDEG8ZAuHJIplGw6GODhjw+/11e7IjpnYCxZcW/ONgPs0KVBJ0d1bY3e2+7PRe5RCLyP+PfwVgkYw==}
     dev: true
 
   /chalk@2.4.2:

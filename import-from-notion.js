@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises'
+import fs from 'node:fs/promises';
 import { loadEnv } from 'vite';
 import { Client } from "@notionhq/client";
 
@@ -42,6 +42,7 @@ const getProjects = async () => {
     const bgColorCell = row.properties.bg_color;
     const meshGradientCell = row.properties.mesh_gradient;
     const activeCell = row.properties.active;
+    const orderCell = row.properties.order;
 
     // Depending on the column "type" we selected in Notion there will be different
     // data available to us (URL vs Date vs text for example) so in order for Typescript
@@ -54,9 +55,10 @@ const getProjects = async () => {
     const isSkills = skillsCell.type === "multi_select";
     const isAssets = assetsCell.type === "multi_select";
     const isActive = activeCell.type === "checkbox";
+    const isOrder = orderCell.type === "number";
     
     // Verify the types are correct
-    if (isTitle && isType && isDescriptionEn && isDescriptionFr && isUrl && isSkills && isAssets && isActive) {
+    if (isTitle && isType && isDescriptionEn && isDescriptionFr && isUrl && isSkills && isAssets && isActive && isOrder) {
       // Pull the string values of the cells off the column data
       const title = titleCell.title?.[0].plain_text;
       const url = urlCell.url ?? '';
@@ -68,8 +70,9 @@ const getProjects = async () => {
       const bgColor = bgColorCell.rich_text?.[0]?.plain_text;
       const meshGradient = meshGradientCell.rich_text?.[0]?.plain_text;
       const active = activeCell.checkbox;
+      const order = orderCell.number || 999; // Default to 999 if no order is set
 
-      return { title, descriptionEn, descriptionFr, url, type, skills, assets, bgColor, meshGradient, active };
+      return { title, descriptionEn, descriptionFr, url, type, skills, assets, bgColor, meshGradient, active, order };
     }
 
     // If a row is found that does not match the rules we checked it will still return in the
@@ -77,7 +80,15 @@ const getProjects = async () => {
     return { title: "NOT_FOUND", url: "" };
   });
 
-  const jsonString = JSON.stringify(list.reverse())
+  // Sort by the order field from Notion
+  const sortedList = list.sort((a, b) => {
+    // Sort by order field, with items without order going to the end
+    const orderA = a.order || 999;
+    const orderB = b.order || 999;
+    return orderA - orderB;
+  });
+
+  const jsonString = JSON.stringify(sortedList.reverse())
   await fs.writeFile('./src/data/projectsNotion.json', jsonString)
 }
 

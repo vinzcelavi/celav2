@@ -5,6 +5,7 @@ import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
 import AppIconTooltip from './AppIconTooltip';
+import Icon from './Icon';
 import LazyImage from './LazyImage';
 import Paragraph from './Paragraph';
 import ProjectCarousel from './ProjectCarousel';
@@ -15,6 +16,7 @@ interface ProjectSectionProps {
   type: string;
   descriptionEn: string;
   descriptionFr: string;
+  url: string;
   skills: string[];
   assets: string[];
   bgColor?: string;
@@ -42,6 +44,7 @@ function ProjectSection({
   type,
   descriptionEn,
   descriptionFr,
+  url,
   skills,
   assets,
   bgColor,
@@ -88,6 +91,17 @@ function ProjectSection({
           <h3 className="mb-4 md:mb-6 text-xl font-light text-primary capitalize">{type}</h3>
 
           <AppIconTooltip items={skills} />
+
+          {url && (
+            <button
+              type="button"
+              onClick={() => window.open(url, '_blank')}
+              className="mt-6 flex items-center gap-2 text-light text-base font-semibold cursor-pointer transition-all duration-500"
+            >
+              <span>{locale === 'en' ? 'Open project' : 'Ouvrir le projet'}</span>
+              <Icon className="w-4 h-4" name="open-in-new" />
+            </button>
+          )}
         </div>
         <div className="w-full md:w-10/12">
           {paragraphs.length > 0 && (

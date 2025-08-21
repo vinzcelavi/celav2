@@ -10,6 +10,7 @@ import Instagram from '../assets/svg/instagram.svg?react';
 import Language from '../assets/svg/language.svg?react';
 import Linkedin from '../assets/svg/linkedin.svg?react';
 import Minus from '../assets/svg/minus.svg?react';
+import OpenInNew from '../assets/svg/open-in-new.svg?react';
 import Plus from '../assets/svg/plus.svg?react';
 import Send from '../assets/svg/send.svg?react';
 import Tick from '../assets/svg/tick.svg?react';
@@ -25,6 +26,7 @@ const icons = {
   instagram: <Instagram />,
   github: <Github />,
   command: <Command />,
+  'open-in-new': <OpenInNew />,
   'arrow-left': <ArrowLeft />,
   'arrow-right': <ArrowRight />,
   'arrow-up': <ArrowUp />,

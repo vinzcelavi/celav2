@@ -8,15 +8,19 @@ interface LocaleContextType {
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
 export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const userLang = navigator.languages?.[0] || navigator.language || '';
-  const defaultLocale = userLang.split('-')[0] === 'fr' ? 'fr' : 'en'; // Default to 'en' if no language detected
+  const defaultLocale = 'en'; // Default to 'en' if no language detected
 
   const [locale, setLocale] = useState<string>(() => {
     // Check localStorage for a saved locale
     // Avoid error from server side environment
     // https://github.com/pmndrs/jotai/discussions/2639
     try {
-      return localStorage.getItem('user-locale') || defaultLocale;
+      if (typeof window !== 'undefined') {
+        const userLang = navigator.languages?.[0] || navigator.language || '';
+        const detectedLocale = userLang.split('-')[0] === 'fr' ? 'fr' : 'en';
+        return localStorage.getItem('user-locale') || detectedLocale;
+      }
+      return defaultLocale;
     } catch (error) {
       return defaultLocale;
     }

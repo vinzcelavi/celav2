@@ -20,10 +20,10 @@ const AppIconTooltip = ({
   };
 
   return (
-    <div className="relative mr-2 flex flex-wrap">
+    <div className="relative flex flex-wrap">
       {items.map((item, index) => (
         <div
-          className="relative -mr-2 group"
+          className="relative mr-2 md:mr-0 md:ml-2 group"
           key={item}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
