@@ -93,14 +93,16 @@ function ProjectSection({
           <AppIconTooltip items={skills} />
 
           {url && (
-            <button
-              type="button"
-              onClick={() => window.open(url, '_blank')}
-              className="mt-6 flex items-center gap-2 text-light text-base font-semibold cursor-pointer transition-all duration-500"
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${locale === 'en' ? 'Open project' : 'Ouvrir le projet'} - ${title}`}
+              className="mt-6 flex items-center gap-2 text-light text-base font-semibold cursor-pointer transition-all duration-500 hover:opacity-80"
             >
               <span>{locale === 'en' ? 'Open project' : 'Ouvrir le projet'}</span>
               <Icon className="w-4 h-4" name="open-in-new" />
-            </button>
+            </a>
           )}
         </div>
         <div className="w-full md:w-10/12">

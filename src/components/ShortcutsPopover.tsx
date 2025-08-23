@@ -59,7 +59,7 @@ function ShortcutsPopover({ keyPressed }: { keyPressed: string }) {
           showPopover ? 'bg-white border-white text-slate-700' : 'bg-white/10 border-white/30 text-slate-500'
         )}
       >
-        <Icon name="command" className="w-5 h-5" />
+        <Icon name="command" className={cn('w-5 h-5', showPopover ? 'text-slate-700' : 'text-white/80')} />
       </button>
 
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
