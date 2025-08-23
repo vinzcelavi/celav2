@@ -98,10 +98,13 @@ function ProjectSection({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${locale === 'en' ? 'Open project' : 'Ouvrir le projet'} - ${title}`}
-              className="mt-6 flex items-center gap-2 text-light text-base font-semibold cursor-pointer transition-all duration-500 hover:opacity-80"
+              className="mt-6 flex items-center text-light text-base font-semibold cursor-pointer border-b border-white/20 border-solid hover:border-white transition-all duration-500 opacity-80 hover:opacity-100 group"
             >
               <span>{locale === 'en' ? 'Open project' : 'Ouvrir le projet'}</span>
-              <Icon className="w-4 h-4" name="open-in-new" />
+              <Icon
+                className="w-4 h-4 ml-2 sm:ml-0 sm:w-0 sm:scale-0 sm:group-hover:ml-2 sm:group-hover:w-4 sm:group-hover:scale-100 transition-all duration-300"
+                name="open-in-new"
+              />
             </a>
           )}
         </div>
