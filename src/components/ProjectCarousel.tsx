@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
+import { assetAspectClass } from '../utils/assetAspectClass';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
+import { toSlug } from '../utils/toSlug';
 import { wrap } from '../utils/wrap';
 import LazyImage from './LazyImage';
 import ShortcutsPopover from './ShortcutsPopover';
@@ -118,8 +120,8 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           transition={{ ease: 'easeInOut', duration: 0.3 }}
           className={cn(
             'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden',
-            `${title.toLowerCase()}-bg-color`,
-            `${title.toLowerCase()}-mesh-gradient`
+            `${toSlug(title)}-bg-color`,
+            `${toSlug(title)}-mesh-gradient`
           )}
         >
           <ShortcutsPopover keyPressed={keyPressed} />
@@ -127,7 +129,10 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
+            className={cn(
+              'relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 cursor-zoom-out',
+              assetAspectClass(assets[activeImageIndex])
+            )}
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div

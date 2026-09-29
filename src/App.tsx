@@ -5,7 +5,7 @@ import IntroductionReveal from './components/IntroductionReveal';
 import { Toast, useToastControls } from './components/Toast';
 import WorkSectionTitle from './components/WorkSectionTitle/WorkSectionTitle';
 import { withLocaleFromContext } from './contexts/LocaleContext';
-import projectsNotion from './data/projectsNotion.json';
+import projects from './data/projects.json';
 
 const StickyMenu = lazy(() => import('./components/StickyMenu'));
 const HelloThere = lazy(() => import('./components/HelloThere'));
@@ -35,7 +35,7 @@ function App({ locale }: { locale: string }) {
         <WorkSectionTitle />
 
         <div className="flex flex-col gap-2">
-          {projectsNotion
+          {projects
             .filter((project) => project.active)
             .map((project) => (
               <ProjectSection key={project.title} {...project} />

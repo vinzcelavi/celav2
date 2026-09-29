@@ -5,6 +5,7 @@ import { useLocale } from '../contexts/LocaleContext';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
+import { toSlug } from '../utils/toSlug';
 import AppIconTooltip from './AppIconTooltip';
 import Icon from './Icon';
 import LazyImage from './LazyImage';
@@ -164,8 +165,8 @@ function ProjectSection({
                   'relative flex flex-col items-center justify-end w-full pt-4 px-6 md:pt-10 md:px-16 rounded-md col-span-1 will-change-transform transition-all duration-[.7s] ease-out-quad cursor-zoom-in overflow-hidden',
                   index === 0 && 'md:col-span-2',
                   inView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0',
-                  `${title.toLowerCase()}-bg-color`,
-                  `${title.toLowerCase()}-mesh-gradient`
+                  `${toSlug(title)}-bg-color`,
+                  `${toSlug(title)}-mesh-gradient`
                 )}
                 style={{
                   transitionDelay: `${index * 100}ms`
@@ -199,10 +200,10 @@ function ProjectSection({
 
       <style>
         {`
-          .${title.toLowerCase()}-bg-color {
+          .${toSlug(title)}-bg-color {
             background-color: ${bgColor};
           }
-          .${title.toLowerCase()}-mesh-gradient {
+          .${toSlug(title)}-mesh-gradient {
             background-image: ${meshGradient};
           }
         `}

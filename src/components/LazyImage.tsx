@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { assetAspectClass } from '../utils/assetAspectClass';
 import { cn } from '../utils/cn';
 
 interface LazyImageProps {
@@ -43,7 +44,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, width, height, classNam
         alt={alt}
         width={width}
         height={height}
-        className={cn('relative flex grow aspect-project-preview shadow-xl rounded-[4px] lg:rounded-[6px]', className)}
+        className={cn('relative flex grow shadow-xl rounded-[4px] lg:rounded-[6px]', assetAspectClass(src), className)}
       />
     </figure>
   );
