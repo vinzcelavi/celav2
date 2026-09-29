@@ -44,7 +44,6 @@ function Footer() {
         {i18n.requestText}
         <MagneticWrapper>
           <a
-            data-splitbee-event="Click on 'Mailto' footer"
             href={`mailto:${decodeHtmlEntities(email)}`}
             className="inline-flex bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent transition-all duration-300"
           >
@@ -62,7 +61,6 @@ function Footer() {
         Celavi © 2024 Vincent Bianciotto. <br className="block md:hidden" />
         {'\u00A0'}
         <a
-          data-splitbee-event="Click on 'Source code'"
           href="https://github.com/vinzcelavi/celav2/"
           target="_blank"
           rel="noreferrer noopener"

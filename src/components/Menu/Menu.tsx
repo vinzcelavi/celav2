@@ -18,7 +18,6 @@ function Menu() {
         ].map(({ name, href }) => (
           <MenuItem
             key={name}
-            data-splitbee-event={`Click on ${name.charAt(0).toUpperCase() + name.slice(1)}`}
             href={href}
             label={name.charAt(0).toUpperCase() + name.slice(1)}
             target="_blank"
