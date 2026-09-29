@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import type { PanInfo } from 'framer-motion';
+import type { PanInfo, Transition } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import { assetAspectClass } from '../utils/assetAspectClass';
 import { cn } from '../utils/cn';
@@ -31,7 +31,7 @@ const sliderVariants = {
   })
 };
 
-const sliderTransition = {
+const sliderTransition: Transition = {
   duration: 1,
   ease: [0.56, 0.03, 0.12, 1.04]
 };
