@@ -1,4 +1,4 @@
-// Turns a project title into a safe CSS class prefix ("Dashboard test client" -> "dashboard-test-client")
+// Turns a project title into a safe CSS class prefix ("Gusto" -> "gusto", "Foo Bar" -> "foo-bar")
 function toSlug(value: string) {
   return value
     .normalize('NFD')
