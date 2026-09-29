@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
@@ -115,21 +116,35 @@ function ProjectSection({
             </Paragraph>
           )}
 
-          <div className={cn('hidden md:block', showMore ? 'block' : 'hidden')}>
-            {paragraphs.slice(1).map((paragraph: string) => (
-              <Paragraph key={paragraph.slice(0, 10)}>{paragraph}</Paragraph>
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={() => setShowMore(!showMore)}
-            className={cn(
-              'inline-flex px-[0.5rem] py-[0.125rem] text-sm leading-normal font-semibold rounded-[0.25rem] md:hidden',
-              showMore ? 'bg-slate-800 text-slate-400' : 'bg-slate-800 text-slate-300'
+          <AnimatePresence initial={false}>
+            {showMore && (
+              <motion.div
+                key="more"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="overflow-hidden"
+              >
+                {paragraphs.slice(1).map((paragraph: string) => (
+                  <Paragraph key={paragraph.slice(0, 10)}>{paragraph}</Paragraph>
+                ))}
+              </motion.div>
             )}
-          >
-            {showMore ? i18n.readLessButtonText : i18n.readMoreButtonText}
-          </button>
+          </AnimatePresence>
+          {paragraphs.length > 1 && (
+            <button
+              type="button"
+              onClick={() => setShowMore(!showMore)}
+              aria-expanded={showMore}
+              className={cn(
+                'inline-flex px-[0.5rem] py-[0.125rem] text-sm leading-normal font-semibold rounded-[0.25rem] bg-slate-800 transition-colors duration-300 hover:text-white',
+                showMore ? 'text-slate-400' : 'text-slate-300'
+              )}
+            >
+              {showMore ? i18n.readLessButtonText : i18n.readMoreButtonText}
+            </button>
+          )}
         </div>
       </div>
       <div className="relative -mx-4">
