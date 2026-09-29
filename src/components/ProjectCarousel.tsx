@@ -3,6 +3,7 @@ import type { PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
+import { toSlug } from '../utils/toSlug';
 import { wrap } from '../utils/wrap';
 import LazyImage from './LazyImage';
 import ShortcutsPopover from './ShortcutsPopover';
@@ -118,8 +119,8 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           transition={{ ease: 'easeInOut', duration: 0.3 }}
           className={cn(
             'z-[10000] fixed inset-0 px-6 flex flex-col items-center justify-center lg:justify-end w-screen h-screen bg-dark select-none overflow-hidden',
-            `${title.toLowerCase()}-bg-color`,
-            `${title.toLowerCase()}-mesh-gradient`
+            `${toSlug(title)}-bg-color`,
+            `${toSlug(title)}-mesh-gradient`
           )}
         >
           <ShortcutsPopover keyPressed={keyPressed} />
