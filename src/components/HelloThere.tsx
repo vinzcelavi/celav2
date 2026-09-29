@@ -47,6 +47,21 @@ function HelloThere() {
     };
   }, [scope.current, animate, staggerCharacters]);
 
+  // Close the modal with the Escape key
+  useEffect(() => {
+    if (!helloThereIsOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setHelloThereIsOpen(false);
+        document.body.classList.remove('overflow-hidden');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [helloThereIsOpen, setHelloThereIsOpen]);
+
   if (!helloThereIsOpen) return null;
 
   return (
