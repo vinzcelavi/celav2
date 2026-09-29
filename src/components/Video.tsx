@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { assetAspectClass } from '../utils/assetAspectClass';
 import { cn } from '../utils/cn';
 
 interface VideoProps {
@@ -59,7 +60,7 @@ function Video({ src, className, classNameWrapper }: VideoProps) {
         loop
         muted
         playsInline
-        className={cn('relative flex grow aspect-project-preview shadow-md rounded-[4px] lg:rounded-[6px]', className)}
+        className={cn('relative flex grow shadow-md rounded-[4px] lg:rounded-[6px]', assetAspectClass(src), className)}
       />
     </div>
   );

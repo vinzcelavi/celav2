@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
+import { assetAspectClass } from '../utils/assetAspectClass';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { toSlug } from '../utils/toSlug';
@@ -128,7 +129,10 @@ function ProjectCarousel({ onClick, selectedAsset, assets, title }: ProjectCarou
           {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
           <div
             onClick={onClick}
-            className="relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 aspect-project-preview cursor-zoom-out"
+            className={cn(
+              'relative z-40 flex flex-col items-center justify-center grow w-auto h-auto max-w-[94vw] lg:max-h-[98vh] lg:-mb-3 cursor-zoom-out',
+              assetAspectClass(assets[activeImageIndex])
+            )}
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
