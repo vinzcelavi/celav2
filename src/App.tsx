@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { lazy, useEffect, useState } from 'react';
 import Header from './components/Header';
 import IntroductionReveal from './components/IntroductionReveal';
@@ -48,6 +49,8 @@ function App({ locale }: { locale: string }) {
       <Toast uniqueId="toast-language-toggle" config={{ duration: 3500 }}>
         {localeSwitchMessage}
       </Toast>
+
+      <Analytics />
     </div>
   );
 }
