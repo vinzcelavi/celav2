@@ -15,6 +15,7 @@
     "@biomejs/biome": "^1.9.3",
     "@fontsource/mada": "^5.1.0",
     "@notionhq/client": "^2.2.15",
+    "@vercel/analytics": "^2.0.1",
     "compression": "^1.7.4",
     "express": "^4.21.0",
     "framer-motion": "^11.9.0",
