@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, memo, useContext, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, createContext, memo, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 interface LocaleContextType {
   locale: string;
@@ -7,35 +7,37 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const defaultLocale = 'en'; // Default to 'en' if no language detected
+const defaultLocale = 'en';
+const storageKey = 'user-locale';
 
-  const [locale, setLocale] = useState<string>(() => {
-    // Check localStorage for a saved locale
-    // Avoid error from server side environment
-    // https://github.com/pmndrs/jotai/discussions/2639
-    try {
-      if (typeof window !== 'undefined') {
-        const userLang = navigator.languages?.[0] || navigator.language || '';
-        const detectedLocale = userLang.split('-')[0] === 'fr' ? 'fr' : 'en';
-        return localStorage.getItem('user-locale') || detectedLocale;
-      }
-      return defaultLocale;
-    } catch (error) {
-      return defaultLocale;
-    }
-  });
+export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  // The server always renders 'en', so the first client render must too,
+  // otherwise hydration fails and the whole root is re-rendered on the client.
+  const [locale, setLocaleState] = useState<string>(defaultLocale);
 
   useEffect(() => {
-    // Save the locale to localStorage whenever it changes
-    if (locale) {
-      localStorage.setItem('user-locale', locale);
+    // Detect the user's locale once hydrated: saved choice first, then browser language
+    try {
+      const userLang = navigator.languages?.[0] || navigator.language || '';
+      const detectedLocale = userLang.split('-')[0] === 'fr' ? 'fr' : 'en';
+      setLocaleState(localStorage.getItem(storageKey) || detectedLocale);
+    } catch (error) {
+      // localStorage can throw (private mode, blocked storage): keep the default
     }
-  }, [locale]);
+  }, []);
+
+  const setLocale = useCallback((value: string) => {
+    setLocaleState(value);
+    try {
+      localStorage.setItem(storageKey, value);
+    } catch (error) {
+      // Ignore: the choice just won't persist
+    }
+  }, []);
 
   const contextValue = useMemo(() => {
     return { locale, setLocale };
-  }, [locale]);
+  }, [locale, setLocale]);
 
   return <LocaleContext.Provider value={contextValue}>{children}</LocaleContext.Provider>;
 };
