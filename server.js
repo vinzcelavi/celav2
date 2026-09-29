@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import http from 'node:http'
 import express from 'express'
 import { Transform } from 'node:stream'
 
@@ -18,13 +19,16 @@ const ssrManifest = isProduction
 
 // Create http server
 const app = express()
+const server = http.createServer(app)
 
 // Add Vite or respective production middlewares
 let vite
 if (!isProduction) {
   const { createServer } = await import('vite')
   vite = await createServer({
-    server: { middlewareMode: true },
+    // HMR rides on the app's own HTTP server instead of Vite's fixed port 24678,
+    // so several dev servers (main + worktrees) can run side by side
+    server: { middlewareMode: true, hmr: { server } },
     appType: 'custom',
     base
   })
@@ -99,6 +103,6 @@ app.use('*', async (req, res) => {
 })
 
 // Start http server
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server started at http://localhost:${port}`)
 })

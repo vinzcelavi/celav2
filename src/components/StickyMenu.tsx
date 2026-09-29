@@ -1,4 +1,3 @@
-import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -61,7 +60,6 @@ function StickyMenu() {
           whileTap="hover"
           exit="exit"
           onClick={() => {
-            splitbee.track('Click on Avatar from notch');
             setHelloThereIsOpen(!helloThereIsOpen);
           }}
           className="flex items-center gap-0 group cursor-pointer md:hover:gap-2 transition-all duration-150"
