@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "pnpm install",
+  "buildCommand": "node import-from-notion.js && pnpm build:client",
+  "outputDirectory": "dist/client"
+}

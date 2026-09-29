@@ -13,8 +13,8 @@ if (!isProduction) {
 
 const env = loadEnv(mode, process.cwd(), '');
 
-const notionDatabaseId = env.VITE_NOTION_DATABASE_ID;
-const notionSecret = env.VITE_NOTION_SECRET;
+const notionDatabaseId = env.NOTION_DATABASE_ID;
+const notionSecret = env.NOTION_SECRET;
 
 if (!notionDatabaseId || !notionSecret) {
   throw Error("Must define NOTION_SECRET and NOTION_DATABASE_ID in env");

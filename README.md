@@ -1,6 +1,6 @@
 # celav2
 
-[My personal portfolio](https://celav2.netlify.app/)
+[My personal portfolio](https://celav2.vercel.app/)
 
 ![celav2](https://github.com/user-attachments/assets/66d57aa2-1cd4-403d-9a72-271b00816f9d)
 
@@ -28,7 +28,7 @@ $ pnpm dev
 
 ## Deploy
 
-Automatically deploy on [Netlify](https://app.netlify.com/sites/celav2/overview)
+Automatically deployed on [Vercel](https://vercel.com/celavi/celav2) on every push to `main`.
 
 ## License
 
