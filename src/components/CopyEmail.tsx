@@ -1,4 +1,3 @@
-import splitbee from '@splitbee/web';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -23,7 +22,6 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(decodeHtmlEntities(email));
     setCopied(true);
-    splitbee.track('Copy email');
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -33,7 +31,6 @@ const EmailComponent: React.FC<EmailComponentProps> = ({ label }) => {
   if (isMobile) {
     return (
       <a
-        data-splitbee-event="Click on 'Mailto' notch on mobile"
         href={`mailto:${decodeHtmlEntities(email)}`}
         className="flex items-center gap-0 py-1.5 px-2 rounded-full text-base font-bold hover:bg-white/15 transition-all duration-150 group cursor-pointer"
       >

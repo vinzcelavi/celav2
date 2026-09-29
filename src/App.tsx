@@ -1,4 +1,3 @@
-import splitbee from '@splitbee/web';
 import { lazy, useEffect, useState } from 'react';
 import Header from './components/Header';
 import IntroductionReveal from './components/IntroductionReveal';
@@ -15,12 +14,6 @@ const Footer = lazy(() => import('./components/Footer'));
 function App({ locale }: { locale: string }) {
   const { show } = useToastControls();
   const [localeSwitchMessage, setLocaleSwitchMessage] = useState<string>('');
-
-  useEffect(() => {
-    splitbee.init({
-      token: import.meta.env.VITE_SPLITBEE_TOKEN
-    });
-  }, []);
 
   useEffect(() => {
     if (locale === 'en') {

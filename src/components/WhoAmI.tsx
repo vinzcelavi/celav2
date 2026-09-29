@@ -1,4 +1,3 @@
-import splitbee from '@splitbee/web';
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useApp } from '../contexts/AppContext';
@@ -35,7 +34,6 @@ function WhoAmI() {
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
       <div
         onClick={() => {
-          splitbee.track('Click on Avatar');
           setHelloThereIsOpen(!helloThereIsOpen);
         }}
         onMouseEnter={() => setIsHovered(true)}
