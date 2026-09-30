@@ -12,7 +12,8 @@ export default {
         '33/67': '33% 67%',
       },
       aspectRatio: {
-        'project-preview': '6 / 5'
+        'project-preview': '6 / 5',
+        'widescreen': '16 / 10'
       },
       fontSize: {
         // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/#calculating-preferred-value-parameters-based-on-specific-starting-and-ending-points
