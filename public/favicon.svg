@@ -1,9 +1,6 @@
-<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M65.8381 211.632L29.1093 184.959L60.5911 128.992L2 101.883L15.9919 58.1579L79.3927 70.8381L86.8259 7H133.174L140.607 71.7125L204.008 58.5951L218 102.32L158.534 129.429L190.453 185.397L153.725 212.069L109.563 164.409L65.4008 212.069L65.8381 211.632Z" fill="url(#paint0_linear_258_22401)"/>
-<defs>
-<linearGradient id="paint0_linear_258_22401" x1="110" y1="7" x2="110" y2="212.069" gradientUnits="userSpaceOnUse">
-<stop stop-color="#F1C40F"/>
-<stop offset="1" stop-color="#D946EF"/>
-</linearGradient>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 222 222" style="enable-background:new 0 0 222 222;" xml:space="preserve" width="222" height="222"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style type="text/css">
+	.st0{fill:#020617;}
+</style><path class="st0" d="M66.8,218.5l-36.7-28.1l31.5-59L3,102.8l14-46l63.4,13.4L87.8,3h46.3l7.4,68.1L205,57.3l14,46l-59.5,28.5
+	l31.9,59L154.7,219l-44.2-50.2L66.3,219L66.8,218.5z"></path><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
+</style></svg>
