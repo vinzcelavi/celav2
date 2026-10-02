@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useLocale } from '../contexts/LocaleContext';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { cn } from '../utils/cn';
 import { identifyAssetType } from '../utils/identifyAssetType';
 import { splitIntoParagraphs } from '../utils/splitIntoParagraphs';
@@ -21,6 +22,8 @@ interface ProjectSectionProps {
   url: string;
   skills: string[];
   assets: string[];
+  // Portrait cut shown in place of an asset below the md breakpoint, keyed by the asset it replaces
+  mobileAssets?: Partial<Record<string, string>>;
   bgColor?: string;
   meshGradient?: string;
   active: boolean;
@@ -49,6 +52,7 @@ function ProjectSection({
   url,
   skills,
   assets,
+  mobileAssets,
   bgColor,
   meshGradient
 }: ProjectSectionProps) {
@@ -59,6 +63,9 @@ function ProjectSection({
   const [paragraphs, setParagraphs] = useState<string[]>([]);
   const [i18n, setI18n] = useState<I18nStrings>(englishI18n);
   const [selectedAsset, setSelectedAsset] = useState<string | undefined>(undefined);
+  const isMobileViewport = useMediaQuery('(max-width: 767px)');
+  const displayedAssets =
+    isMobileViewport && mobileAssets ? assets.map((asset) => mobileAssets[asset] ?? asset) : assets;
 
   useEffect(() => {
     setIsMounted(true);
@@ -150,7 +157,7 @@ function ProjectSection({
       </div>
       <div className="relative -mx-4">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
-          {assets.map((asset, index) => {
+          {displayedAssets.map((asset, index) => {
             const { ref, inView } = useInView({
               triggerOnce: true,
               threshold: 0.1
@@ -196,7 +203,7 @@ function ProjectSection({
         </div>
       </div>
 
-      <ProjectCarousel selectedAsset={selectedAsset} assets={assets} title={title} onClick={closeGallery} />
+      <ProjectCarousel selectedAsset={selectedAsset} assets={displayedAssets} title={title} onClick={closeGallery} />
 
       <style>
         {`
